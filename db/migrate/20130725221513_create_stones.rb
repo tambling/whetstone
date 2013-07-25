@@ -3,8 +3,6 @@ class CreateStones < ActiveRecord::Migration
   	create_table :stones do |t|
   		t.string :title
   		t.text :description
-  		t.references :users
-  		t.references :resources
   	end
   end
 end

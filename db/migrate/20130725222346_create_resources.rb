@@ -4,7 +4,6 @@ class CreateResources < ActiveRecord::Migration
   		t.string :title
   		t.text :description
   		t.string :url
-  		t.references :stones
   	end
   end
 end

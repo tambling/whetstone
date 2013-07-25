@@ -1,0 +1,3 @@
+StonesController < ApplicationController
+
+end

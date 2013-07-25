@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Whestone::Application.load_tasks
+Whetstone::Application.load_tasks

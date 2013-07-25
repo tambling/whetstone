@@ -11,12 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130725222941) do
+ActiveRecord::Schema.define(:version => 20130725230127) do
 
   create_table "resources", :force => true do |t|
-    t.string "title"
-    t.text   "description"
-    t.string "url"
+    t.string  "title"
+    t.text    "description"
+    t.string  "url"
+    t.integer "recommended_time"
   end
 
   create_table "roles", :force => true do |t|
@@ -36,13 +37,13 @@ ActiveRecord::Schema.define(:version => 20130725222941) do
   end
 
   create_table "stones_resources", :force => true do |t|
-    t.integer "stones_id"
-    t.integer "resources_id"
+    t.integer "stone_id"
+    t.integer "resource_id"
   end
 
   create_table "stones_users", :force => true do |t|
-    t.integer "stones_id"
-    t.integer "users_id"
+    t.integer "stone_id"
+    t.integer "user_id"
   end
 
   create_table "users", :force => true do |t|

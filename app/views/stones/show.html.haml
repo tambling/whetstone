@@ -1,7 +1,7 @@
 #stone
   %h1= @stone.title
   %h2= @stone.description
-  - if current_user
-    %button
+  - if @can_be_added
+    %button#add_goal
   %ul.resources
     = render @stone.resources

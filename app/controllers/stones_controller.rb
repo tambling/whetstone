@@ -5,7 +5,7 @@ class StonesController < ApplicationController
 
   def show
     @stone = Stone.find(params[:id])
-    @goal = current_user.goals.where(stone_id: @stone.id) if user_signed_in?
+    @goal = current_user.goals.where(stone_id: @stone.id).first if user_signed_in?
     @can_be_added = user_signed_in? && current_user.goals.find_by_stone_id(params[:id]).nil?
   end
 

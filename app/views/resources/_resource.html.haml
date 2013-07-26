@@ -1,7 +1,0 @@
-.resource
-	%li
-		%h4= resource.title
-		%a.upvote{id: "#{get_relationship(resource.id, @stone.id).id}"} Upvote
-		%p= "#{get_relationship(resource.id, @stone.id).votes} votes"
-		%p= resource.description
-		%p= resource.recommended_time

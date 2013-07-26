@@ -1,2 +1,7 @@
-%h1= @stone.title
-%h2= @stone.description
+#stone
+  %h1= @stone.title
+  %h2= @stone.description
+  - if current_user
+    %button
+  %ul.resources
+    = render @stone.resources

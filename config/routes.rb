@@ -5,4 +5,5 @@ Whetstone::Application.routes.draw do
   resources :stones
   resources :resources
   post "/stones/search" => "stones#search", as: "stones_search"
+  post "/stones_users/create"
 end

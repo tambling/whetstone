@@ -29,7 +29,7 @@ RSpec.configure do |config|
   config.tty = true
 
   # Use the specified formatter
-  config.formatter = :documentation # :progress, :html, :textmate
+  # config.formatter = :documentation # :progress, :html, :textmate
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -49,7 +49,7 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
-  
+
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
   end

@@ -33,6 +33,7 @@ user = FactoryGirl.create(:user)
   5.times {
     stone.resources << Resource.create(title: Faker::Company.bs,
                                     description: Faker::Lorem.sentence,
-                                    url: "http://www.youtube.com")
+                                    url: "http://www.youtube.com",
+                                    recommended_time: 600)
   }
 }

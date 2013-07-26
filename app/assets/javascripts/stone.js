@@ -1,19 +1,20 @@
-// function StoneController() {
-//   this.stoneViews = new StoneViews();
+var StoneController = {
+  initialize: function (){
+    $('form.create_resource').on('ajax:success', StoneViews.renderResource);
+  }
+}
 
-//   this.initialize = function (){
-//     $('form.create_resource').on('ajax:success', this.stoneViews.renderResource);
-//   };
+var StoneViews = {
+  initialize: function(){
+    this.$container = $('#stone');
+  },
 
-//   initialize();
-// }
+  renderResource: function(event, data){
+    StoneViews.$container.find('.resources').prepend(data);
+  }
+}
 
-// function StoneViews() {
-//   this.renderResource = function(event, data){
-//     debugger
-//   };
-// }
-
-// $(document).ready(function(){
-//   var stoneController = new StoneController();
-// });
+$(document).ready(function(){
+  StoneController.initialize();
+  StoneViews.initialize();
+});

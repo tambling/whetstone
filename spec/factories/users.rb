@@ -28,14 +28,12 @@ FactoryGirl.define do
   factory :resource do
   	title "Codeschools Guide to Javscript"
   	description "Some Link"
-  	stone
   	recommended_time 60 #seconds
   end
 
 	factory :vote do
 		value [1, -1].sample
   	user
-  	resource
   end
 
 end

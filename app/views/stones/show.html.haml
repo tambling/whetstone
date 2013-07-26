@@ -1,7 +1,11 @@
-#stone
+#stone{data: {user_id: "#{current_user_id}", stone_id: @stone.id}}
   %h1= @stone.title
   %h2= @stone.description
   - if @can_be_added
     %button#add_goal
   %ul.resources
     = render @stone.resources
+  -if user_signed_in?
+    = render @goal.timelines
+
+

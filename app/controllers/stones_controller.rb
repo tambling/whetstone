@@ -8,11 +8,8 @@ class StonesController < ApplicationController
   end
 
   def search
-    @stone = Stone.find_by_title(params[:search][:search_query])  
-    # @stone = Stone.search { fulltext "#{params[:search][:search_query]}" }
-    # @stone = Stone.search do 
-    #   fulltext "#{params[:search][:search_query]}" 
-    # end
+    # @stone = Stone.find_by_title(params[:search][:search_query])  
+    @stone = Stone.search { fulltext params[:search][:search_query] }.results.pop
     if @stone
       redirect_to stone_path(@stone)
     else

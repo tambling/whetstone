@@ -18,13 +18,20 @@
 # puts 'user: ' << user.name
 # user.add_role :admin
 
-user = User.first
+
+User.destroy_all
+Stone.destroy_all
+Resource.destroy_all
+
+user = FactoryGirl.create(:user)
 
 3.times {
-  user.stones << Stone.create(title: Faker::Company.bs,
+  stone = Stone.create(title: Faker::Company.bs,
                description: Faker::Lorem.sentence)
+  user.stones << stone
+
   5.times {
-    stone.resources << Resouce.create(title: Faker::Company.bs,
+    stone.resources << Resource.create(title: Faker::Company.bs,
                                     description: Faker::Lorem.sentence,
                                     url: "http://www.youtube.com")
   }

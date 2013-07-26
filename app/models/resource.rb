@@ -1,5 +1,5 @@
 class Resource < ActiveRecord::Base
-	attr_accessible :recommended_time
+	attr_accessible :recommended_time, :title, :description, :url
 
 	validates_presence_of :title
 	validates_presence_of :description

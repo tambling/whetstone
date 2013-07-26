@@ -16,9 +16,10 @@
   = f.input_field :recommended_time
   .submit_button
     = f.submit "Add Resource", class: "btn btn-primary"
-%ul.resources
-  = render partial: 'stones/resources_stone', collection: @stone.resources_stones, :as => :resources_stone
-- if @goal
-  = render @goal.timelines
+  %ul.resources
+    = render partial: 'stones/resources_stone', collection: @stone.resources_stones, :as => :resources_stone
+  - if @goal
+    = render @goal.timelines
+
 
 

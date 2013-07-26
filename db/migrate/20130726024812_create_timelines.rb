@@ -3,7 +3,7 @@ class CreateTimelines < ActiveRecord::Migration
     create_table :timelines do |t|
       t.datetime :start_date
       t.datetime :end_date
-      t.references :stones_users
+      t.references :stones_user
 
       t.timestamps
     end

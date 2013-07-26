@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130726001457) do
+ActiveRecord::Schema.define(:version => 20130726024812) do
 
   create_table "resources", :force => true do |t|
     t.string  "title"
@@ -44,6 +44,14 @@ ActiveRecord::Schema.define(:version => 20130726001457) do
   create_table "stones_users", :force => true do |t|
     t.integer "stone_id"
     t.integer "user_id"
+  end
+
+  create_table "timelines", :force => true do |t|
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "stones_users_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|

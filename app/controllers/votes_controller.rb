@@ -10,7 +10,8 @@ class VotesController < ApplicationController
   end
 
   def create
-    Vote.create(user_id: current_user.id, resources_stone_id: params[:relationship_id], value: params[:value])  
+    vote = Vote.new(user_id: current_user.id, resources_stone_id: params[:relationship_id], value: params[:value])  
+    render status: 403 unless vote.save
   end
 
   def search

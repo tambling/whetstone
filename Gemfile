@@ -18,6 +18,7 @@ gem 'haml-rails'
 gem 'rolify'
 gem 'simple_form'
 gem 'simplecov', :require => false, :group => :test
+gem 'newrelic_rpm'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]

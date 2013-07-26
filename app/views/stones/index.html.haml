@@ -1,2 +1,5 @@
-%h1= "Index"
-%p= "You are in the page rendered by StonesController's index method."
+- @stones.each do |stone|
+ %ul
+  %li=stone.title
+
+

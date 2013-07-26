@@ -1,0 +1,8 @@
+%h1 Create a Stone
+= form_for @stone, url: stones_path, method: 'POST' do |f|
+  = f.label :title, "Title"
+  = f.text_field :title
+  = f.label :description, "Description"
+  = f.text_area :description
+  = f.submit "Create Stone"
+

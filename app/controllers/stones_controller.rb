@@ -1,10 +1,19 @@
 class StonesController < ApplicationController
   def index
-    # @stones = Stone.all
+    @stones = Stone.all
   end
 
   def show
     @stone = Stone.find(params[:id])
+  end
+
+  def new
+    @stone = Stone.new
+  end
+
+  def create
+    @stone = Stone.create(params[:stone])
+    redirect_to stone_path(@stone)
   end
 
   def search

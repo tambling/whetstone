@@ -5,6 +5,7 @@ class StonesController < ApplicationController
 
   def show
     @stone = Stone.find(params[:id])
+    @can_be_added = user_signed_in? && current_user.goals.find_by_stone_id(params[:id]).nil?
   end
 
   def new
@@ -17,7 +18,8 @@ class StonesController < ApplicationController
   end
 
   def search
-    @stone = Stone.find_by_title(params[:search][:search_query])
+    # @stone = Stone.find_by_title(params[:search][:search_query])
+    @stone = Stone.search { fulltext params[:search][:search_query] }.results.pop
     if @stone
       redirect_to stone_path(@stone)
     else

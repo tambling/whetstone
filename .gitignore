@@ -78,3 +78,6 @@ pickle-email-*.html
 
 # testing artifacts
 coverage
+
+#Solr directories should be ignored.
+solr/**

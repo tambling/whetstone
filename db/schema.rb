@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130725230127) do
+ActiveRecord::Schema.define(:version => 20130726001457) do
 
   create_table "resources", :force => true do |t|
     t.string  "title"
@@ -71,5 +71,11 @@ ActiveRecord::Schema.define(:version => 20130725230127) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+
+  create_table "votes", :force => true do |t|
+    t.integer "user_id"
+    t.integer "resource_id"
+    t.integer "value"
+  end
 
 end

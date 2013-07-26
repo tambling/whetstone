@@ -28,7 +28,7 @@ FactoryGirl.define do
   factory :resource do
   	title "Codeschools Guide to Javscript"
   	description "Some Link"
-  	recommemded_time 60 #seconds
+  	recommended_time 60 #seconds
   end
 
 	factory :vote do

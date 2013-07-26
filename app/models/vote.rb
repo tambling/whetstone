@@ -3,4 +3,9 @@ class Vote < ActiveRecord::Base
 
 	belongs_to :user
 	belongs_to :resource
+	belongs_to :stone
+
+	validates :value, inclusion: {:in => [-1,1]}
+	validates_uniqueness_of :user_id, scope: [:stone_id, :resource_id]
+
 end

@@ -24,6 +24,7 @@ Stone.destroy_all
 Resource.destroy_all
 
 user = FactoryGirl.create(:user)
+User.create(name: "Hussain Tambawala", email: "husain283@gmail.com", password: "123123123")
 
 3.times {
   stone = Stone.create(title: Faker::Company.bs,

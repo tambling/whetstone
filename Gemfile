@@ -17,9 +17,9 @@ gem 'figaro'
 gem 'haml-rails'
 gem 'rolify'
 gem 'simple_form'
+gem 'sunspot_solr'
 gem 'simplecov', :require => false, :group => :test
 gem 'newrelic_rpm'
-gem 'sunspot_rails'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]
@@ -30,7 +30,6 @@ group :development do
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
-  gem 'sunspot_solr'
 end
 group :development, :test do
   gem 'factory_girl_rails'

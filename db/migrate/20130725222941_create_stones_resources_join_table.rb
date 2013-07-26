@@ -1,8 +1,8 @@
 class CreateStonesResourcesJoinTable < ActiveRecord::Migration
   def change
-  	create_table :stones_resources do |t|
-  		t.references :stones
-  		t.references :resources
+  	create_table :resources_stones do |t|
+  		t.references :stone
+  		t.references :resource
   	end
   end
 end

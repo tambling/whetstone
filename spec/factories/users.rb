@@ -16,13 +16,19 @@ FactoryGirl.define do
   factory :stone do
   	title "Learn JavaScript"
   	description "Learn JS in 6 weeks"
+
+  factory :stone_with_resources, :parent => :stone do
+    after(:create) do |u|
+      u.resources << create(:resource)
+    end
+  end
+
   end
 
   factory :resource do
   	title "Codeschools Guide to Javscript"
   	description "Some Link"
   	recommemded_time 60 #seconds
-  	stone
   end
 
 	factory :vote do

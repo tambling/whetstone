@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Vote do
 
-	let!(:vote) { FactoryGirl.create(:vote) }
+	let!(:vote) { FactoryGirl.build(:vote) }
 
 	context "Validations" do
 		it { should validate_presence_of(:value) }

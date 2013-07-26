@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Resource do
 
-	let!(:resource) { FactoryGirl.create(:resource) }
+	let!(:resource) { FactoryGirl.build(:resource) }
 
 	context "Validations" do
 		it { should validate_presence_of(:title) }

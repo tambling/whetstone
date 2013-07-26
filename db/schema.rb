@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(:version => 20130725230127) do
     t.integer "recommended_time"
   end
 
+  create_table "resources_stones", :force => true do |t|
+    t.integer "stone_id"
+    t.integer "resource_id"
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -34,11 +39,6 @@ ActiveRecord::Schema.define(:version => 20130725230127) do
   create_table "stones", :force => true do |t|
     t.string "title"
     t.text   "description"
-  end
-
-  create_table "stones_resources", :force => true do |t|
-    t.integer "stone_id"
-    t.integer "resource_id"
   end
 
   create_table "stones_users", :force => true do |t|

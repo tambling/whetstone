@@ -5,20 +5,31 @@ FactoryGirl.define do
   	name "John Doe"
   	email "user@example.com"
   	password "secretsecret"
-  	stone
+  end
+
+  factory :user_with_stones, :parent => :user do
+    after(:create) do |u|
+      u.stones << create(:stone)
+    end
   end
 
   factory :stone do
   	title "Learn JavaScript"
   	description "Learn JS in 6 weeks"
-  	user
+
+  factory :stone_with_resources, :parent => :stone do
+    after(:create) do |u|
+      u.resources << create(:resource)
+    end
+  end
+
   end
 
   factory :resource do
   	title "Codeschools Guide to Javscript"
-  	content "Some Link"
-  	recommemded_time 60 #seconds
+  	description "Some Link"
   	stone
+  	recommended_time 60 #seconds
   end
 
 	factory :vote do

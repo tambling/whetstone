@@ -1,2 +1,6 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+%h1= "What do you want to learn about?"
+= form_for :search, url: stones_search_path do |f|
+  = f.label :search_query, "I want to learn about..."
+  = f.text_field :search_query
+  = f.submit "Search"
+

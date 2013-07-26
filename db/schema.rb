@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130725212642) do
+ActiveRecord::Schema.define(:version => 20130726001457) do
+
+  create_table "resources", :force => true do |t|
+    t.string  "title"
+    t.text    "description"
+    t.string  "url"
+    t.integer "recommended_time"
+  end
+
+  create_table "resources_stones", :force => true do |t|
+    t.integer "stone_id"
+    t.integer "resource_id"
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -23,6 +35,16 @@ ActiveRecord::Schema.define(:version => 20130725212642) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "stones", :force => true do |t|
+    t.string "title"
+    t.text   "description"
+  end
+
+  create_table "stones_users", :force => true do |t|
+    t.integer "stone_id"
+    t.integer "user_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -49,5 +71,11 @@ ActiveRecord::Schema.define(:version => 20130725212642) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+
+  create_table "votes", :force => true do |t|
+    t.integer "user_id"
+    t.integer "resource_id"
+    t.integer "value"
+  end
 
 end

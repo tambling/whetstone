@@ -1,7 +1,23 @@
-#stone
+#stone{data: {user_id: "#{current_user_id}", stone_id: @stone.id}}
   %h1= @stone.title
   %h2= @stone.description
-  - if current_user
-    %button
+  - if @goal.nil?
+    %button#add_goal
+  = simple_form_for @resource, remote: true, html: {class: "create_resource"} do |f|
+    %input{name: "stone_id", value: "#{@stone.id}", hidden: true}
+    = f.label :title
+    = f.input_field :title
+    = f.label :description
+    = f.input_field :description, cols: 10, rows: 5
+    = f.label :url
+    = f.input_field :url
+    = f.label :recommended_time
+    = f.input_field :recommended_time
+    .submit_button
+    = f.submit "Add Resource", class: "btn btn-primary"
   %ul.resources
-    = render @stone.resources
+    = render partial: 'stones/resources_stone', collection: @stone.resources_stones, :as => :resources_stone
+  -if @goal
+    = render @goal.timelines
+
+

@@ -7,8 +7,8 @@ describe Stone do
 	context "Validations" do
 		it { should validate_presence_of(:title) }
 		it { should validate_presence_of(:description) }
-		it { should validate_uniqueness_of(:title) } 
-		it { should have_and_belong_to_many(:resources) }
+		it { should validate_uniqueness_of(:title) }
+		it { should have_many(:resources) }
 	end
 
 end

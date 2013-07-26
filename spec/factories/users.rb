@@ -28,7 +28,6 @@ FactoryGirl.define do
   factory :resource do
   	title "An excellent resource."
   	description "This will help your learning."
-  	stone
   	recommended_time 3600 #seconds
   end
 

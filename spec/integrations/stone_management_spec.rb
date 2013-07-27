@@ -2,7 +2,8 @@ require 'spec_helper'
 
 feature "Stone Management" do
 
-  let(:stone_with_resources) { FactoryGirl.create(:stone_with_resources) }
+  let(:user) { FactoryGirl.create(:user) }
+  let(:stone) { FactoryGirl.create(:stone) }
 
   before(:each){
     visit new_user_session_path
@@ -21,14 +22,14 @@ feature "Stone Management" do
 
   scenario "User searches for a stone and finds it." do
     visit root_path
-    fill_in "I want to learn about...", with: stone_with_resources.title
+    fill_in "I want to learn about...", with: stone.title
     click_button 'Search'
-    page.should have_content stone_with_resources.title
+    page.should have_content stone.title
   end
 
   scenario "User Visits Stone Page and sees Stone Title" do
-    visit stone_path(stone_with_resources)
-    expect(page).to have_content(stone_with_resources.title)
+    visit stone_path(stone)
+    expect(page).to have_content(stone.title)
   end
 end
 

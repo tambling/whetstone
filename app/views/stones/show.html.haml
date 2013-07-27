@@ -28,7 +28,8 @@
     = link_to 'Sort Desc', '#', class: "btn sort", data: { sort: 'DESC'}
   %ul.resources
     = render partial: 'stones/resources_stone', collection: @stone.resources_stones, :as => :resources_stone
-  -if @goal
+  - if @goal
     = render @goal.timelines
+
 
 

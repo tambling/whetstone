@@ -3,6 +3,7 @@ class Resource < ActiveRecord::Base
 
 	validates_presence_of :title
 	validates_presence_of :description
+  validates_presence_of :recommended_time
 
 	has_many :votes
 
@@ -12,4 +13,5 @@ class Resource < ActiveRecord::Base
 	def self.difficulty_ratings
     ["Beginner", "Intermediate", "Advanced", "Expert"]
   end
+
 end

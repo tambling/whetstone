@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(:version => 20130726043649) do
   create_table "timelines", :force => true do |t|
     t.datetime "start_date"
     t.datetime "end_date"
-    t.integer  "stones_user_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.integer  "stones_users_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|

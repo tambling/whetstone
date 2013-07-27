@@ -25,3 +25,10 @@
   - else
     %li
       = link_to 'Sign up', new_user_registration_path
+%ul.stones
+  - if current_user
+    - if current_user.stones
+      - current_user.stones.each do |stone|
+        %li
+          = stone.title.split(' ')[0].capitalize + "..."
+

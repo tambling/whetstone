@@ -1,6 +1,6 @@
 $(document).ready( function() {
 	var $votes;
-	var catchNumbers = /\d+/
+	var catchNumbers = /-{1}\d+/
 
 
 	$('.resources').delegate(".upvote","click",function() {
@@ -23,7 +23,7 @@ $(document).ready( function() {
 	}
 
 	function updateVotes(val) {
-		var voteCount = (parseInt(catchNumbers.exec($votes.eq(0).find('p').eq(0).text())) + val).toString() + " votes";
+		var voteCount = (parseInt(catchNumbers.exec($votes.eq(0).find('p').eq(0).text())) + val).toString() + " Votes";
 		$votes.eq(0).find('p').eq(0).text(voteCount)
 	}
 

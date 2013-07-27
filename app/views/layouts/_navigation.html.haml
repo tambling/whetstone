@@ -1,8 +1,11 @@
 .nav-head
-  = link_to "Whetstone", root_path, :class => 'brand'
-.photo
+  .logo
+    = link_to "Whetstone", root_path, :class => 'brand'
   - if user_signed_in?
-    %img{src: gravatar(current_user, 80)}
+    %img{src: gravatar(current_user, 40)}
+#search
+  = form_for :search, url: stones_search_path do |f|
+    = f.text_field :search_query, placeholder: "I want to learn..."
 %ul.nav
   - if user_signed_in?
     %li

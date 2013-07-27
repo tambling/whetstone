@@ -3,6 +3,12 @@
 .photo
   - if user_signed_in?
     %img{src: gravatar(current_user, 80)}
+%ul.user-info
+  - if user_signed_in?
+    %li
+      = current_user.name
+    %li
+      = current_user.email 
 %ul.nav
   - if user_signed_in?
     %li

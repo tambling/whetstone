@@ -24,7 +24,8 @@ class StonesController < ApplicationController
   end
 
   def search
-    @stones = Stone.where(title: params[:search][:search_query]) #Replace with more advanced search algorithm (when it's ready).
+    # @stones = Stone.where(title: params[:search][:search_query]) #Replace with more advanced search algorithm (when it's ready).
+    @stones = Stone.basic_search(params[:search][:search_query])
     if @stones.count == 1
       redirect_to stone_path(@stones.first)
     elsif @stones.count == 0

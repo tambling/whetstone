@@ -19,7 +19,7 @@ feature "Adding a goal" do
   scenario "user can add a goal to a stone.", js: true do
     visit stone_path(stone)
     click_button 'Add Goal'
-    sleep 2
+    sleep 1
     user.goals.count.should eq(1)
   end
 end

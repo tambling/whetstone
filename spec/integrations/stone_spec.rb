@@ -44,6 +44,7 @@ feature "Stone Management" do
   end
 
   scenario "User Clicks on Beginner Filter and Sees ONLY Beginner Level Items" do
+    pending
     # visit stone_path(stone_with_resources)
     # p stone_with_resources.resources
 

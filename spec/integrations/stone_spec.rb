@@ -11,6 +11,13 @@ feature "Stone Management" do
     page.should have_content "New Stone"
   end
 
+  scenario "User searches for a stone and finds it." do
+    visit root_path
+    fill_in "I want to learn about...", with: stone_with_resources.title
+    click_button 'Search'
+    page.should have_content stone_with_resources.title
+  end
+
   scenario "User Visits Stone Page and sees Stone Title" do
       visit stone_path(stone_with_resources)
       expect(page).to have_content(stone_with_resources.title)
@@ -34,9 +41,10 @@ feature "Stone Management" do
       visit stone_path(stone_with_resources)
 
       expect(page).to have_content(stone_with_resources.resources.first.title)
-  end  
+  end
 
   scenario "User Clicks on Beginner Filter and Sees ONLY Beginner Level Items" do
+    pending
     # visit stone_path(stone_with_resources)
     # p stone_with_resources.resources
 

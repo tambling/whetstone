@@ -8,6 +8,9 @@ Whetstone::Application.routes.draw do
     resources :stones_users, as: :goals, only: [:new, :create]
   end
 
+  resources :resources
+  resources :users, only: [:show]
+
   resources :stones do
     resources :discussions
   end

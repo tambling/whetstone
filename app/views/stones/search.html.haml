@@ -1,0 +1,5 @@
+
+%ul
+- @stones.each do |stone|
+  %li
+    = link_to stone.title, stone_path(stone)

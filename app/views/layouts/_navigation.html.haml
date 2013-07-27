@@ -1,8 +1,11 @@
 .nav-head
-  = link_to "Whetstone", root_path, :class => 'brand'
-.photo
+  .logo
+    = link_to "Whetstone", root_path, :class => 'brand'
   - if user_signed_in?
-    %img{src: gravatar(current_user)}
+    %img{src: gravatar(current_user, 40)}
+#search
+  = form_for :search, url: stones_search_path do |f|
+    = f.text_field :search_query, placeholder: "I want to learn...", id: 'nav_search'
 %ul.nav
   - if user_signed_in?
     %li
@@ -19,3 +22,9 @@
   - else
     %li
       = link_to 'Sign up', new_user_registration_path
+%ul.stones-list
+  - if current_user && current_user.stones
+    - current_user.stones.each do |stone|
+      %li
+        = stone.title.split(' ')[0].capitalize + "..."
+

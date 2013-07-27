@@ -17,7 +17,7 @@ feature "Adding a goal" do
     expect(page).to have_button("Add Goal")
   end
 
-  scenario "user can add a goal to a stone.", js: true do
+  scenario "user can add a goal to a stone." do
     visit stone_path(stone)
     click_button 'Add Goal'
     sleep 2

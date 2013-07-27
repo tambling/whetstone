@@ -17,7 +17,6 @@ gem 'figaro'
 gem 'haml-rails'
 gem 'rolify'
 gem 'simple_form'
-gem 'sunspot_solr'
 gem 'simplecov', :require => false, :group => :test
 gem 'newrelic_rpm'
 group :development do

@@ -4,6 +4,7 @@ FactoryGirl.define do
   factory :discussion do
     title { Faker::Company.catch_phrase }
     content { Faker::Lorem.sentence }
+    stone
     user
   end
 end

@@ -30,6 +30,7 @@ feature "Stone Management" do
     visit stone_path(stone_with_resources)
     expect(page).to have_content(stone_with_resources.title)
   end
+end
 
 feature "Adding a stone after searching for it" do
   

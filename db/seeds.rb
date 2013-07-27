@@ -44,10 +44,10 @@ user2.stones << stone
 }
 
 stone.discussions.each do |discussion|
-  5.times { discussion.comments << FactoryGirl.create(:comment, user: user2) }
+  5.times { discussion.comments << Comment.create(content: Faker::Company.bs, user_id: user2.id)}
 
   discussion.comments.each do |comment|
-    2.times { comment.comments << FactoryGirl.create(:comment, user: user2) }
+    2.times { comment.comments << Comment.create(content: Faker::Company.bs, user_id: user2.id) }
   end
 end
 

@@ -1,21 +1,23 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
+SUBJECTS=["French", "Cooking", "Ruby", "Fencing", "Guitar", "Mandarin Chinese", "Gardening"]
 
 FactoryGirl.define do
   factory :user do
-  	name "John Doe"
-  	email "user@example.com"
-  	password "secretsecret"
+  	name {Faker::Name.name}
+  	email {Faker::Internet.email}
+  	password "password"
   end
 
   factory :user_with_stones, :parent => :user do
     after(:create) do |u|
-      u.stones << create(:stone)
+      u.stones << stone
     end
   end
 
   factory :stone do
-  	title "Learn JavaScript"
-  	description "Learn JS in 6 weeks"
+  	title {SUBJECTS.sample}
+  	description {"Learn #{title} in 6 weeks"}
+  end
 
   factory :stone_with_resources, :parent => :stone do
     after(:create) do |u|
@@ -23,12 +25,10 @@ FactoryGirl.define do
     end
   end
 
-  end
-
   factory :resource do
-  	title "Codeschools Guide to Javscript"
-  	description "Some Link"
-  	recommended_time 60 #seconds
+  	title "An excellent resource."
+  	description "This will help your learning."
+  	recommended_time 3600 #seconds
   end
 
 	factory :vote do

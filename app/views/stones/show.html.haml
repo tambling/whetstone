@@ -3,7 +3,7 @@
 %h2= @stone.description
 
 - if @can_be_added
-  %button{class: "add_goal"} Add Goal
+  %button#add_goal Add Goal
 = simple_form_for @resource, remote: true, html: {class: "create_resource"} do |f|
   %input{name: "stone_id", value: "#{@stone.id}", hidden: true}
   = f.label :title

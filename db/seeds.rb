@@ -35,6 +35,7 @@ User.create(name: "Hussain Tambawala", email: "husain283@gmail.com", password: "
     stone.resources << Resource.create(title: Faker::Company.bs,
                                     description: Faker::Lorem.sentence,
                                     url: "http://www.youtube.com",
-                                    recommended_time: 600)
+                                    recommended_time: 600,
+                                    difficulty: Resource.difficulty_ratings.sample)
   }
 }

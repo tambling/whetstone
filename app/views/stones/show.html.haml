@@ -13,8 +13,19 @@
     = f.input_field :url
     = f.label :recommended_time
     = f.input_field :recommended_time
+    = f.label :difficulty
+    = f.input_field :difficulty, collection: Resource.difficulty_ratings
     .submit_button
-    = f.submit "Add Resource", class: "btn btn-primary"
+      = f.submit "Add Resource", class: "btn btn-primary"
+  .btn-group
+    = link_to 'All', '#', class: "btn filter"
+    = link_to 'Beginner', '#', class: "btn filter"
+    = link_to 'Intermediate', '#', class: "btn filter"
+    = link_to 'Advanced', '#', class: "btn filter"
+    = link_to 'Expert', '#', class: "btn filter"
+  .btn-group
+    = link_to 'Sort Asc', '#', class: "btn sort", data: { sort: 'ASC'}
+    = link_to 'Sort Desc', '#', class: "btn sort", data: { sort: 'DESC'}
   %ul.resources
     = render partial: 'stones/resources_stone', collection: @stone.resources_stones, :as => :resources_stone
   -if @goal

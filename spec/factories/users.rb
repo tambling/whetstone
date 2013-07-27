@@ -19,7 +19,7 @@ FactoryGirl.define do
 
   factory :stone_with_resources, :parent => :stone do
     after(:create) do |u|
-      u.resources << create(:resource)
+      50.times { u.resources << create(:resource) }
     end
   end
 
@@ -29,6 +29,7 @@ FactoryGirl.define do
   	title "Codeschools Guide to Javscript"
   	description "Some Link"
   	recommended_time 60 #seconds
+    difficulty { ["Beginner", "Intermediate", "Advanced", "Expert"].sample }
   end
 
 	factory :vote do

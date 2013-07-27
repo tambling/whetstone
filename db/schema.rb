@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130726043649) do
+ActiveRecord::Schema.define(:version => 20130726225113) do
 
   create_table "resources", :force => true do |t|
     t.string  "title"
     t.text    "description"
     t.string  "url"
     t.integer "recommended_time"
+    t.string  "difficulty",       :default => "Medium"
   end
 
   create_table "resources_stones", :force => true do |t|

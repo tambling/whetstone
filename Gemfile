@@ -19,6 +19,7 @@ gem 'simple_form'
 gem 'sunspot_solr'
 gem 'simplecov', :require => false, :group => :test
 gem 'newrelic_rpm'
+gem 'unicorn'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]

@@ -1,8 +1,8 @@
 #stone{data: {user_id: "#{current_user_id}", stone_id: @stone.id}}
   %h1= @stone.title
   %h2= @stone.description
-  - if @goal.nil?
-    %button#add_goal
+  - if @goal.nil? && current_user
+    %button#add_goal Add Goal
   = simple_form_for @resource, remote: true, html: {class: "create_resource"} do |f|
     %input{name: "stone_id", value: "#{@stone.id}", hidden: true}
     = f.label :title

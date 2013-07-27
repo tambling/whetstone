@@ -5,7 +5,6 @@ feature "Adding a goal" do
     let(:stone) {FactoryGirl.create(:stone)}
     let(:user) {FactoryGirl.create(:user)}
   before(:each) do
-    #@stone = Stone.create(title: "A stone", description: "here's a stone")
     visit new_user_session_path
     fill_in 'Email', with: user.email
     fill_in 'Password', with: 'password'

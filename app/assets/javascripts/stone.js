@@ -1,11 +1,16 @@
 var StoneController = {
   initialize: function (){
     $('#stone').on('ajax:success','form.create_resource', StoneViews.renderResource);
+    $('#stone').on('ajax:success','form.create_discussion', StoneViews.renderDiscussion);
+    $('#stone').on('ajax:success','form.create_comment', StoneViews.renderComment);
+    
+
     $('#stone').on('click','a.filter', StoneViews.applyResourceFilter);
     $('#stone').on('click','a.sort', StoneViews.applyResourceSort);
 
     $('body').on('ajax:success','.get_overview', StoneViews.renderOverview);
     $('body').on('ajax:success','.get_discussions', StoneViews.renderDiscussions);
+    $('body').on('ajax:success','.show_discussion', StoneViews.renderShowDiscussion);
     $('body').on('ajax:success','.get_resources', StoneViews.renderResources);
   }
 
@@ -20,10 +25,18 @@ var StoneViews = {
 
   },
 
+  renderResource: function(event, data){
+    StoneViews.$container.find('.resources').prepend(data);
+  },
+
   renderResources: function(event,resources){
     console.log("Rendering Resources", resources);
     StoneViews.$container.empty()
     StoneViews.$container.append(resources);
+  },
+
+  renderDiscussion: function(event,discussion){
+    StoneViews.$container.find('.discussions').prepend(discussion);
   },
 
   renderDiscussions: function(event, discussions){
@@ -32,8 +45,15 @@ var StoneViews = {
     StoneViews.$container.append(discussions);
   },
 
-  renderResource: function(event, data){
-    StoneViews.$container.find('.resources').prepend(data);
+  renderShowDiscussion: function(event, discussion) {
+    console.log("Showing discussion");
+    StoneViews.$container.empty()
+    StoneViews.$container.append(discussion);
+  },
+
+  renderComment: function(event, comment) {
+    console.log("Rendering Comment");
+    $(this).after(comment);
   },
 
   applyResourceFilter: function(event, data){

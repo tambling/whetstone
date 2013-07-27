@@ -1,10 +1,12 @@
-
-    / .comments
-    /   - if user_signed_in?
-    /     .form
-    /       = simple_form_for [@commentable, @comment], html: { class: "create_discussion" } do |f|
-    /         = f.label "Would you like to comment?"
-    /         = f.input_field :content, cols: 60, rows: 5
-    /         .submit_button
-    /           = f.submit "Add Comment", class: "btn btn-primary"
-    /   = render @stone.discussions.first.comments
+#discussion
+  %h2= @discussion.title
+  %h3= @discussion.content
+  .comments
+    - if user_signed_in?
+      .form
+        = simple_form_for [@discussion, @comment], remote: true, html: { class: "create_comment" } do |f|
+          = f.label :content
+          = f.input_field :content, cols: 60, rows: 5
+          .submit_button
+            = f.submit "Add Comment", class: "btn btn-primary"
+    = render @discussion.comments

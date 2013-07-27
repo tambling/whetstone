@@ -4,8 +4,8 @@ DIFFICULTY = ["Beginner", "Intermediate", "Advanced", "Expert"]
 
 FactoryGirl.define do
   factory :user do
-  	name { Faker::Name.name }
-  	email { Faker::Internet.email }
+  	name { "John Doe" }
+  	email { "user@example.com" }
   	password "password"
   end
 
@@ -31,6 +31,23 @@ FactoryGirl.define do
     description "This will help your learning."
     recommended_time 3600 #seconds
     difficulty { DIFFICULTY.sample }
+  end
+
+  factory :discussion do
+    title { Faker::Company.catch_phrase }
+    content { Faker::Lorem.sentence }
+    stone
+    user
+  end
+
+  factory :discussion_with_comments, :parent => :discussion do
+    after(:create) do |u|
+      10.times { u.comments << create(:comment) }
+    end
+  end
+
+  factory :comment do
+    content { Faker::Lorem.sentence }
   end
 
   factory :vote do

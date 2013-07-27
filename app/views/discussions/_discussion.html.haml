@@ -1,3 +1,3 @@
 .discussion
-  %h6= discussion.title
+  %h6= link_to discussion.title, stone_discussion_path(@stone,discussion), remote: true, class: "show_discussion"
   %p= discussion.content

@@ -8,10 +8,10 @@
       visit stone_path(stone_with_resources)
     end
 
-    # scenario "User Visits Resources Page" do
-    #   click_link("Resources")
-    #   expect(page).to have_content(stone_with_resources.resources.first.title)
-    # end  
+    scenario "User Visits Resources Page" do
+      click_link("Resources")
+      expect(page).to have_content(stone_with_resources.resources.first.title)
+    end  
 
     scenario "User Visits Resources Page And Can Add a Resource" do
       click_link("Resources")

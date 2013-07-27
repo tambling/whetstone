@@ -66,12 +66,12 @@ end
 
 feature "Adding a stone after searching for it" do
   let(:user) {FactoryGirl.create(:user)}
-  scenario "when user is signed in" do
+  scenario "when user is signed in", js: true do
     visit new_user_session_path
     fill_in "Email", with: user.email
     fill_in "Password", with: "password"
     click_button "Sign in"
-    fill_in "I want to learn about...", with: "Knife Throwing"
+    fill_in "I want to learn about...", with: 'Knife Throwing'
     click_button "Search"
     page.should have_content("Sorry, we weren't able to find anything about that.")
     find_field('Title').value.should eq 'Knife Throwing'

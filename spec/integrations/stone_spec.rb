@@ -3,6 +3,13 @@ require 'spec_helper'
 feature "Stone Management" do
 
   let(:stone_with_resources) { FactoryGirl.create(:stone_with_resources) }
+  let(:user){FactoryGirl.create(:user)}
+  before(:each){
+    visit new_user_session_path
+    fill_in "Email", with: user.email
+    fill_in "Password", with: "password"
+    click_button "Sign in"
+  }
   scenario "User can create a stone" do
     visit new_stone_path
     fill_in 'Title', with: "New Stone"
@@ -19,32 +26,32 @@ feature "Stone Management" do
   end
 
   scenario "User Visits Stone Page and sees Stone Title" do
-      visit stone_path(stone_with_resources)
-      expect(page).to have_content(stone_with_resources.title)
+    visit stone_path(stone_with_resources)
+    expect(page).to have_content(stone_with_resources.title)
   end
 
   scenario "User Visits Stone Page and can add a resource" do
-      visit stone_path(stone_with_resources)
-      fill_in('Title', :with => 'Poodr')
-      fill_in('Description', :with => 'What the FUCK AM I DOING!')
-      fill_in('Url', :with => 'http://www.soccernet.com')
-      fill_in('Recommended time', :with => '600')
+    visit stone_path(stone_with_resources)
+    fill_in('Title', :with => 'Poodr')
+    fill_in('Description', :with => 'What the FUCK AM I DOING!')
+    fill_in('Url', :with => 'http://www.soccernet.com')
+    fill_in('Recommended time', :with => '600')
 
-      expect {
-        click_button("Add Resource")
+    expect {
+      click_button("Add Resource")
       }.to change(Resource, :count).by(1)
 
       expect(page).to have_content('Poodr')
-  end
+    end
 
-  scenario "User Visits Stone Page and can see resources" do
+    scenario "User Visits Stone Page and can see resources" do
       visit stone_path(stone_with_resources)
 
       expect(page).to have_content(stone_with_resources.resources.first.title)
-  end
+    end
 
-  scenario "User Clicks on Beginner Filter and Sees ONLY Beginner Level Items" do
-    pending
+    scenario "User Clicks on Beginner Filter and Sees ONLY Beginner Level Items" do
+      pending
     # visit stone_path(stone_with_resources)
     # p stone_with_resources.resources
 
@@ -56,3 +63,44 @@ feature "Stone Management" do
 
   end
 end
+
+feature "Adding a stone after searching for it" do
+  let(:user) {FactoryGirl.create(:user)}
+  scenario "when user is signed in" do
+    visit new_user_session_path
+    fill_in "Email", with: user.email
+    fill_in "Password", with: "password"
+    click_button "Sign in"
+    fill_in "I want to learn about...", with: "Knife Throwing"
+    click_button "Search"
+    page.should have_content("Sorry, we weren't able to find anything about that.")
+    find_field('Title').value.should eq 'Knife Throwing'
+  end
+
+  scenario "when user is not signed in" do
+    visit root_path
+    fill_in "I want to learn about...", with: "Knife Throwing"
+    click_button "Search"
+    current_path.should eq(new_user_session_path)
+    fill_in "Email", with: user.email
+    fill_in "Password", with: "password"
+    click_button "Sign in"
+    find_field('Title').value.should eq 'Knife Throwing'
+  end
+
+  scenario "when user doesn't exist" do
+    visit root_path
+    fill_in "I want to learn about...", with: "Knife Throwing"
+    click_button "Search"
+    current_path.should eq(new_user_session_path)
+    click_link "Sign up"
+    fill_in "Name", with: "Jimothy"
+    fill_in "Email", with: "jim@bim.net"
+    fill_in "Password", with: "password"
+    fill_in "Password confirmation", with: "password"
+    click_button "Sign up"
+    find_field('Title').value.should eq 'Knife Throwing'
+  end
+
+end
+

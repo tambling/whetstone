@@ -8,18 +8,23 @@ $sidebar-highlight-color: #22262E;
 	background-color: $sidebar-main-color;
 	left: 0px;
 	#search {
-		background-color: white;
 		padding: none;
 		input { 
 			background-color: $sidebar-main-color;
 			border: none;
 			border-radius: 0px;
 			margin: 0 auto;
-			width: 228px; 
+			width: 206px; 
 			height: 100%;
+		}
+		#search-icon {
+			float:left;
+			width: 18px;
+			margin-left: 4px;
 		}
 	}
 }
+
 
 .container {
 	margin-left: 270px;

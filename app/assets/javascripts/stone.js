@@ -1,14 +1,35 @@
 var StoneController = {
   initialize: function (){
-    $('form.create_resource').on('ajax:success', StoneViews.renderResource);
+    $('#stone').on('ajax:success','form.create_resource', StoneViews.renderResource);
     $('#stone').on('click','a.filter', StoneViews.applyResourceFilter);
     $('#stone').on('click','a.sort', StoneViews.applyResourceSort);
+
+    $('body').on('ajax:success','.get_overview', StoneViews.renderOverview);
+    $('body').on('ajax:success','.get_discussions', StoneViews.renderDiscussions);
+    $('body').on('ajax:success','.get_resources', StoneViews.renderResources);
   }
+
 }
 
 var StoneViews = {
   initialize: function(){
     this.$container = $('#stone');
+  },
+
+  renderOverview: function(){
+
+  },
+
+  renderResources: function(event,resources){
+    console.log("Rendering Resources", resources);
+    StoneViews.$container.empty()
+    StoneViews.$container.append(resources);
+  },
+
+  renderDiscussions: function(event, discussions){
+    console.log("Rendering Discussions", discussions);
+    StoneViews.$container.empty()
+    StoneViews.$container.append(discussions);
   },
 
   renderResource: function(event, data){

@@ -12,6 +12,8 @@
     .sidebar-nav-fixed
       %nav.navbar-bottom
       = render 'layouts/navigation'
+    .right-tabs-fixed
+      = yield :right_tabs
     #main{:role => "main"}
       .container
         .row

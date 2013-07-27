@@ -6,8 +6,6 @@ class StonesController < ApplicationController
   def show
     @stone = Stone.find(params[:id])
     @goal = current_user.goals.where(stone_id: @stone.id).first if user_signed_in?
-    @can_be_added = @goal.nil? && current_user
-    @resource = Resource.new
   end
 
   def new

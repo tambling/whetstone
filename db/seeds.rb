@@ -22,20 +22,32 @@
 User.destroy_all
 Stone.destroy_all
 Resource.destroy_all
+Discussion.destroy_all
+Comment.destroy_all
 
 user = FactoryGirl.create(:user)
-User.create(name: "Hussain Tambawala", email: "husain283@gmail.com", password: "123123123")
+user2 = User.create(name: "Hussain Tambawala", email: "hussain283@gmail.com", password: "password")
 
-3.times {
-  stone = Stone.create(title: Faker::Company.bs,
-               description: Faker::Lorem.sentence)
-  user.stones << stone
 
-  5.times {
-    stone.resources << Resource.create(title: Faker::Company.bs,
-                                    description: Faker::Lorem.sentence,
-                                    url: "http://www.youtube.com",
-                                    recommended_time: 600,
-                                    difficulty: Resource.difficulty_ratings.sample)
-  }
+stone = Stone.create(title: Faker::Company.bs,
+             description: Faker::Lorem.sentence)
+user2.stones << stone
+
+5.times {
+  stone.resources << Resource.create(title: Faker::Company.bs,
+                                  description: Faker::Lorem.sentence,
+                                  url: "http://www.youtube.com",
+                                  recommended_time: 600,
+                                  difficulty: Resource.difficulty_ratings.sample)
+
+  stone.discussions << FactoryGirl.create(:discussion, user: user2)
 }
+
+stone.discussions.each do |discussion|
+  5.times { discussion.comments << FactoryGirl.create(:comment, user: user2) }
+
+  discussion.comments.each do |comment|
+    2.times { comment.comments << FactoryGirl.create(:comment, user: user2) }
+  end
+end
+

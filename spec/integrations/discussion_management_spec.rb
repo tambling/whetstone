@@ -2,7 +2,10 @@ require 'spec_helper'
 
 feature "Discussions Page Management", js: true do
 
-  let(:discussion) { FactoryGirl.create(:discussion) }
+  let(:user) { FactoryGirl.create(:user) }
+  let(:stone) { FactoryGirl.create(:stone) }
+  let(:discussion) { FactoryGirl.create(:discussion, user: user, stone: stone) }
+
 
   # scenario "User can Sign in" do
   #   visit new_user_session_path

@@ -15,6 +15,7 @@ class StonesController < ApplicationController
       redirect_to root_path
     end
     @stone = Stone.new(title: session[:title])
+    session.delete(:title)
   end
 
   def create

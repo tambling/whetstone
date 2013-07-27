@@ -5,13 +5,13 @@
     %img{src: gravatar(current_user, 40)}
 #search
   = form_for :search, url: stones_search_path do |f|
-    = f.text_field :search_query, placeholder: "I want to learn..."
+    = f.text_field :search_query, placeholder: "I want to learn...", id: 'nav_search'
 %ul.user-info
   - if user_signed_in?
     %li
       = current_user.name
     %li
-      = current_user.email 
+      = current_user.email
 %ul.nav
   - if user_signed_in?
     %li

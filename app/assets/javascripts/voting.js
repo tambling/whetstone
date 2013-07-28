@@ -1,14 +1,15 @@
 $(document).ready( function() {
 	var $votes;
-	var catchNumbers = /-{1}\d+/
+	var catchNumbers = /-*\d+/
 
 
-	$('.resources').delegate(".upvote","click",function() {
+	$('#stone').delegate(".upvote","click",function() {
 		$votes = $(this.parentElement)
+		debugger
 		postNewVote(this, 1)
 	});
 
-	$('.resources').delegate(".downvote","click",function() {
+	$('#stone').delegate(".downvote","click",function() {
 		$votes = $(this.parentElement)
 		postNewVote(this, -1)
 	});

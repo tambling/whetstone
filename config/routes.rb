@@ -2,7 +2,10 @@ Whetstone::Application.routes.draw do
   root :to => "home#index"
   devise_for :users
 
-  resources :votes
+  resources :comments, :discussions, :resources_stones do
+    resources :votes
+  end
+  # resources :votes
 
   resources :stones do
     resources :stones_users, as: :goals, only: [:new, :create]
@@ -27,3 +30,4 @@ Whetstone::Application.routes.draw do
   get "/stones/:id/overview" => "stones#overview", as: "stone_overview"
 
 end
+

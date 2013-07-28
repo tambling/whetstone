@@ -11,9 +11,6 @@ class VotesController < ApplicationController
 
   def create
     @voteable = find_voteable
-    puts "*" * 100
-    puts @voteable.votes
-    puts "*" * 100
     vote = @voteable.votes.build(user_id: current_user.id, value: params[:value])  
     unless vote.save
       render status: 403

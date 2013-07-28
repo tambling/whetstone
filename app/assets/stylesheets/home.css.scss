@@ -10,11 +10,12 @@ $sidebar-highlight-color: #22262E;
 	#search {
 		padding: none;
 		input { 
+			font-family: FontAwesome;
 			background-color: $sidebar-main-color;
 			border: none;
 			border-radius: 0px;
 			margin: 0 auto;
-			width: 206px; 
+			width: 227px; 
 			height: 100%;
 		}
 		#search-icon {

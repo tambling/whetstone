@@ -4,5 +4,5 @@ class StonesUser < ActiveRecord::Base
   belongs_to :stone
 
   has_many :saved_resources
-  has_many :resources, through: :saved_resources
+  has_many :resources_stones, through: :saved_resources
 end

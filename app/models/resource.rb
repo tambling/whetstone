@@ -10,9 +10,6 @@ class Resource < ActiveRecord::Base
   has_many :resources_stones
   has_many :stones, through: :resources_stones
 
-  has_many :saved_resources
-  has_many :users, through: :saved_resources
-
   belongs_to :creator, class_name: "User"
 
   before_create :assign_diffculty

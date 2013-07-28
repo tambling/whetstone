@@ -22,7 +22,7 @@ Whetstone::Application.routes.draw do
   resources :stones do
     resources :resources
   end
-
+  
   resources :saved_resources
 
   post "/stones/search" => "stones#search", as: "stones_search"

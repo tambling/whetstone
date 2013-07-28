@@ -22,11 +22,14 @@ var SavedResourceController = {
     console.log("Save To Timeline");
     var url = ui.helper.data('save-url');
     var id = ui.helper.data('id');
-    $.post({
-      url: url
-      data: id
-    })
-    .done(SavedResourceController.flashMessage);
+
+    $.ajax({
+      url: url,
+      type: 'POST',
+      data: { id: id }
+    }).done(function(data){
+      console.log(data);
+    });
   },
 
   flashMessage: function(message){

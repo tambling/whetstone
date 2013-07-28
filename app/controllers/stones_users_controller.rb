@@ -4,6 +4,7 @@ class StonesUsersController < ApplicationController
     current_user.goals.last.timelines << Timeline.new
     redirect_to stone_path(params[:stone_id])
   end
+  
   def new
     @stone = Stone.find(params[:stone_id])
   end

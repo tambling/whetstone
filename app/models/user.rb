@@ -12,12 +12,8 @@ class User < ActiveRecord::Base
   # has_and_belongs_to_many :stones
   has_many :goals, class_name: "StonesUser", foreign_key: 'user_id'
   has_many :stones, through: :goals
-
   has_many :discussions
   has_many :comments
-
-  has_many :saved_resources
-  has_many :resources, through: :saved_resources
 
   validates :name, presence: true
 

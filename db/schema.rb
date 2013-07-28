@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130728004606) do
+ActiveRecord::Schema.define(:version => 20130728212112) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -102,7 +102,6 @@ ActiveRecord::Schema.define(:version => 20130728004606) do
   create_table "votes", :force => true do |t|
     t.integer "user_id"
     t.integer "value"
-    t.integer "resources_stone_id"
     t.integer "voteable_id"
     t.string  "voteable_type"
   end

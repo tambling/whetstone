@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature "Viewing a user's profile" do
   let(:user1) {FactoryGirl.create(:user)}
-  let(:user2) {FactoryGirl.create(:user)}
+  let(:user2) {User.create(name: "Jane Doe", email: "jane@doe.net", password: 'password')}
   before(:each) do
     visit new_user_session_path
     fill_in "Email", with: user1.email

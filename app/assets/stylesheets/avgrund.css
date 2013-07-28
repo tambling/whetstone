@@ -1,11 +1,3 @@
-/*!
- * avgrund 0.1
- * http://lab.hakim.se/avgrund
- * MIT licensed
- *
- * Created by Hakim El Hattab, http://hakim.se
- */
- 
 .avgrund-active body {
   -webkit-transform: scale( 0.9 );
      -moz-transform: scale( 0.9 );
@@ -31,39 +23,32 @@
     opacity: 1;
   }
 
-.avgrund-contents {
-  position: relative;
-  padding: 20px;
-  max-width: 400px;
-  height: 100%;
-  margin: auto;
+.avgrund-active .avgrund-contents {
+  -webkit-filter: blur(2px);
+     -moz-filter: blur(2px);
+      -ms-filter: blur(2px);
+       -o-filter: blur(2px);
+          filter: blur(2px);
 }
-  .avgrund-active .avgrund-contents {
-    -webkit-filter: blur(2px);
-       -moz-filter: blur(2px);
-        -ms-filter: blur(2px);
-         -o-filter: blur(2px);
-            filter: blur(2px);
-  }
-  .no-blur.avgrund-active .avgrund-contents {
-    -webkit-filter: none;
-       -moz-filter: none;
-        -ms-filter: none;
-         -o-filter: none;
-            filter: none;
-  }
+
+.no-blur.avgrund-active .avgrund-contents {
+  -webkit-filter: none;
+     -moz-filter: none;
+      -ms-filter: none;
+       -o-filter: none;
+          filter: none;
+}
 
 .avgrund-popup {
   position: absolute;
-  width: 340px;
-  height: 180px;
-  left: 50%;
-  top: 50%;
-  margin: -130px 0 0 -190px;
+  padding: 20px;
+  margin: 0 auto;
+  left: 40%;
+  right: 40%;
+  top: 25%;
   visibility: hidden;
   opacity: 0;
   z-index: 2;
-  padding: 20px;
 
   background: white;
   box-shadow: 0px 0px 20px rgba( 0, 0, 0, 0.6 );
@@ -75,30 +60,33 @@
        -o-transform: scale( 0.8 );
           transform: scale( 0.8 );
 }
-  .avgrund-active .avgrund-popup-animate {
-    visibility: visible;
-    opacity: 1;
 
-    -webkit-transform: scale( 1.1 );
-       -moz-transform: scale( 1.1 );
-        -ms-transform: scale( 1.1 );
-         -o-transform: scale( 1.1 );
-            transform: scale( 1.1 );
-  }
-  .avgrund-popup.stack {
-    -webkit-transform: scale( 1.5 );
-       -moz-transform: scale( 1.5 );
-        -ms-transform: scale( 1.5 );
-         -o-transform: scale( 1.5 );
-            transform: scale( 1.5 );
-  }
-  .avgrund-active .avgrund-popup.stack {
-    -webkit-transform: scale( 1.1 );
-       -moz-transform: scale( 1.1 );
-        -ms-transform: scale( 1.1 );
-         -o-transform: scale( 1.1 );
-            transform: scale( 1.1 );
-  }
+.avgrund-active .avgrund-popup-animate {
+  visibility: visible;
+  opacity: 1;
+
+  -webkit-transform: scale( 1.1 );
+     -moz-transform: scale( 1.1 );
+      -ms-transform: scale( 1.1 );
+       -o-transform: scale( 1.1 );
+          transform: scale( 1.1 );
+}
+
+.avgrund-popup.stack {
+  -webkit-transform: scale( 1.5 );
+     -moz-transform: scale( 1.5 );
+      -ms-transform: scale( 1.5 );
+       -o-transform: scale( 1.5 );
+          transform: scale( 1.5 );
+}
+
+.avgrund-active .avgrund-popup.stack {
+  -webkit-transform: scale( 1.1 );
+     -moz-transform: scale( 1.1 );
+      -ms-transform: scale( 1.1 );
+       -o-transform: scale( 1.1 );
+          transform: scale( 1.1 );
+}
 
 
 .avgrund-ready body,

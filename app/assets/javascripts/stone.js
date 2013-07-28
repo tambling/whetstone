@@ -41,8 +41,9 @@ var StoneViews = {
   },      
 
   closeDialog: function() {
+    $('div.form').remove();
+    debugger
     Avgrund.hide();
-    $('.avgrund-popup').remove();
   },
 
   renderOverview: function(event, overview){
@@ -52,7 +53,7 @@ var StoneViews = {
   },
 
   renderAddResourceForm: function(event, addResourceForm){
-    $('body').prepend(addResourceForm);
+    $('html').prepend(addResourceForm);
     StoneViews.openDialog();
   },
 

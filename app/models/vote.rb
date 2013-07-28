@@ -3,8 +3,7 @@ class Vote < ActiveRecord::Base
 
 	validates_presence_of :value
 
-	belongs_to :user
-	belongs_to :resources_stone
+	belongs_to :voteable, polymorphic: true
 
 
 	validates :value, inclusion: {:in => [-1,1]}

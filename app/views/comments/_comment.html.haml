@@ -2,6 +2,6 @@
   %p= comment.content
   %a.comment-upvote{id: "#{comment.id}"} Upvote
   %a.comment-downvote{id: "#{comment.id}"} Downvote
-  %p.vote-count= "#{comment.votes.size} Votes"
+  %p.vote-count= "#{comment.vote_tally} Votes"
   .comments
     = render comment.comments

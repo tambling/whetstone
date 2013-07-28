@@ -1,6 +1,6 @@
 .discussion
 	%h6= link_to discussion.title, stone_discussion_path(@stone,discussion), remote: true, class: "show_discussion"
-	%a.resource-upvote{id: "#{discussion.id}"} Upvote
-	%a.resource-downvote{id: "#{discussion.id}"} Downvote
-	%p.vote-count= "#{discussion.votes.size} Votes"
+	%a.discussion-upvote{id: "#{discussion.id}"} Upvote
+	%a.discussion-downvote{id: "#{discussion.id}"} Downvote
+	%p.vote-count= "#{discussion.vote_tally} Votes"
 	%p= discussion.content

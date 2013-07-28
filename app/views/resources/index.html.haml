@@ -1,0 +1,30 @@
+#resource
+  %h2 Resources
+  %h2= @stone.title
+  .form
+    = simple_form_for [@stone, @resource], remote: true, html: {class: "create_resource"} do |f|
+      = f.label :title
+      = f.input_field :title
+      = f.label :description
+      = f.input_field :description, cols: 10, rows: 5
+      = f.label :url
+      = f.input_field :url
+      = f.label :recommended_time
+      = f.input_field :recommended_time
+      = f.label :difficulty
+      = f.input_field :difficulty, collection: Resource.difficulty_ratings
+      .submit_button
+        = f.submit "Add Resource", class: "btn btn-primary"
+  .btn-group
+    = link_to 'All', '#', class: "btn filter"
+    = link_to 'Beginner', '#', class: "btn filter"
+    = link_to 'Intermediate', '#', class: "btn filter"
+    = link_to 'Advanced', '#', class: "btn filter"
+    = link_to 'Expert', '#', class: "btn filter"
+  .btn-group
+    = link_to 'Sort Asc', '#', class: "btn sort", data: { sort: 'ASC' }
+    = link_to 'Sort Desc', '#', class: "btn sort", data: { sort: 'DESC' }
+  .resources
+    = render partial: 'resources/resources_stone', collection: @stone.resources_stones, :as => :resources_stone
+  - if @goal
+    = render @goal.timelines

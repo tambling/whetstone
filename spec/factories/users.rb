@@ -1,39 +1,38 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
+SUBJECTS= ["French", "Cooking", "Ruby", "Fencing", "Guitar", "Mandarin Chinese", "Gardening"]
+DIFFICULTY = ["Beginner", "Intermediate", "Advanced", "Expert"]
 
 FactoryGirl.define do
   factory :user do
-  	name "John Doe"
-  	email "user@example.com"
-  	password "secretsecret"
-  end
-
-  factory :user_with_stones, :parent => :user do
-    after(:create) do |u|
-      u.stones << create(:stone)
-    end
+  	name { "John Doe" }
+  	email { "user@example.com" }
+  	password "password"
   end
 
   factory :stone do
-  	title "Learn JavaScript"
-  	description "Learn JS in 6 weeks"
-
-  factory :stone_with_resources, :parent => :stone do
-    after(:create) do |u|
-      u.resources << create(:resource)
-    end
-  end
-
+  	title { SUBJECTS.sample }
+  	description {"Learn #{title} in 6 weeks"}
   end
 
   factory :resource do
-  	title "Codeschools Guide to Javscript"
-  	description "Some Link"
-  	recommended_time 60 #seconds
+    title "An excellent resource."
+    description "This will help your learning."
+    url "http://www.youtube.com"
+    recommended_time 3600 #seconds
+    difficulty { DIFFICULTY.sample }
   end
 
-	factory :vote do
-		value [1, -1].sample
-  	user
+  factory :discussion do
+    title { Faker::Company.catch_phrase }
+    content { Faker::Lorem.sentence }
+  end
+
+  factory :comment do
+    content { Faker::Lorem.sentence }
+  end
+
+  factory :vote do
+    value [1, -1].sample
   end
 
 end

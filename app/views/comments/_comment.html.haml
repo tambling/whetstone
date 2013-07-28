@@ -1,4 +1,8 @@
 .comment
   %p= comment.content
+  / = link_to "Upvote", comments_votes(comment), method: 'post', remote: true
+  %a.comment-upvote{id: "#{comment.id}"} Upvote
+  %a.comment-downvote{id: "#{comment.id}"} Downvote
+  %p.vote-count= "#{comment.vote_tally} Votes"
   .comments
     = render comment.comments

@@ -1,6 +1,8 @@
 !!!
 %html
   %head
+    %link{href: "//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css", rel: "stylesheet"}
+    %link{href: "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css", rel: "stylesheet"}
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
       %title= content_for?(:title) ? yield(:title) : "Whetstone"
       %meta{:content => content_for?(:description) ? yield(:description) : "Whetstone", :name => "description"}

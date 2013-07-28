@@ -1,0 +1,14 @@
+#discussion
+  %h2 Discussion Forum
+  %h2= @stone.title
+  - if user_signed_in?
+    .form
+      = simple_form_for [@stone, @discussion], remote: true, html: { class: "create_discussion" } do |f|
+        = f.label :title
+        = f.input_field :title
+        = f.label :content
+        = f.input_field :content, cols: 60, rows: 5
+        .submit_button
+          = f.submit "Create Discussion", class: "btn btn-primary"
+  .discussions
+    = render @stone.discussions

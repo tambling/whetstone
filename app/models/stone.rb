@@ -11,4 +11,6 @@ class Stone < ActiveRecord::Base
   has_many :resources_stones
   has_many :resources, through: :resources_stones
 
+  has_many :discussions
+
 end

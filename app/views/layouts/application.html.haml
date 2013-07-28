@@ -12,7 +12,9 @@
     .sidebar-nav-fixed
       %nav.navbar-bottom
       = render 'layouts/navigation'
-    #main{:role => "main"}
+    .right-tabs-fixed
+      = yield :right_tabs
+    #main{ :role => "main", class: "avgrund-contents" }
       .container
         .row
           .span12
@@ -21,3 +23,4 @@
         %footer
       / ! end of .container
     / ! end of #main
+  .avgrund-cover

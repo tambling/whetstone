@@ -1,0 +1,7 @@
+%h1= @user.name
+- if @user == current_user
+  %p This is you!
+%h3= "#{@user.name} wants to learn:"
+%ul
+  - @user.stones.each do |stone|
+    %li= stone.title

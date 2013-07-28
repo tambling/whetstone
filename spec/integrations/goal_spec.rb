@@ -2,8 +2,8 @@ require 'spec_helper'
 
 
 feature "Adding a goal" do
-    let(:stone) {FactoryGirl.create(:stone)}
-    let(:user) {FactoryGirl.create(:user)}
+  let(:stone) {FactoryGirl.create(:stone)}
+  let(:user) {FactoryGirl.create(:user)}
   before(:each) do
     visit new_user_session_path
     fill_in 'Email', with: user.email
@@ -18,8 +18,9 @@ feature "Adding a goal" do
 
   scenario "user can add a goal to a stone.", js: true do
     visit stone_path(stone)
-    click_button 'Add Goal'
-    sleep 1
+    StonesUser.destroy_all
+    click_button 'add_goal'
+    sleep 2
     user.goals.count.should eq(1)
   end
 end

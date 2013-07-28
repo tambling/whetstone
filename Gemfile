@@ -9,6 +9,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'cancan'
 gem 'devise'
@@ -16,10 +17,11 @@ gem 'figaro'
 gem 'haml-rails'
 gem 'rolify'
 gem 'simple_form'
-gem 'sunspot_solr'
 gem 'simplecov', :require => false, :group => :test
 gem 'newrelic_rpm'
 gem 'unicorn'
+gem 'textacular', '~> 3.0'
+gem 'font-awesome-rails'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]
@@ -36,6 +38,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'selenium-webdriver'
+  gem 'debugger'
 end
 group :production do
   gem 'thin'

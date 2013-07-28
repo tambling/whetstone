@@ -1,7 +1,8 @@
 #resource
   %h2 Resources
   %h2= @stone.title
-  = link_to "Add Resource", new_stone_resource_path, remote: true, class: "add_resource_link"
+  -if user_signed_in?
+    = link_to "Add Resource", new_stone_resource_path, remote: true, class: "add_resource_link"
   .btn-group
     = link_to 'All', '#', class: "btn filter"
     = link_to 'Beginner', '#', class: "btn filter"
@@ -13,5 +14,5 @@
     = link_to 'Sort Desc', '#', class: "btn sort", data: { sort: 'DESC' }
   .resources
     = render partial: 'resources/resources_stone', collection: @stone.resources_stones, :as => :resources_stone
-  - if @goal
-    = render @goal.timelines
+    #save_bar
+      %h1 + Drag Here To Save

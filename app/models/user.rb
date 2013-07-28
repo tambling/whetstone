@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
   has_many :discussions
   has_many :comments
 
+  has_many :saved_resources
+  has_many :resources, through: :saved_resources
+
   validates :name, presence: true
 
 end

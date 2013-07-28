@@ -1,4 +1,4 @@
-.resource{ class: "#{resources_stone.resource.difficulty} All", data: {row: 1, col: 1, sizex: 1, sizey: 1} }
+.resource{ class: "#{resources_stone.resource.difficulty} All", data: {row: 1, col: 1, sizex: 1, sizey: 1, id: "#{resources_stone.id}", save_url: "#{saved_resources_path}"} }
   %li
     %h4= resources_stone.resource.title
     %a.upvote{id: "#{resources_stone.id}"} Upvote

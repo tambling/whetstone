@@ -23,6 +23,8 @@ Whetstone::Application.routes.draw do
     resources :resources
   end
 
+  resources :saved_resources
+
   post "/stones/search" => "stones#search", as: "stones_search"
   get "/stones/:id/overview" => "stones#overview", as: "stone_overview"
 

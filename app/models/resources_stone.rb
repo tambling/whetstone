@@ -6,4 +6,7 @@ class ResourcesStone < ActiveRecord::Base
   belongs_to :stone
   belongs_to :resource
 
+  def vote_tally
+  	self.votes.sum('value')
+  end
 end

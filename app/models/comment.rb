@@ -8,4 +8,8 @@ class Comment < ActiveRecord::Base
   
   belongs_to :commentable, polymorphic: true
   belongs_to :user
+
+  def vote_tally
+  	self.votes.sum('value')
+  end
 end

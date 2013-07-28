@@ -8,4 +8,8 @@ class Discussion < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :stone
+
+  def vote_tally
+  	self.votes.sum('value')
+  end
 end

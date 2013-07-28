@@ -4,9 +4,8 @@
   - if user_signed_in?
     %img{src: gravatar(current_user, 40)}
 #search
-  %i.icon-search#search-icon
   = form_for :search, url: stones_search_path do |f|
-    = f.text_field :search_query, placeholder: "I want to learn...", id: 'nav_search'
+    = f.text_field :search_query, placeholder: "&#xf002; I want to learn...".html_safe, id: 'nav_search'
 %ul.nav
   - if user_signed_in?
     %li

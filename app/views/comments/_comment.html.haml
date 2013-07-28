@@ -1,4 +1,7 @@
 .comment
   %p= comment.content
+  %a.upvote{id: "#{comment.id}"} Upvote
+  %a.downvote{id: "#{comment.id}"} Downvote
+  %p= "#{comment.votes.size} Votes"
   .comments
     = render comment.comments

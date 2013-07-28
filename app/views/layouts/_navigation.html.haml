@@ -31,7 +31,6 @@
         - current_user.stones.each do |stone|
           %li
             -if stone.title.length > 27 
-              = stone.title[0..27].capitalize + "..." 
+              = link_to stone.title[0..27].capitalize + "...", stone_path(stone)
             - else
-              = stone.title.capitalize
-
+              = link_to stone.title, stone_path(stone)

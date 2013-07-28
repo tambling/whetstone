@@ -9,6 +9,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'cancan'
 gem 'devise'
@@ -37,6 +38,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'selenium-webdriver'
+  gem 'debugger'
 end
 group :production do
   gem 'thin'

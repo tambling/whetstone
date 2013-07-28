@@ -1,0 +1,14 @@
+.form{ class: "avgrund-popup" }
+  = simple_form_for [@stone, @resource], remote: true, html: { class: "create_resource" } do |f|
+    = f.label :title
+    = f.input_field :title
+    = f.label :description
+    = f.input_field :description, cols: 10, rows: 5
+    = f.label :url
+    = f.input_field :url
+    = f.label :recommended_time
+    = f.input_field :recommended_time
+    = f.label :difficulty
+    = f.input_field :difficulty, collection: Resource.difficulty_ratings
+    .submit_button
+      = f.submit "Add Resource", class: "btn btn-primary"

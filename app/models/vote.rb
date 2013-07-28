@@ -7,6 +7,6 @@ class Vote < ActiveRecord::Base
 
 
 	validates :value, inclusion: {:in => [-1,1]}
-	validates_uniqueness_of :user_id, scope: [:resources_stone_id]
+	validates_uniqueness_of :user_id, scope: [:voteable_type,:voteable_id]
 
 end

@@ -3,7 +3,6 @@ var StoneController = {
     $(document).on('ajax:success','form.create_resource', StoneViews.renderResource);
     $(document).on('ajax:success','form.create_discussion', StoneViews.renderDiscussion);
     $(document).on('ajax:success','form.create_comment', StoneViews.renderComment);
-    
 
     $('#stone').on('click','a.filter', StoneViews.applyResourceFilter);
     $('#stone').on('click','a.sort', StoneViews.applyResourceSort);
@@ -46,8 +45,10 @@ var StoneViews = {
     $('.avgrund-popup').remove();
   },
 
-  renderOverview: function(){
-
+  renderOverview: function(event, overview){
+    console.log("Rendering Overview", overview)
+    StoneViews.$container.empty()
+    StoneViews.$container.append(overview)
   },
 
   renderAddResourceForm: function(event, addResourceForm){
@@ -113,9 +114,9 @@ var StoneViews = {
       StoneViews.$container.find('.resource').sort(ascSort).appendTo('.resources')
     }
     else {
-      StoneViews.$container.find('.resource').sort(descSort).appendTo('.resources') 
+      StoneViews.$container.find('.resource').sort(descSort).appendTo('.resources')
     }
-    
+
   }
 }
 

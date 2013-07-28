@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(:version => 20130728212112) do
     t.integer  "stone_id"
   end
 
+  create_table "messages", :force => true do |t|
+    t.string   "body"
+    t.integer  "from_id"
+    t.integer  "to_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "resources", :force => true do |t|
     t.string  "title"
     t.text    "description"

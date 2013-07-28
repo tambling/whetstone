@@ -1,0 +1,16 @@
+%div#messages
+  - @messages.each do |message|
+    - if message.from==current_user
+      %li.from
+        = message.body
+        %img{src: gravatar(current_user, 40)}
+    - if message.from==@partner
+      %li.to
+        %img{src: gravatar(@partner, 40)}
+        = message.body
+%div#send
+  = form_for(@message) do |f|
+    =f.hidden_field  :to_id, value: @partner.id
+    =f.hidden_field :from_id, value: current_user.id
+    =f.text_area :body
+    =f.submit "Send"

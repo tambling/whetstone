@@ -14,7 +14,29 @@ class User < ActiveRecord::Base
   has_many :stones, through: :goals
   has_many :discussions
   has_many :comments
+  has_many :sent_messages, class_name: 'Message', foreign_key: :from_id
+  has_many :received_messages, class_name: 'Message', foreign_key: :to_id
 
   validates :name, presence: true
+
+  def messages_with(user)
+    sent_to = sent_messages.where(to_id: user.id)
+    received_from = received_messages.where(from_id: user.id)
+    all = sent_to + received_from
+    all.sort{ |message1, message2| message1.created_at <=> message2.created_at }
+  end
+
+  def messages
+    sent_messages+received_messages
+  end
+
+  def message_partners
+    partners = []
+    self.messages.each do |message|
+      partners << message.from unless partners.include?(message.from) || message.from == self
+      partners << message.to unless partners.include?(message.to) || message.to == self
+    end
+    partners
+  end
 
 end

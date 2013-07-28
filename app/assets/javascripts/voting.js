@@ -3,29 +3,71 @@ $(document).ready( function() {
 	var catchNumbers = /-*\d+/
 
 
-	$('#stone').delegate(".upvote","click",function() {
+	$('body').delegate(".comment-upvote","click",function() {
 		$votes = $(this.parentElement)
-		debugger
-		postNewVote(this, 1)
+		postCommentVote(this, 1)
 	});
 
-	$('#stone').delegate(".downvote","click",function() {
+	$('body').delegate(".comment-downvote","click",function() {
 		$votes = $(this.parentElement)
-		postNewVote(this, -1)
+		postCommentVote(this, -1)
+	});
+
+
+
+	$('body').delegate(".discussion-upvote","click",function() {
+		$votes = $(this.parentElement)
+		postDiscussionVote(this, 1)
+	});
+
+	$('body').delegate(".discussion-downvote","click",function() {
+		$votes = $(this.parentElement)
+		postDiscussionVote(this, -1)
+	});
+
+	
+
+	$('body').delegate(".resource-upvote","click",function() {
+		$votes = $(this.parentElement)
+		postResourceVote(this, 1)
+	});
+
+	$('body').delegate(".resource-downvote","click",function() {
+		$votes = $(this.parentElement)
+		postResourceVote(this, -1)
 	});
 	
-	function postNewVote(link, val) {
+	
+	function postCommentVote(link, val) {
 		$.ajax({
 			type: 'POST',
 			url: '/votes', 
-			data: {'resources_stone_id' : link.id, 'value' : val} 
+			data: { 'comment_id' : link.id, 'value' : val} 
+		})
+		.done(function() { updateVotes(val) });
+	}
+
+	function postResourceVote(link, val) {
+		$.ajax({
+			type: 'POST',
+			url: '/votes', 
+			data: { 'resources_stone_id' : link.id, 'value' : val} 
+		})
+		.done(function() { updateVotes(val) });
+	}
+
+	function postDiscussionVote(link, val) {
+		$.ajax({
+			type: 'POST',
+			url: '/votes', 
+			data: {'discussion_id' : link.id, 'value' : val} 
 		})
 		.done(function() { updateVotes(val) });
 	}
 
 	function updateVotes(val) {
-		var voteCount = (parseInt(catchNumbers.exec($votes.eq(0).find('p').eq(0).text())) + val).toString() + " Votes";
-		$votes.eq(0).find('p').eq(0).text(voteCount)
+		var voteCount = (parseInt(catchNumbers.exec($votes.eq(0).find('.vote-count').eq(0).text())) + val).toString() + " Votes";
+		$votes.eq(0).find('.vote-count').eq(0).text(voteCount)
 	}
 
 });

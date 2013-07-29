@@ -19,7 +19,8 @@
       .container
         = render 'layouts/top_navigation'
         = render 'layouts/messages'
-        = yield
+        .content
+          = yield
         %footer
       / ! end of .container
     / ! end of #main

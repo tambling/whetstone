@@ -10,7 +10,7 @@ class StonesController < ApplicationController
 
   def new
     authenticate_user!
-    @stone = Stone.new(title: session[:failed_query])
+    @stone = Stone.new(title: session[:query])
     session.delete(:title)
   end
 
@@ -27,25 +27,21 @@ class StonesController < ApplicationController
 
   def search
     @stones = Stone.basic_search(params[:query])
+    search_results = {}
+    search_results[:query] = params[:query]
+    session[:query] = params[:query]
+    
     if @stones.count.zero?
-      session[:failed_query] = params[:query]
-      render :json => render_to_string(partial: 'home/no_results', locals: {failed_query: params[:query]}).to_json
+      search_results[:results_html] = render_to_string(partial: 'home/no_results', locals: {failed_query: params[:query] })
     else
-      render :json => render_to_string(partial: 'home/search_results', collection: @stones, as: :stone).to_json
+      search_results[:results_html] = render_to_string(partial: 'home/search_results', collection: @stones, as: :stone)
     end
 
-    # if @stones.count == 1
-    #   redirect_to stone_path(@stones.first)
-    # elsif @stones.count == 0
-    #   session[:title] = params[:search][:search_query]
-    #   if current_user
-    #     flash[:apology] = "Sorry, we weren't able to find anything about that. Maybe you'd like to start the community for #{session[:title]}?"
-    #     redirect_to new_stone_path
-    #   else
-    #     session[:referrer] = new_stone_path
-    #     flash[:apology] = "We weren't able to find anything about #{session[:title]}! If you log in, you can create a stone for this and push the cause of knowledge forward!"
-    #     redirect_to new_user_session_path
-    #   end
-    # end
+    if params[:mini_search]
+      search_results[:mini] = true
+      search_results[:index_html] = render_to_string('home/index', layout: false)
+    end
+
+    render :json => search_results.to_json
   end
 end

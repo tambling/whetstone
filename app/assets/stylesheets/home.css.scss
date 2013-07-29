@@ -1,102 +1,41 @@
 $sidebar-main-color: #1A1D22;
 $sidebar-highlight-color: #22262E;
 
-.sidebar-nav-fixed {
-	position: fixed;
-	width:240px;
-	height: 100%;
-	background-color: $sidebar-main-color;
-	left: 0px;
-	#search {
-		padding: none;
-		input {
-			font-family: FontAwesome;
-			background-color: $sidebar-main-color;
-			border: none;
-			border-radius: 0px;
-			margin: 0 auto;
-			width: 227px;
-			height: 100%;
-		}
-		#search-icon {
-			float:left;
-			width: 18px;
-			margin-left: 4px;
-		}
-	}
-}
+#search {
+	position: relative;
+	width: 50%;
+	margin: 0 auto;
+	top: 300px;
+	color: #555;
+	font-size: 1.5em;
+  font-family:'Open Sans Condensed',sans-serif;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
 
-div#main{
-	overflow-y: scroll;
-	overflow-x:  hidden;
-}
-.container {
-	margin-left: 255px;
-}
-
-
-
-.user-info {
-  margin-left: 0;
-  color: white;
-}
-
-.stones-list {
-  margin-left: 0;
-  color: white;
-}
-
-body {
-	min-width: 1050px;
-}
-
-li {
-	list-style: none;
-}
-
-.resource p {
-	margin-left: 10px;
-}
-
-.nav {
-	margin-left: 30px;
-	margin-right: 15px;
-	margin-top: 10px;
-	li {
-		&:hover{ background-color: $sidebar-highlight-color; }
-		a{
-			margin-left: 5px;
-			height: 25px;
-			&:hover{
-				background-color: $sidebar-highlight-color;
-			}
-		}
+	h1:before {
+    font-family:'Open Sans Condensed',sans-serif;
+		position: absolute;
+		content: ">";
+		font-size: 50px;
+		left: -40px;
+		opacity: 0.50;
 	}
 
-}
+	input {
+    font-family:'Open Sans Condensed',sans-serif;
+		margin: 0 auto;
+		background:none;
+		border:none;
+		color: #777777;
+    display: block;
+    font-size: 26px;
+    padding: 10px;
+    text-align: left;
+    outline: none;
 
-.nav-head {
-	height: 60px;
-	padding-left: 10px;
-	padding-right: 20px;
-	padding-top: 20px;
-	background-color: $sidebar-highlight-color;
-
-	.logo {
-		float: left;
-		font-size: 1.7em;
-		vertical-align: middle;
-		margin-top: 10px
 	}
 
-	img {
-		border-radius: 20px;
-		float: right;
+	input[name='search[query]'] {
+    font-family:'Open Sans Condensed',sans-serif;
+		border-bottom:1px solid #aaa;
 	}
-}
-
-#messages{
-
-
-
 }

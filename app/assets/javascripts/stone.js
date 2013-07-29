@@ -95,22 +95,17 @@ var StoneViews = {
   },
 
   openDialog: function() {
-    Avgrund.show('.form');
+    Avgrund.show('.modal');
   },      
 
   closeDialog: function() {
-    $('div.form').remove();
+    $('div.modal').remove();
     Avgrund.hide();
   },
 
   renderOverview: function(event, overview){
-    StoneViews.$container.empty()
-    StoneViews.$container.append(overview)
-
-    $(".gridster ul").gridster({
-        widget_margins: [10, 10],
-        widget_base_dimensions: [250, 250]
-    });
+    StoneViews.$container.empty();
+    StoneViews.$container.append(overview);
   },
 
   renderAddResourceForm: function(event, addResourceForm){

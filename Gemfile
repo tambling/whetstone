@@ -10,7 +10,7 @@ group :assets do
 end
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
 gem 'cancan'
 gem 'devise'
 gem 'figaro'
@@ -22,6 +22,7 @@ gem 'newrelic_rpm'
 gem 'unicorn'
 gem 'textacular', '~> 3.0'
 gem 'font-awesome-rails'
+gem 'mechanize'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]

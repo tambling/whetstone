@@ -1,4 +1,4 @@
-%li{ class: "#{resources_stone.resource.difficulty} resource All ui-state-default", data: {row: row, col: col, sizex: 1, sizey: 1, id: "#{resources_stone.id}", save_url: "#{saved_resources_path}"} }
+.resource{ class: "#{resources_stone.resource.difficulty} All ui-state-default", data: { id: "#{resources_stone.id}", save_url: "#{saved_resources_path}" } }
   .updown
     = link_to "&#xf077;".html_safe, resources_stone_votes_path(:resources_stone_id => resources_stone.id, :value => 1), method: 'post', remote: true, :class => 'vote'
     %p.vote-count= "#{resources_stone.vote_tally}"
@@ -9,3 +9,4 @@
     %p= resources_stone.resource.description
     %p= resources_stone.resource.recommended_time
     %p= resources_stone.resource.difficulty
+  %img{:src => resources_stone.resource.photo, :width => 80 }

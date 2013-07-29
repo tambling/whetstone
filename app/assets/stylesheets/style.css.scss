@@ -1,28 +1,27 @@
-html,
-body {
-  height: 100%;
-  overflow: scroll;
-}
-
 html {
   background-color: #222;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGklEQVQIW2NkYGD4D8SMQAwGcAY2AbBKDBUAVuYCBQPd34sAAAAASUVORK5CYII=);
   background-repeat: repeat;
+  height: 100%;
 }
 
 body {
+  background-color:#e4e4e4;
+  background:url('bg_gradient.jpg') no-repeat center center,url('bg_tile.jpg');
+  min-height: 100%;
 }
 
-h1,
-h2 {
-
+#main {
+  width: 70%;
+  margin: 0 auto;
 }
 
-p {
-
+li {
+  list-style: none;
 }
 
-a {
+
+a, a:visited  {
   text-decoration: none;
 
   -webkit-transition: 0.15s color ease;
@@ -34,6 +33,9 @@ a {
   &:hover {
 
   }
+  
+  text-decoration:none;
+  outline:none;
 }
 
 small {
@@ -70,4 +72,17 @@ button {
   &:active {
     background: #60895a;
   }
+}
+
+.form {
+  position: relative;
+  margin: 0 auto;
+  width: 400px;
+
+  input {
+    outline: none;
+    background: none;
+  }
+
+
 }

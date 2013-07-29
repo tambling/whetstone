@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130728212112) do
+ActiveRecord::Schema.define(:version => 20130729040953) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -45,7 +45,11 @@ ActiveRecord::Schema.define(:version => 20130728212112) do
     t.string  "url"
     t.integer "recommended_time"
     t.string  "difficulty",       :default => "Medium"
+<<<<<<< HEAD
     t.integer "creator_id"
+=======
+    t.text    "photo"
+>>>>>>> stones-style
   end
 
   create_table "resources_stones", :force => true do |t|

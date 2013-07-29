@@ -1,4 +1,6 @@
 .resource{ class: "#{resources_stone.resource.difficulty} All", data: { id: "#{resources_stone.id}", save_url: "#{saved_resources_path}" } }
+  %li
+    %img{:src => resources_stone.resource.photo, :width => 80 }
     %h4= resources_stone.resource.title
     %a.icon-facebook-sign{href:"https://www.facebook.com/sharer/sharer.php?u=#{resources_stone.resource.url}"}
     = link_to "Upvote", resources_stone_votes_path(:resources_stone_id => resources_stone.id, :value => 1), method: 'post', remote: true, :class => 'vote'

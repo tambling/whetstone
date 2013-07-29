@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130729040953) do
+ActiveRecord::Schema.define(:version => 20130729222439) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20130729040953) do
     t.integer  "resources_stone_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.datetime "due_date"
   end
 
   create_table "stones", :force => true do |t|
@@ -80,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20130729040953) do
   create_table "stones_users", :force => true do |t|
     t.integer "stone_id"
     t.integer "user_id"
+    t.string  "queue",    :default => ""
   end
 
   create_table "timelines", :force => true do |t|

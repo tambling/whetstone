@@ -11,6 +11,7 @@ Whetstone::Application.routes.draw do
     collection do
       post 'search'
     end
+    post 'update_queue' => 'stones_users#update_queue'
   end
 
   resources :resources
@@ -27,7 +28,7 @@ Whetstone::Application.routes.draw do
   resources :stones do
     resources :resources
   end
-  
+
   resources :saved_resources
 
   get "/stones/:id/overview" => "stones#overview", as: "stone_overview"

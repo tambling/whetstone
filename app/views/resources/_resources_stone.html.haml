@@ -1,4 +1,4 @@
-.resource{ class: "#{resources_stone.resource.difficulty} All ui-state-default", data: { id: "#{resources_stone.id}", save_url: "#{saved_resources_path}" } }
+%li.resource{ class: "#{resources_stone.resource.difficulty} All ui-state-default", id:"#{resources_stone.id}", data: { id: "#{resources_stone.id}", save_url: "#{saved_resources_path}" } }
   .updown
     = link_to "&#xf077;".html_safe, resources_stone_votes_path(:resources_stone_id => resources_stone.id, :value => 1), method: 'post', remote: true, :class => 'vote'
     %p.vote-count= "#{resources_stone.vote_tally}"

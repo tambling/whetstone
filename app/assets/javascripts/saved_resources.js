@@ -1,7 +1,9 @@
 $(document).ready( function() {
-	$(function() {
-    $( ".sortable" ).sortable();
-    $( ".sortable" ).disableSelection();
-    $( ".sortable" ).onUpdate();
-	});
+  var url=window.location.pathname+"/update_queue"
+  $( ".sortable" ).sortable({
+    update: function(){
+      $.post(url, {queue: $(this).sortable('toArray')})
+    }
+  });
+  $( ".sortable" ).disableSelection();
 });

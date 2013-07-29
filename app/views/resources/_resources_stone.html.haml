@@ -6,8 +6,9 @@
   .text
     %h4= resources_stone.resource.title
     %p.description= resources_stone.resource.description
-    %p= resources_stone.resource.recommended_time
-    %p{ class: "#{resources_stone.resource.difficulty.downcase}" }= resources_stone.resource.difficulty
-  %a.icon-facebook-sign.fb-share{href:"https://www.facebook.com/sharer/sharer.php?u=#{resources_stone.resource.url}"}
+    .right-text
+      %p.time= resources_stone.resource.recommended_time
+      %p{ class: "#{resources_stone.resource.difficulty.downcase}" }= resources_stone.resource.difficulty
+      %a.icon-facebook-sign.fb-share{href:"https://www.facebook.com/sharer/sharer.php?u=#{resources_stone.resource.url}"}
   .resource-photo-overlay
   %img.resource-photo{:src => resources_stone.resource.photo }

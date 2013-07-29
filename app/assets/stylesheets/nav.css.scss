@@ -61,25 +61,27 @@ $sidebar-highlight-color: #22262E;
   background-color: $sidebar-main-color;
   margin: 0;
 
-  .logo {
-    float: left;
-    font-size: 1.7em;
-    vertical-align: middle;
-    margin-top: 10px;
-  }
+  .header{
+    background-color: $sidebar-highlight-color;
+    height: 60px;
+    line-height: 60px;
 
-  .gravatar {
+    .logo {
+      float: left;
+      display: inline-block;
       height: 60px;
-      padding-left: 10px;
-      padding-right: 20px;
-      padding-top: 20px;
-      background-color: $sidebar-highlight-color;
-   
-    img {
-      border-radius: 20px;
-      float: right;
+      font-size: 1.7em;
+      margin-left: 25px;
+    }
+
+    .gravatar {
+        display: inline-block;
+        height: 60px;
+        float: right;
+        display: inline-block;
     }
   }
+
   
   .mini-search {
     border-radius: 5px;
@@ -89,7 +91,7 @@ $sidebar-highlight-color: #22262E;
       padding: 5px;
       color: white;
       background: none;
-      margin: 0 auto;
+      margin-left: 5px;
       width: 90%;
       outline: none;
       border-radius: 15px; 

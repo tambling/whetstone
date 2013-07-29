@@ -49,44 +49,14 @@ small {
   -webkit-text-size-adjust: none;
 }
 
-button {
-  border: 0px;
-  padding: 8px 10px;
-  margin: 5px 0px;
-  border-radius: 1px;
-
-  cursor: pointer;
-  color: #fff;
-  background: #7aa76d;
-  font-size: 15px;
-
-  -webkit-transition: 0.15s background ease;
-     -moz-transition: 0.15s background ease;
-      -ms-transition: 0.15s background ease;
-       -o-transition: 0.15s background ease;
-          transition: 0.15s background ease;
-  &:hover {
-    background: #91cd85;
-  }
-
-  &:active {
-    background: #60895a;
-  }
+input, textarea {
+  outline: none;
+  background: none;
+  width: 300px;
 }
 
 .form {
   position: relative;
   margin: 0 auto;
   width: 400px;
-
-  input {
-    outline: none;
-    background: none;
-  }
-
-
-}
-
-#nav-search {
-  font-family: FontAwesome;
 }

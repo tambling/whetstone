@@ -8,6 +8,9 @@ Whetstone::Application.routes.draw do
 
   resources :stones do
     resources :stones_users, as: :goals, only: [:new, :create]
+    collection do
+      post 'search'
+    end
   end
 
   resources :resources
@@ -27,7 +30,6 @@ Whetstone::Application.routes.draw do
   
   resources :saved_resources
 
-  post "/stones/search" => "stones#search", as: "stones_search"
   get "/stones/:id/overview" => "stones#overview", as: "stone_overview"
 
   get "/messages" => "messages#index", as: 'messages'

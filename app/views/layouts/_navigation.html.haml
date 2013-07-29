@@ -1,14 +1,15 @@
 .left_nav
-  .logo
-    = link_to "Whetstone", root_path, :class => 'brand'
-  .gravatar
-    - if user_signed_in?
-      %img{ src: gravatar(current_user, 40) }
+  .header
+    .logo
+      = link_to "Whetstone", root_path, :class => 'brand'
+    .gravatar
+      - if user_signed_in?
+        %img{ src: gravatar(current_user, 60) }
   .mini-search
-    = form_for :search, url: stones_search_path do |f|
-      = f.text_field :search_query, placeholder: "&#xf002; I want to learn...".html_safe, id: 'nav_search'
-      = f.submit style: "display: none;", id: "submit"
-  %ul
+    = form_tag search_stones_path, remote: true do
+      = hidden_field_tag :mini_search, "true"
+      = text_field_tag :query, nil, placeholder: "&#xf002; Type Something...".html_safe
+  %ul.goals
     - if user_signed_in?
       %li= link_to 'Messages', messages_path
       - if current_user.stones

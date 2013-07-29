@@ -80,6 +80,7 @@ var Masonry = {
   initialize: function(){
     Masonry.$container = $('.resources');
     Masonry.$container.masonry({
+      gutter: 30,
       columnWidth: 10,
       itemSelector: '.resource'
     });

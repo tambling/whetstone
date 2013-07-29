@@ -3,31 +3,30 @@ $(document).ready(function(){
 });
 
 var Search = {
+
   initialize: function(){
+    this.$query = $('#search').find('input[name=query]');
     $('#search h1').shuffleLetters();
 
-    $('#search_query').bind('keypress',function(event){
-
-      if(event.keyCode == 13){
-        $('#search h1').shuffleLetters({ "text": $(event.target).val() });
-        $(event.target).val("")
-      }
+    $('#search form').on('submit', function(e) {
+      $('#search h1').shuffleLetters({ "text": Search.$query.val() });
     });
+
+    $('#search form').on('ajax:success', Search.renderSearchResults);
+    $('.mini-search form').on('ajax:success', Search.renderSearchResults);
+
+  },
+
+  renderSearchResults: function(event,search_results){
+
+    if (search_results.mini === true) {
+      $('.content').empty();
+      $('.content').append(search_results.index_html);
+      $('#search h1').shuffleLetters({ "text": search_results.query });
+      $('.mini-search form input[name=query]').val('');
+    }
+    Search.$query.val('');
+    $('#search .results').empty();  
+    $('#search .results').append(search_results.results_html).hide().fadeIn();  
   }
 }
-
-// var FixedTabs ={
-//   initialize: function(){
-//     $('body').on('mouseenter','.fixed_tab', function(){
-//       $(this).animate({
-//         left: '+=100',
-//       }, 250);
-//     });
-
-//     $('body').on('mouseleave','.fixed_tab', function(){
-//       $(this).animate({
-//         left: '-=100',
-//       }, 250);
-//     });
-//   }
-// }

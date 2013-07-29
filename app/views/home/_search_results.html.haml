@@ -1,0 +1,10 @@
+.search_result
+  .title
+    = link_to stone.title, stone_path(stone)
+  .description
+    = stone.description
+  .members
+    = stone.stones_users.count.to_s + " Members"
+  .resources
+    = stone.resources.count.to_s + " Resources"
+

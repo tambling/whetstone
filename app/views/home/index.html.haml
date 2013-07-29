@@ -1,4 +1,7 @@
 #search
-  %h1 What do you want to learn?
-  = text_field :search, :query, placeholder: "&#xf002; Type Something...".html_safe
+  .title_wrapper
+    %h1 What do you want to learn?
+  = form_tag search_stones_path, remote: true do
+    = text_field_tag :query, nil, placeholder: "&#xf002; Type Something...".html_safe
+  .results
 

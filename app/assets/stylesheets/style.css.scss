@@ -1,7 +1,7 @@
 html,
 body {
   height: 100%;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 html {
@@ -11,6 +11,13 @@ html {
 }
 
 body {
+
+  background-color:#e4e4e4;
+  background:url('bg_gradient.jpg') no-repeat center center,url('bg_tile.jpg');
+  font-family:'Open Sans Condensed',sans-serif;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+  height: 100%;
+  padding: 5px;
 }
 
 h1,
@@ -22,7 +29,7 @@ p {
 
 }
 
-a {
+a, a:visited  {
   text-decoration: none;
 
   -webkit-transition: 0.15s color ease;
@@ -34,6 +41,10 @@ a {
   &:hover {
 
   }
+  
+  text-decoration:none;
+  outline:none;
+  color:#54a6de;
 }
 
 small {

@@ -1,7 +1,4 @@
 #search
-  %h1= "What do you want to learn about?"
-  = form_for :search, url: stones_search_path do |f|
-    = f.label :search_query, "I want to learn about..."
-    = f.text_field :search_query
-    = f.submit "Search"
+  %h1 What do you want to learn?
+  = text_field :search, :query, placeholder: "Type Something..."
 

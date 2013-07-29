@@ -7,7 +7,9 @@
         = stylesheet_link_tag "application", :media => "all"
         = javascript_include_tag "application"
         = csrf_meta_tags
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" type="text/css" />
         = yield(:head)
+  .avgrund-cover
   %body{:class => "#{controller_name} #{action_name} avgrund-contents"}
     .sidebar-nav-fixed
       %nav.navbar-bottom
@@ -16,11 +18,8 @@
       = yield :right_tabs
     #main{ :role => "main" }
       .container
-        .row
-          .span12
-            = render 'layouts/messages'
-            = yield
+        = render 'layouts/messages'
+        = yield
         %footer
       / ! end of .container
     / ! end of #main
-  .avgrund-cover

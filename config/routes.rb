@@ -5,7 +5,6 @@ Whetstone::Application.routes.draw do
   resources :comments, :discussions, :resources_stones do
     resources :votes
   end
-  # resources :votes
 
   resources :stones do
     resources :stones_users, as: :goals, only: [:new, :create]

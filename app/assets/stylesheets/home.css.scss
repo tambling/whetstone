@@ -9,13 +9,13 @@ $sidebar-highlight-color: #22262E;
 	left: 0px;
 	#search {
 		padding: none;
-		input { 
+		input {
 			font-family: FontAwesome;
 			background-color: $sidebar-main-color;
 			border: none;
 			border-radius: 0px;
 			margin: 0 auto;
-			width: 227px; 
+			width: 227px;
 			height: 100%;
 		}
 		#search-icon {
@@ -26,10 +26,15 @@ $sidebar-highlight-color: #22262E;
 	}
 }
 
-
-.container {
-	margin-left: 270px;
+div#main{
+	overflow-y: scroll;
+	overflow-x:  hidden;
 }
+.container {
+	margin-left: 255px;
+}
+
+
 
 .user-info {
   margin-left: 0;
@@ -59,7 +64,7 @@ li {
 	margin-top: 10px;
 	li {
 		&:hover{ background-color: $sidebar-highlight-color; }
-		a{ 
+		a{
 			margin-left: 5px;
 			height: 25px;
 			&:hover{
@@ -76,17 +81,22 @@ li {
 	padding-right: 20px;
 	padding-top: 20px;
 	background-color: $sidebar-highlight-color;
-	
-	.logo {	
+
+	.logo {
 		float: left;
-		font-size: 1.7em; 
+		font-size: 1.7em;
 		vertical-align: middle;
 		margin-top: 10px
 	}
-	
+
 	img {
 		border-radius: 20px;
 		float: right;
 	}
 }
 
+#messages{
+
+
+
+}

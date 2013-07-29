@@ -1,0 +1,10 @@
+%div#messages
+  - messages.each do |message|
+    - if message.from==current_user
+      %li.from
+        %img{src: gravatar(current_user, 40)}
+        = message.body
+    - if message.from==partner
+      %li.to
+        %img{src: gravatar(partner, 40)}
+        = message.body

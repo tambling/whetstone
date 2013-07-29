@@ -9,4 +9,5 @@ class ResourcesStone < ActiveRecord::Base
   def vote_tally
   	self.votes.sum('value')
   end
+
 end

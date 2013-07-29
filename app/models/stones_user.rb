@@ -3,5 +3,6 @@ class StonesUser < ActiveRecord::Base
   belongs_to :user
   belongs_to :stone
 
-  has_many :timelines
+  has_many :saved_resources
+  has_many :resources_stones, through: :saved_resources
 end

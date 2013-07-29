@@ -9,6 +9,8 @@
 %ul.nav
   - if user_signed_in?
     %li
+      = link_to 'Messages', messages_path
+    %li
       = link_to 'Logout', destroy_user_session_path, :method=>'delete'
   - else
     %li
@@ -24,12 +26,12 @@
       = link_to 'Sign up', new_user_registration_path
 %ul.stones-list
   - if current_user && current_user.stones
-    .stones 
+    .stones
       %p Your Stones
       %ul
         - current_user.stones.each do |stone|
           %li
-            -if stone.title.length > 27 
+            -if stone.title.length > 27
               = link_to stone.title[0..27].capitalize + "...", stone_path(stone)
             - else
               = link_to stone.title, stone_path(stone)

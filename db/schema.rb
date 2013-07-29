@@ -31,12 +31,21 @@ ActiveRecord::Schema.define(:version => 20130728212112) do
     t.integer  "stone_id"
   end
 
+  create_table "messages", :force => true do |t|
+    t.string   "body"
+    t.integer  "from_id"
+    t.integer  "to_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "resources", :force => true do |t|
     t.string  "title"
     t.text    "description"
     t.string  "url"
     t.integer "recommended_time"
     t.string  "difficulty",       :default => "Medium"
+    t.integer "creator_id"
   end
 
   create_table "resources_stones", :force => true do |t|
@@ -54,6 +63,13 @@ ActiveRecord::Schema.define(:version => 20130728212112) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "saved_resources", :force => true do |t|
+    t.integer  "stones_user_id"
+    t.integer  "resources_stone_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "stones", :force => true do |t|
     t.string "title"

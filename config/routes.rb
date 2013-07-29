@@ -24,9 +24,15 @@ Whetstone::Application.routes.draw do
   resources :stones do
     resources :resources
   end
+  
+  resources :saved_resources
 
   post "/stones/search" => "stones#search", as: "stones_search"
   get "/stones/:id/overview" => "stones#overview", as: "stone_overview"
+
+  get "/messages" => "messages#index", as: 'messages'
+  get "/messages/:id" => "messages#show", as: "message"
+  post "/messages" => "messages#create", as: "new_message"
 
 end
 

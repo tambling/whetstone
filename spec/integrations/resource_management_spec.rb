@@ -7,6 +7,10 @@
     let(:resource) { FactoryGirl.create(:resource) }
 
     before(:each) do
+      visit new_user_session_path
+      fill_in "Email", with: user.email
+      fill_in "Password", with: "password"
+      click_button "Sign in"
       stone.resources << resource
       visit stone_path(stone)
     end
@@ -14,11 +18,11 @@
     scenario "User Visits Resources Page" do
       click_link("Resources")
       expect(page).to have_content(resource.title)
-    end  
+    end
 
     scenario "User Visits Resources Page And Can Add a Resource" do
       click_link("Resources")
-
+      click_link("Add Resource")
       fill_in('Title', :with => 'Poodr')
       fill_in('Description', :with => 'What the FUCK AM I DOING!')
       fill_in('Url', :with => 'http://www.soccernet.com')

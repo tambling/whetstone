@@ -65,11 +65,11 @@ var DnD = {
   dragStart: function( event, ui ) {
     console.log("dragStart");
     DnD.$saveBar.animate({ bottom: '+=150' }, 250);
-
     $(ui.helper).on('mouseup', DnD.dragStop)
   },
 
   dragStop: function() {
+    console.log("DragStop")
       DnD.$saveBar.animate({ bottom: '-=150' }, 250);
       $(this).off('mouseup');
   }
@@ -106,6 +106,11 @@ var StoneViews = {
   renderOverview: function(event, overview){
     StoneViews.$container.empty()
     StoneViews.$container.append(overview)
+
+    $(".gridster ul").gridster({
+        widget_margins: [10, 10],
+        widget_base_dimensions: [250, 250]
+    });
   },
 
   renderAddResourceForm: function(event, addResourceForm){

@@ -3,7 +3,7 @@
     = link_to "&#xf077;".html_safe, resources_stone_votes_path(:resources_stone_id => resources_stone.id, :value => 1), method: 'post', remote: true, :class => 'vote'
     %p.vote-count= "#{resources_stone.vote_tally}"
     = link_to "&#xf078;".html_safe, resources_stone_votes_path(:resources_stone_id => resources_stone.id, :value => -1), method: 'post', remote: true, :class => 'vote'
-  %a.icon-facebook-sign.share{href:"https://www.facebook.com/sharer/sharer.php?u=#{resources_stone.resource.url}"}
+  %a.icon-facebook-sign.fb-share{href:"https://www.facebook.com/sharer/sharer.php?u=#{resources_stone.resource.url}"}
   .text
     %h4= resources_stone.resource.title
     %p= resources_stone.resource.description

@@ -1658,7 +1658,7 @@ textarea {
   /* 15px */
 
   line-height: 24px;
-  padding: 5px 11px;
+  /*padding: 5px 11px;*/
   text-indent: 0;
 }
 .row-fluid textarea {

@@ -9,10 +9,8 @@ class StonesController < ApplicationController
   end
 
   def new
-    unless current_user
-      redirect_to root_path
-    end
-    @stone = Stone.new(title: session[:title])
+    authenticate_user!
+    @stone = Stone.new(title: session[:failed_query])
     session.delete(:title)
   end
 
@@ -28,19 +26,26 @@ class StonesController < ApplicationController
   end
 
   def search
-    @stones = Stone.basic_search(params[:search][:search_query])
-    if @stones.count == 1
-      redirect_to stone_path(@stones.first)
-    elsif @stones.count == 0
-      session[:title] = params[:search][:search_query]
-      if current_user
-        flash[:apology] = "Sorry, we weren't able to find anything about that. Maybe you'd like to start the community for #{session[:title]}?"
-        redirect_to new_stone_path
-      else
-        session[:referrer] = new_stone_path
-        flash[:apology] = "We weren't able to find anything about #{session[:title]}! If you log in, you can create a stone for this and push the cause of knowledge forward!"
-        redirect_to new_user_session_path
-      end
+    @stones = Stone.basic_search(params[:query])
+    if @stones.count.zero?
+      session[:failed_query] = params[:query]
+      render :json => render_to_string(partial: 'home/no_results', locals: {failed_query: params[:query]}).to_json
+    else
+      render :json => render_to_string(partial: 'home/search_results', collection: @stones, as: :stone).to_json
     end
+
+    # if @stones.count == 1
+    #   redirect_to stone_path(@stones.first)
+    # elsif @stones.count == 0
+    #   session[:title] = params[:search][:search_query]
+    #   if current_user
+    #     flash[:apology] = "Sorry, we weren't able to find anything about that. Maybe you'd like to start the community for #{session[:title]}?"
+    #     redirect_to new_stone_path
+    #   else
+    #     session[:referrer] = new_stone_path
+    #     flash[:apology] = "We weren't able to find anything about #{session[:title]}! If you log in, you can create a stone for this and push the cause of knowledge forward!"
+    #     redirect_to new_user_session_path
+    #   end
+    # end
   end
 end

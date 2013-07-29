@@ -5,20 +5,26 @@ $sidebar-highlight-color: #22262E;
 	position: relative;
 	width: 50%;
 	margin: 0 auto;
-	top: 300px;
+	top: 150px;
 	color: #555;
 	font-size: 1.5em;
   font-family:'Open Sans Condensed',sans-serif;
   text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
 
-	h1:before {
-    font-family:'Open Sans Condensed',sans-serif;
-		position: absolute;
-		content: ">";
-		font-size: 50px;
-		left: -40px;
-		opacity: 0.50;
-	}
+  .title_wrapper {
+    
+    width: 500px;
+    height: 75px;
+
+    h1:before {
+      font-family:'Open Sans Condensed',sans-serif;
+      position: absolute;
+      content: ">";
+      font-size: 50px;
+      left: -40px;
+      opacity: 0.50;
+    }
+  }
 
 	input {
     font-family:'Open Sans Condensed',sans-serif;
@@ -34,8 +40,13 @@ $sidebar-highlight-color: #22262E;
 
 	}
 
-	input[name='search[query]'] {
+	input[name='query'] {
     font-family:'Open Sans Condensed',sans-serif;
 		border-bottom:1px solid #aaa;
 	}
+
+  .results {
+    margin: 10px 0 10px 0;
+    text-align: right;
+  }
 }

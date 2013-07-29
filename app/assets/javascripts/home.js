@@ -5,29 +5,18 @@ $(document).ready(function(){
 var Search = {
   initialize: function(){
     $('#search h1').shuffleLetters();
-
-    $('#search_query').bind('keypress',function(event){
-
-      if(event.keyCode == 13){
-        $('#search h1').shuffleLetters({ "text": $(event.target).val() });
-        $(event.target).val("")
-      }
+    
+    $('#search form').on('submit', function(e) {
+      Search.$query = $(this).find('input[name=query]');
+      $('#search h1').shuffleLetters({ "text": Search.$query.val() });
     });
+
+    $('#search form').on('ajax:success', Search.renderSearchResults);
+  },
+
+  renderSearchResults: function(event,search_results){
+    Search.$query.val('');
+    $('#search .results').empty();  
+    $('#search .results').append(search_results).hide().fadeIn();
   }
 }
-
-// var FixedTabs ={
-//   initialize: function(){
-//     $('body').on('mouseenter','.fixed_tab', function(){
-//       $(this).animate({
-//         left: '+=100',
-//       }, 250);
-//     });
-
-//     $('body').on('mouseleave','.fixed_tab', function(){
-//       $(this).animate({
-//         left: '-=100',
-//       }, 250);
-//     });
-//   }
-// }

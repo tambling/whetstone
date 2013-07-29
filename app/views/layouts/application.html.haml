@@ -11,13 +11,12 @@
         = yield(:head)
   .avgrund-cover
   %body{:class => "#{controller_name} #{action_name} avgrund-contents"}
-    .sidebar-nav-fixed
-      %nav.navbar-bottom
-      = render 'layouts/navigation'
+    = render 'layouts/navigation'
     .right-tabs-fixed
       = yield :right_tabs
     #main{ :role => "main" }
       .container
+        = render 'layouts/top_navigation'
         = render 'layouts/messages'
         = yield
         %footer

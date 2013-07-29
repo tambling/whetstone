@@ -3,13 +3,13 @@
   %h2= @stone.title
   -if user_signed_in?
     = link_to "Add Resource", new_stone_resource_path, remote: true, class: "add_resource_link"
-  .btn-group
+  .btn-group{:id => "filter"}
     = link_to 'All', '#', class: "btn filter"
     = link_to 'Beginner', '#', class: "btn filter"
     = link_to 'Intermediate', '#', class: "btn filter"
     = link_to 'Advanced', '#', class: "btn filter"
     = link_to 'Expert', '#', class: "btn filter"
-  .btn-group
+  .btn-group{:id => "sort"}
     = link_to 'Sort Asc', '#', class: "btn sort", data: { sort: 'ASC' }
     = link_to 'Sort Desc', '#', class: "btn sort", data: { sort: 'DESC' }
   .resources

@@ -5,7 +5,7 @@
     %button#add_goal Add Goal
   - else
     .gridster
-      %ul
+      %ul.sortable
         - goal.resources_stones.each_with_index do |resources_stone, i|
           - row, col = get_coordinates i
           = render partial: 'resources/resources_stone', locals: { resources_stone: resources_stone , row: row, col: col}

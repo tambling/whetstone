@@ -1,4 +1,7 @@
 .comment
   %p= comment.content
+  = link_to "Upvote", comment_votes_path(:comment_id => comment.id, :value => 1), method: 'post', remote: true, :class => 'vote'
+  = link_to "Downote", comment_votes_path(:comment_id => comment.id, :value => -1), method: 'post', remote: true, :class => 'vote'
+  %p.vote-count= "#{comment.vote_tally} Votes"
   .comments
     = render comment.comments

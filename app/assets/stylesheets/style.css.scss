@@ -1,41 +1,27 @@
-/*!
- * avgrund 0.1
- * http://lab.hakim.se/avgrund
- * MIT licensed
- *
- * Created by Hakim El Hattab, http://hakim.se
- */
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-html, 
-body {
-  height: 100%;
-  overflow: hidden;
-}
-
 html {
   background-color: #222;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGklEQVQIW2NkYGD4D8SMQAwGcAY2AbBKDBUAVuYCBQPd34sAAAAASUVORK5CYII=);
   background-repeat: repeat;
+  height: 100%;
 }
 
-h1, 
-h2 {
-  font-size: 24px;
+body {
+  background-color:#e4e4e4;
+  background:url('bg_gradient.jpg') no-repeat center center,url('bg_tile.jpg');
+  min-height: 100%;
 }
 
-p {
-  margin: 10px 0 10px 0;
-  font-size: 16px;
-  line-height: 1.32;
+#main {
+  width: 70%;
+  margin: 0 auto;
 }
 
-a {
-  color: #7aa76d;
+li {
+  list-style: none;
+}
+
+
+a, a:visited  {
   text-decoration: none;
 
   -webkit-transition: 0.15s color ease;
@@ -43,10 +29,14 @@ a {
       -ms-transition: 0.15s color ease;
        -o-transition: 0.15s color ease;
           transition: 0.15s color ease;
-}
-  a:hover {
-    color: #91cd85;
+
+  &:hover {
+
   }
+  
+  text-decoration:none;
+  outline:none;
+}
 
 small {
   display: block;
@@ -75,25 +65,24 @@ button {
       -ms-transition: 0.15s background ease;
        -o-transition: 0.15s background ease;
           transition: 0.15s background ease;
-}
-  button:hover {
+  &:hover {
     background: #91cd85;
   }
-  button:active {
+
+  &:active {
     background: #60895a;
   }
-  button+button {
-    margin-left: 5px;
-  }
-
-.sharing {
-  margin-top: 50px;
 }
 
-body {
-  background: #fff;
+.form {
+  position: relative;
+  margin: 0 auto;
+  width: 400px;
 
-  font-family: 'Lato', Helvetica, sans-serif;
-  font-size: 16px;
-  color: #222;
+  input {
+    outline: none;
+    background: none;
+  }
+
+
 }

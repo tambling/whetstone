@@ -1,0 +1,8 @@
+%h1= "Your chat with #{@partner.name}"
+= render partial: "messages", locals: {partner: @partner, messages: @messages}
+%div#send
+  = form_for(@message) do |f|
+    =f.hidden_field  :to_id, value: @partner.id
+    =f.hidden_field :from_id, value: current_user.id
+    =f.text_area :body
+    =f.submit "Send"

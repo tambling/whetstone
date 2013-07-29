@@ -1,9 +1,8 @@
 class Stone < ActiveRecord::Base
   attr_accessible :title, :description
-	
-	validates_uniqueness_of :title
-	validates_presence_of :title
-	validates_presence_of :description
+
+	validates :title, uniqueness: true
+	validates :title, :description, presence: true
 
   has_many :stones_users
 	has_many :users, through: :stones_users
@@ -12,5 +11,4 @@ class Stone < ActiveRecord::Base
   has_many :resources, through: :resources_stones
 
   has_many :discussions
-
 end

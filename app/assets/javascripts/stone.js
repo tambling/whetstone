@@ -12,22 +12,80 @@ var StoneController = {
     $('body').on('ajax:success','.show_discussion', StoneViews.renderShowDiscussion);
     $('body').on('ajax:success','.get_resources', StoneViews.renderResources);
 
-    $('body').on('ajax:success','.add_resource_link', StoneViews.renderAddResourceForm)
+    // Move to Resources Views
+    $('body').on('ajax:success','.add_resource_link', StoneViews.renderAddResourceForm);
   }
+}
+
+var SavedResourceController = {
+  saveResource: function(event, ui) {
+    console.log("Save To Timeline");
+    var url = ui.helper.data('save-url');
+    var id = ui.helper.data('id');
+
+    $.ajax({
+      url: url,
+      type: 'POST',
+      data: { id: id }
+    }).done(function(data){
+      console.log(data);
+    });
+  },
+
+  flashMessage: function(message){
+    console.log(message);
+  }
+}
+
+var DnD = {
+
+  initialize: function() {
+    this.$saveBar = $('#save_bar');
+    this.bindDraggable();
+    this.bindDroppable();
+  },
+
+  bindDraggable: function($elements) {
+    $elements = typeof $elements !== 'undefined' ? $elements: $('.resource');
+
+    $elements.draggable({ revert: "invalid",
+                          appendTo: 'body',
+                          helper: "clone",
+                          start: DnD.dragStart
+                        });
+  },
+
+  bindDroppable: function() {
+        DnD.$saveBar.droppable({ accept: '.resource',
+                               hoverClas: 'drop_hover',
+                               drop: SavedResourceController.saveResource
+                              });
+  },
+
+  dragStart: function( event, ui ) {
+    console.log("dragStart");
+    DnD.$saveBar.animate({ bottom: '+=150' }, 250);
+    $(ui.helper).on('mouseup', DnD.dragStop)
+  },
+
+  dragStop: function() {
+    console.log("DragStop")
+      DnD.$saveBar.animate({ bottom: '-=150' }, 250);
+      $(this).off('mouseup');
+  }
+
 }
 
 var Masonry = {
   initialize: function(){
     Masonry.$container = $('.resources');
-
     Masonry.$container.masonry({
       columnWidth: 10,
       itemSelector: '.resource'
     });
 
     Masonry.mason = Masonry.$container.data('masonry');
-
-    $('.resource').draggable({revert: "invalid"});
+    DnD.initialize();
   }
 }
 
@@ -37,22 +95,21 @@ var StoneViews = {
   },
 
   openDialog: function() {
-    Avgrund.show('.form');
+    Avgrund.show('.modal');
   },      
 
   closeDialog: function() {
+    $('div.modal').remove();
     Avgrund.hide();
-    $('.avgrund-popup').remove();
   },
 
   renderOverview: function(event, overview){
-    console.log("Rendering Overview", overview)
-    StoneViews.$container.empty()
-    StoneViews.$container.append(overview)
+    StoneViews.$container.empty();
+    StoneViews.$container.append(overview);
   },
 
   renderAddResourceForm: function(event, addResourceForm){
-    $('body').prepend(addResourceForm);
+    $('html').prepend(addResourceForm);
     StoneViews.openDialog();
   },
 
@@ -68,10 +125,11 @@ var StoneViews = {
 
     Masonry.$container.prepend( fragment );
     Masonry.mason.prepended( elems );
+
+    DnD.bindDraggable($(elems));
   },
 
   renderResources: function(event,resources){
-    console.log("Rendering Resources", resources);
     StoneViews.$container.empty()
     StoneViews.$container.append(resources);
 
@@ -83,7 +141,6 @@ var StoneViews = {
   },
 
   renderDiscussions: function(event, discussions){
-    console.log("Rendering Discussions", discussions);
     StoneViews.$container.empty()
     StoneViews.$container.append(discussions);
   },

@@ -23,11 +23,11 @@ class StonesController < ApplicationController
 
   def overview
     @stone = Stone.find(params[:id])
-    render :json => render_to_string(partial: 'stones/overview', locals: { stone: @stone}, layout: false).to_json
+    @goal = current_user.goals.where(stone_id: @stone.id).first if user_signed_in?
+    render :json => render_to_string(partial: 'stones/overview', locals: { stone: @stone, goal: @goal }, layout: false).to_json
   end
 
   def search
-    # @stones = Stone.where(title: params[:search][:search_query]) #Replace with more advanced search algorithm (when it's ready).
     @stones = Stone.basic_search(params[:search][:search_query])
     if @stones.count == 1
       redirect_to stone_path(@stones.first)

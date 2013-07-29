@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130727040632) do
+ActiveRecord::Schema.define(:version => 20130729040953) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -31,12 +31,22 @@ ActiveRecord::Schema.define(:version => 20130727040632) do
     t.integer  "stone_id"
   end
 
+  create_table "messages", :force => true do |t|
+    t.string   "body"
+    t.integer  "from_id"
+    t.integer  "to_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "resources", :force => true do |t|
     t.string  "title"
     t.text    "description"
     t.string  "url"
     t.integer "recommended_time"
     t.string  "difficulty",       :default => "Medium"
+    t.integer "creator_id"
+    t.text    "photo"
   end
 
   create_table "resources_stones", :force => true do |t|
@@ -54,6 +64,13 @@ ActiveRecord::Schema.define(:version => 20130727040632) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "saved_resources", :force => true do |t|
+    t.integer  "stones_user_id"
+    t.integer  "resources_stone_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "stones", :force => true do |t|
     t.string "title"
@@ -102,7 +119,8 @@ ActiveRecord::Schema.define(:version => 20130727040632) do
   create_table "votes", :force => true do |t|
     t.integer "user_id"
     t.integer "value"
-    t.integer "resources_stone_id"
+    t.integer "voteable_id"
+    t.string  "voteable_type"
   end
 
 end

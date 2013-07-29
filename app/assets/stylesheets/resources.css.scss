@@ -1,0 +1,19 @@
+#save_bar {
+  position: fixed;
+  margin: 0 auto;
+  bottom: -150px;
+  width: 50%;
+  height:100px;
+  padding: 20px;
+  background-color: silver;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.resource {
+  z-index: 2;
+}
+
+.drop_hover {
+  background-color: darken(silver,10%);
+}

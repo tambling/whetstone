@@ -1,37 +1,18 @@
-.nav-head
+.left_nav
   .logo
     = link_to "Whetstone", root_path, :class => 'brand'
-  - if user_signed_in?
-    %img{src: gravatar(current_user, 40)}
-#search
-  %i.icon-search#search-icon
-  = form_for :search, url: stones_search_path do |f|
-    = f.text_field :search_query, placeholder: "I want to learn...", id: 'nav_search'
-%ul.nav
-  - if user_signed_in?
-    %li
-      = link_to 'Logout', destroy_user_session_path, :method=>'delete'
-  - else
-    %li
-      = link_to 'Login', new_user_session_path
-  - if user_signed_in?
-    %li
-      = link_to 'Edit account', edit_user_registration_path
-    - if current_user.has_role? :admin
-      %li
-        = link_to 'Admin', users_path
-  - else
-    %li
-      = link_to 'Sign up', new_user_registration_path
-%ul.stones-list
-  - if current_user && current_user.stones
-    .stones 
-      %p Your Stones
-      %ul
+  .gravatar
+    - if user_signed_in?
+      %img{ src: gravatar(current_user, 40) }
+  .mini-search
+    = form_for :search, url: stones_search_path do |f|
+      = f.text_field :search_query, placeholder: "&#xf002; I want to learn...".html_safe, id: 'nav_search'
+  %ul
+    - if user_signed_in?
+      %li= link_to 'Messages', messages_path
+      - if current_user.stones
+        %h3 Here Are Your Stones
         - current_user.stones.each do |stone|
-          %li
-            -if stone.title.length > 27 
-              = stone.title[0..27].capitalize + "..." 
-            - else
-              = stone.title.capitalize
+          = link_to truncate(stone.title, length: 30), stone_path(stone)
+
 

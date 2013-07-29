@@ -27,9 +27,9 @@ feature "Discussions Page Management", js: true do
 
   scenario "User Visits Discussions Page And Sees Title And Content" do
     click_link("Discussions")
-    expect(page).to have_content(discussion.title)
+    expect(page).to have_content(discussion.title.upcase)
     expect(page).to have_content(discussion.content)
-  end  
+  end
 
   scenario "User Visits Discussions Page And Can Add a Discussion" do
     click_link("Discussions")
@@ -39,7 +39,7 @@ feature "Discussions Page Management", js: true do
 
     page.find(:css,'.submit_button input').click
 
-    expect(page).to have_content("How many woods does a woodchuck chuck?")
+    expect(page).to have_content("How many woods does a woodchuck chuck?".upcase)
   end
 
   scenario "User Can Visit a Specific Discussion" do

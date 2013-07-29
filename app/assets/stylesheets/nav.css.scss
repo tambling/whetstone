@@ -53,6 +53,7 @@ $sidebar-highlight-color: #22262E;
 .left_nav {
   position: fixed;
   display: inline;
+  min-width: 200px;
   width: 12%;
   height: 100%;
   top:0px;

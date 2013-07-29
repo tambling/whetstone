@@ -6,10 +6,6 @@ class ResourcesStone < ActiveRecord::Base
   belongs_to :stone
   belongs_to :resource
 
-	def votes
-		Vote.where('resources_stone_id = ?', self.id).sum('value')
-	end
-  
   def vote_tally
   	self.votes.sum('value')
   end

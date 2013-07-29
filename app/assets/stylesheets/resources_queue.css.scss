@@ -1,0 +1,52 @@
+
+$hover : black;
+
+.sortable {
+	height: 100%;
+	position: none;
+	li {
+		width: 80%;
+		height: 50px;
+		min-width: 600px;
+		padding: 10px;
+		border-radius: 15px;
+		border: 2px solid gray;
+		margin-bottom: 20px;
+		background-color: gray;
+
+		.share {
+			line-height: 10px;
+			margin-right: 15px;
+			margin-top: 20px;
+			font-size: 1.5em;
+			color: #3B5998;
+			&:hover { color: #4F6AA2; }
+		}
+		a {
+			color: black;
+			&:hover { text-decoration: none; }
+		}
+
+		* { float: left; }
+
+		h4 { margin-top: 0px; }
+		
+		.text { margin-top: 15px; }
+
+		&:hover { border: 2px solid $hover; }
+
+	}
+}
+
+.updown {
+	font-family: FontAwesome;
+	display: block;
+	line-height: 10px;
+	width: 15px;
+	margin-right: 10px;
+	*{
+		text-align: center;
+		line-height: 16px;
+		margin: 0px;
+	}
+}

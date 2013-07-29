@@ -14,8 +14,6 @@ body {
 
   background-color:#e4e4e4;
   background:url('bg_gradient.jpg') no-repeat center center,url('bg_tile.jpg');
-  font-family:'Open Sans Condensed',sans-serif;
-  text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
   height: 100%;
   padding: 5px;
 }
@@ -29,8 +27,14 @@ p {
 
 }
 
+li {
+  list-style: none;
+}
+
+
 a, a:visited  {
   text-decoration: none;
+  color: #555;
 
   -webkit-transition: 0.15s color ease;
      -moz-transition: 0.15s color ease;
@@ -44,7 +48,6 @@ a, a:visited  {
   
   text-decoration:none;
   outline:none;
-  color:#54a6de;
 }
 
 small {

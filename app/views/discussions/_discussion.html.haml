@@ -1,6 +1,6 @@
 .discussion
 	%h6= link_to discussion.title, stone_discussion_path(@stone,discussion), remote: true, class: "show_discussion"
-	%a.discussion-upvote{id: "#{discussion.id}"} Upvote
-	%a.discussion-downvote{id: "#{discussion.id}"} Downvote
+	= link_to "Upvote", discussion_votes_path(:discussion_id => discussion.id, :value => 1), method: 'post', remote: true, :class => 'vote'
+	= link_to "Downote", discussion_votes_path(:discussion_id => discussion.id, :value => -1), method: 'post', remote: true, :class => 'vote'
 	%p.vote-count= "#{discussion.vote_tally} Votes"
 	%p= discussion.content

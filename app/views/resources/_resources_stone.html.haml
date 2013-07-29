@@ -1,8 +1,8 @@
 .resource{ class: "#{resources_stone.resource.difficulty} All", data: {row: 1, col: 1, sizex: 1, sizey: 1} }
   %li
     %h4= resources_stone.resource.title
-    %a.resource-upvote{id: "#{resources_stone.id}"} Upvote
-    %a.resource-downvote{id: "#{resources_stone.id}"} Downvote
+    = link_to "Upvote", resources_stone_votes_path(:resources_stone_id => resources_stone.id, :value => 1), method: 'post', remote: true, :class => 'vote'
+    = link_to "Downote", resources_stone_votes_path(:resources_stone_id => resources_stone.id, :value => -1), method: 'post', remote: true, :class => 'vote'
     %p.vote-count= "#{resources_stone.vote_tally} Votes"
     %p= resources_stone.resource.description
     %p= resources_stone.resource.recommended_time

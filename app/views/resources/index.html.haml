@@ -13,8 +13,6 @@
     = link_to 'Sort Asc', '#', class: "btn sort", data: { sort: 'ASC' }
     = link_to 'Sort Desc', '#', class: "btn sort", data: { sort: 'DESC' }
   .resources
-    - @stone.resources_stones.each_with_index do |resources_stone, i|
-      - row, col = get_coordinates i
-      = render partial: 'resources/resources_stone', locals: { resources_stone: resources_stone , row: row, col: col}
+    = render partial: 'resources/resources_stone', collection: @stone.resources_stones, as: :resources_stone
     #save_bar
       %h1 + Drag Here To Save

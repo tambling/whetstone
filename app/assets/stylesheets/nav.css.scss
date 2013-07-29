@@ -1,10 +1,59 @@
 $sidebar-main-color: #1A1D22;
 $sidebar-highlight-color: #22262E;
 
+.fixed_tab {
+  position: fixed;
+  display: inline;
+  height: 40px;
+  left: 0px;
+  border-radius: 0 7px 7px 0;
+  text-align: left;
+  line-height: 40px;
+  font-size: 1.25em;
+  font-color: #555;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 0 5px 0 5px;
+  color: silver;
+  background-color: #2C3E50;
+
+  a {
+    color: silver;
+  }
+
+  &:hover {
+    background-color: #34495E
+  }
+
+
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+
+  &.menu {
+    top: 300px;
+  }
+
+  &.get_overview {
+    top: 350px;
+  }
+
+  &.get_discussions {
+    top: 400px;
+  }
+
+  &.get_resources {
+    top: 450px;
+  }
+
+}
+
+
 .left_nav {
   position: fixed;
   display: inline;
-  width: 15%;
+  width: 12%;
   height: 100%;
   top:0px;
   left: 0px;

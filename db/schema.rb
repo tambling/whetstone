@@ -45,11 +45,8 @@ ActiveRecord::Schema.define(:version => 20130729040953) do
     t.string  "url"
     t.integer "recommended_time"
     t.string  "difficulty",       :default => "Medium"
-<<<<<<< HEAD
     t.integer "creator_id"
-=======
     t.text    "photo"
->>>>>>> stones-style
   end
 
   create_table "resources_stones", :force => true do |t|

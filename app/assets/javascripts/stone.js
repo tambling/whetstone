@@ -95,11 +95,11 @@ var StoneViews = {
   },
 
   openDialog: function() {
-    Avgrund.show('.form');
+    Avgrund.show('.modal');
   },      
 
   closeDialog: function() {
-    $('div.form').remove();
+    $('div.modal').remove();
     Avgrund.hide();
   },
 

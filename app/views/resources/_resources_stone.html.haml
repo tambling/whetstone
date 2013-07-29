@@ -1,5 +1,6 @@
 .resource{ class: "#{resources_stone.resource.difficulty} All", data: {row: 1, col: 1, sizex: 1, sizey: 1} }
   %li
+    %img{:src => resources_stone.resource.photo, :width => 80 }
     %h4= resources_stone.resource.title
     %a.upvote{id: "#{resources_stone.id}"} Upvote
     %a.downvote{id: "#{resources_stone.id}"} Downvote

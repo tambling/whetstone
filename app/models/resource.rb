@@ -1,23 +1,22 @@
 class Resource < ActiveRecord::Base
-	attr_accessible :title, :description, :url, :recommended_time, :difficulty
+	attr_accessible :title, :description, :url, :recommended_time, :difficulty, :photo
 
 	validates_presence_of :title
 	validates_presence_of :description
   validates_presence_of :recommended_time
 
-	has_many :votes
+  has_many :votes
 
   has_many :resources_stones
   has_many :stones, through: :resources_stones
 
   before_create :assign_diffculty
 
-	def self.difficulty_ratings
+  def self.difficulty_ratings
     ["Beginner", "Intermediate", "Advanced", "Expert"]
   end
 
   def assign_diffculty
     self.difficulty = "Intermediate" if self.difficulty.blank?
   end
-
 end

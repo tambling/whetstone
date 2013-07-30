@@ -29,7 +29,8 @@
       fill_in('Recommended time', :with => 600)
 
       page.find(:css,'.submit_button input').click
-
+      visit stone_path(stone)
+      click_link("Resources")
       expect(page).to have_content("Poodr")
     end
 

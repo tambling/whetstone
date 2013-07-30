@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Resource do
 
-	let(:resource) { FactoryGirl.create(:resource) }
+	let(:resource) { FactoryGirl.build(:resource) }
 
 	context "Validations" do
 		it { should validate_presence_of(:title) }
@@ -10,5 +10,17 @@ describe Resource do
 		it { should have_many(:stones) }
 		it { should have_many(:resources_stones) }
 	end
+
+  context "Methods" do
+    it "should assign Intermediate as the default value of difficulty" do
+      resource.difficulty = nil
+      resource.save
+      expect(resource.difficulty).to eq("Intermediate")
+    end
+
+    it "should return an array of difficulty ratings" do
+      expect(Resource.difficulty_ratings).to eq(["Beginner", "Intermediate", "Advanced", "Expert"])
+    end 
+  end
 
 end

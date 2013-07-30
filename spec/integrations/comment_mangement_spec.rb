@@ -19,11 +19,11 @@ feature "Comments Page Management", js: true do
 
   scenario "User Visits Discussions Page And Sees Comment Title And Content" do
     expect(page).to have_content(comment.content)
-  end  
+  end
 
   scenario "User Can Add A Comment" do
 
-    fill_in('Content', :with => 'I am Commenting')
+    fill_in('comment_content', :with => 'I am Commenting')
     page.find(:css,'.submit_button input').click
     expect(page).to have_content("I am Commenting")
   end

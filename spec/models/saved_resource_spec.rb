@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe SavedResource do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  context "Validations" do
+    it { should belong_to(:stones_user) }
+  end
+
 end

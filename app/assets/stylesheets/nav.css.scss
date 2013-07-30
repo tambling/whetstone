@@ -5,9 +5,9 @@ $sidebar-highlight-color: #22262E;
   position: fixed;
   display: inline;
   height: 40px;
-  left: 0px;
-  border-radius: 0 7px 7px 0;
-  text-align: left;
+  right: 0px;
+  border-radius: 7px 0px 0px 7px;
+  text-align: right;
   line-height: 40px;
   font-size: 1.25em;
   font-color: #555;
@@ -53,44 +53,41 @@ $sidebar-highlight-color: #22262E;
 .left_nav {
   position: fixed;
   display: inline;
-  min-width: 200px;
-  width: 12%;
+  min-width: 150px;
+  width: 10%;
   height: 100%;
   top:0px;
   left: 0px;
   background-color: $sidebar-main-color;
   margin: 0;
+  text-align: center;
 
-  .header{
-    background-color: $sidebar-highlight-color;
-    height: 60px;
-    line-height: 60px;
+  p {
+    margin: 20px 0 20px 0;
+    font-weight: lighter;
+    font-size: 2em;
+    position: relative;
+  }
 
-    text-align: center;
+  .gravatar {
+    margin-top: 10px;
+    position: relative;
+    clear: both;
+    width: 100%;
 
-    .logo {
-      float: left;
-      display: inline-block;
-      height: 60px;
-      font-size: 1em;
-      vertical-align: middle;
-      margin-left: 10px;
-    }
-
-    .gravatar {
-        float:left;
-        display: inline-block;
-        vertical-align: middle;
-        height: 60px;
-        display: inline-block;
-        img { border-radius: 5px;}
+    img { 
+      border: 5px solid rgba(62, 68, 73, 0.61);
+      border-radius: 125px;
+      width: 70%;
     }
   }
+
 
   
   .mini-search {
     border-radius: 5px;
     margin: 20px auto 20px;
+    padding: 10px;
 
     input {
       padding: 5px;
@@ -104,11 +101,10 @@ $sidebar-highlight-color: #22262E;
   }
 
   .goals {
-
-    li {
-      margin: 5px 0 5px 0;
-    }
-
+    text-align: left;
+    margin: 0;
+    padding: 10;
+  
     h2 {
       color: silver;
     }

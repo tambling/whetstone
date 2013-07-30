@@ -1,9 +1,7 @@
 .left_nav
-  .header
-    .gravatar
-      %img{ src: gravatar(current_user, 60) }
-    .logo
-      = link_to current_user.name, edit_user_registration_path
+  .gravatar
+    %img{ src: gravatar(current_user,120) }
+  %p= link_to current_user.name, edit_user_registration_path
   .mini-search
     = form_tag search_stones_path, remote: true do
       = hidden_field_tag :mini_search, "true"
@@ -12,7 +10,7 @@
     %li
       = link_to '<i class="icon-home"></i> Home'.html_safe, root_path
     %li
-      = link_to '<i class="icon-comment"></i> Messages'.html_safe, messages_path
+      = link_to '<i class="icon-envelope"></i> Messages'.html_safe, messages_path
     %li
       = link_to '<i class="icon-signout"></i> Logout'.html_safe, destroy_user_session_path, :method=>'delete'
     - if current_user.stones

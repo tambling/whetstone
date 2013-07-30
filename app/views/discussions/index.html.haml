@@ -1,16 +1,22 @@
 #discussion
-  %h2 Discussion Forum
-  %h2= stone.title
+  %h2= "<i class='icon-comments'></i> #{stone.title}".html_safe
   - if user_signed_in?
     .form
-      = simple_form_for [@stone, @discussion], remote: true, html: { class: "create_discussion" } do |f|
-        = f.label :title
-        = f.input_field :title
-        = f.hidden_field :stone_id, value: params[:stone_id]
-        = f.hidden_field :user_id, value: user.id
-        = f.label :content
-        = f.input_field :content, cols: 60, rows: 5
+      = form_for [@stone, @discussion], remote: true, html: { class: "create_discussion form-vertical" } do |f|
+        .fields
+          = f.label :title
+          = f.text_field :title
+          = f.hidden_field :stone_id, value: params[:stone_id]
+          = f.hidden_field :user_id, value: user.id
+          = f.label :content
+          = f.text_area :content
         .submit_button
           = f.submit "Create Discussion", class: "btn btn-primary"
+  .filters
+    .btn-group
+      = link_to 'Sort By', '#', class: "btn head"
+      = link_to 'New', '#', class: "btn sort"
+      = link_to 'Top Voted', '#', class: "btn sort"
+      = link_to 'Popular', '#', class: "btn sort"
   .discussions
     = render stone.discussions

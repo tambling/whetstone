@@ -42,12 +42,4 @@ class User < ActiveRecord::Base
     end
     partners
   end
-
-  def next_queued_resource
-    queued_items = []
-    self.goals.each do |goal|
-      queued_items << goal.saved_resources.all
-    end
-    queued_items.flatten.sort{|a, b| a.due_date <=> b.due_date}.first
-  end
 end

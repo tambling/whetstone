@@ -53,19 +53,20 @@ small {
   -webkit-text-size-adjust: none;
 }
 
-input, textarea {
-  outline: none;
-  background: none;
-  width: 300px;
-}
-
 .form {
   position: relative;
-  margin: 0 auto;
   width: 400px;
+  margin-top: 20px;
 
-  .submit_button {
-    text-align: center;
+  .fields input, textarea {
+    background: none;
+    outline: none;
+    margin: 10px 0 10px 0;
+    width: 400px;
   }
-  
+
+  .submit_button input {
+    margin: 10px 0 10px 0;
+  }
+
 }

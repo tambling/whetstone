@@ -14,7 +14,9 @@ var DiscussionViews = {
   },
 
    renderDiscussion: function(event,discussion){
-    DiscussionViews.$container.find('.discussions').prepend(discussion);
+    DiscussionViews.$container.find('.discussions').prepend(discussion)
+    DiscussionViews.$container.find('.discussion').eq(0).hide().fadeIn();
+    $(this)[0].reset(0)
     alertify.success("Created New Discussion");
   },
 
@@ -30,7 +32,8 @@ var DiscussionViews = {
   },
 
   renderComment: function(event, comment) {
-    $(this).after(comment);
+    $(this).closest('.comments').find('.form').after(comment);
+    $(this)[0].reset(0)
     alertify.log("Comment Added");
   }
 }

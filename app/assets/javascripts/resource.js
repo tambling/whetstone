@@ -1,6 +1,6 @@
 var Masonry = {
   initialize: function(){
-    Masonry.$container = $('.resources');
+    Masonry.$container = $('#resource .resources');
     Masonry.$container.masonry({
       gutter: 30,
       columnWidth: 10,
@@ -56,11 +56,11 @@ var ResourceViews = {
   },
 
   renderResource: function(event, data){
-    alertify.success("Added New Resource!")
+    
 
     ResourceViews.closeDialog();
-    
-    ResourceViews.$container.prepend(data)
+
+    Masonry.$container.prepend(data);
 
     // var fragment = document.createDocumentFragment();
     // var elems = [];
@@ -71,6 +71,8 @@ var ResourceViews = {
 
     // Masonry.$container.prepend( fragment );
     // Masonry.mason.prepended( elems );
+
+    alertify.success("Added New Resource!");
   },
 
   renderResources: function(event,resources){

@@ -4,10 +4,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    p params
     @users = User.basic_search(params[:username])
-    p "*"*1000
-    p @users
     if @users.size.zero?
       return render :text => "We don't know anybody by that name!"
     else

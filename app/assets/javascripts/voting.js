@@ -9,7 +9,7 @@ $(document).ready( function() {
 	});
 
 	function updateVotes(val) {
-		var voteCount = (parseInt(catchNumbers.exec($votes.eq(0).find('.vote-count').eq(0).text())) + val).toString() + " Votes";
+		var voteCount = (parseInt(catchNumbers.exec($votes.eq(0).find('.vote-count').eq(0).text())) + val).toString();
 		$votes.eq(0).find('.vote-count').eq(0).text(voteCount)
 	}
 

@@ -9,6 +9,16 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_font-awesome
- *= require_tree .
+ *= require font-awesome
+ *= require flat-ui
+ *= require normalize
+ *= require avgrund
+ *= require home
+ *= require messages
+ *= require nav
+ *= require resources
+ *= require stone
+ *= require style
+ *= require resources_queue
+ *= require_tree ../../../vendor/assets/stylesheets/.
 */

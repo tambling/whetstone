@@ -1,0 +1,138 @@
+
+$hover : white;
+$grey : rgb(41,42,43);
+
+#stone{
+	.resource {
+	height: 100%;
+	position: relative;
+	background-color: teal;
+	margin-bottom: 20px;
+
+	width: 80%;
+	height: 50px;
+	min-width: 600px;
+	padding: 10px;
+	border-radius: 15px;
+	border: 2px solid $grey;
+	margin-bottom: 20px;
+	background-color: $grey;
+
+
+	.fb-share {
+		line-height: 10px;
+		margin-left: 15px;
+		margin-top: 7px;
+		font-size: 1.5em;
+		color: #3B5998;
+		&:hover { color: #4F6AA2; }
+	}
+
+	a {
+		color: white;
+		&:hover { text-decoration: none; }
+	}
+
+	* { 
+		display: inline; 
+		margin-top: -20px;
+	}
+
+	h4 { margin-top: -13px; }
+		
+	.text { 
+		margin-top: 15px; 
+		color: gray;
+		
+		p {
+			margin-top: 2px;
+			margin-left: 20px;
+			margin-right: 10px;
+		}
+		
+		.description {
+			margin-top: 20px;
+			position: absolute;
+			left: 100px;
+		}
+	}
+
+
+	&:hover { 
+		border: 2px solid $hover; 
+		.resource-photo-overlay {
+			height: 70px;
+			border-right: 2px solid $hover;
+			border-top: 2px solid $hover;
+			border-bottom: 2px solid $hover;
+		}
+	}
+
+	.resource-photo {
+		height: 74px;
+		width: 300px;
+		float: right;
+		border-top-right-radius: 15px;
+		border-bottom-right-radius: 15px;
+		position: absolute;
+		right: -2px;
+		top: 18px;
+		z-index: -2;
+	}
+
+	.resource-photo-overlay {
+		height: 74px;
+		width: 300px;
+		float: right;
+		border-top-right-radius: 15px;
+		border-bottom-right-radius: 15px;
+		background: linear-gradient(to right, rgba(41,42,43,1) 10%,rgba(41,42,43,0) 100%);
+		position: absolute;
+		right: -2px;
+		top: 18px;
+		z-index: -1;
+	}
+
+	.right-text {
+		float: right;
+		margin-top: 10px;
+		margin-right: 200px;
+		
+	}
+
+	.time {
+		float: left;
+	}
+
+
+}
+	
+
+.updown {
+	font-family: FontAwesome;
+	display: block;
+	line-height: 10px;
+	width: 15px;
+	float: left;
+	margin-right: 10px;
+	margin-top: 2px;
+	color: white;
+	*{
+		text-align: center;
+		line-height: 16px;
+		margin: 0px;
+	}
+	a:hover { color: #34495e; }
+}
+
+.beginner { color: green; }
+
+.intermediate { color: yellow; }
+
+.advanced { color: orange; }
+
+.expert { color: red; }
+
+
+
+}

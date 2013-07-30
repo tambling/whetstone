@@ -1,9 +1,8 @@
-%h1 Create a Stone
+.form
+  %h1 Create a Stone
 
-= form_for @stone, url: stones_path, method: 'POST' do |f|
-  = f.label :title, "Title"
-  = f.text_field :title
-  = f.label :description, "Description"
-  = f.text_area :description
-  = f.submit "Create Stone"
+  = simple_form_for @stone, url: stones_path, method: 'POST', html: { class: "form-vertical" } do |f|
+    = f.input :title
+    = f.input :description, input_html: { rows: 5 }
+    = f.button :submit, "Create Stone", :class => 'btn-primary'
 

@@ -7,7 +7,4 @@ class ApplicationController < ActionController::Base
 
   helper GravatarHelper
 
-  def after_sign_in_path_for(user)
-    session[:referrer] ? session[:referrer] : root_path
-  end
 end

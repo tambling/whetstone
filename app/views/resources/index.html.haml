@@ -1,18 +1,22 @@
 #resource
-  %h2 Resources
-  %h2= @stone.title
-  -if user_signed_in?
-    = link_to "Add Resource", new_stone_resource_path, remote: true, class: "add_resource_link"
-  .btn-group
-    = link_to 'All', '#', class: "btn filter"
-    = link_to 'Beginner', '#', class: "btn filter"
-    = link_to 'Intermediate', '#', class: "btn filter"
-    = link_to 'Advanced', '#', class: "btn filter"
-    = link_to 'Expert', '#', class: "btn filter"
-  .btn-group
-    = link_to 'Sort Asc', '#', class: "btn sort", data: { sort: 'ASC' }
-    = link_to 'Sort Desc', '#', class: "btn sort", data: { sort: 'DESC' }
+  .header
+    .title
+      %h2= @stone.title
+    .add_resource
+      -if user_signed_in?
+        = link_to "Add Resource", new_stone_resource_path, remote: true, class: "add_resource_link btn btn-primary"
+  .filters
+    .btn-group
+      = link_to 'All', '#', class: "btn filter active"
+      = link_to 'Beginner', '#', class: "btn filter"
+      = link_to 'Intermediate', '#', class: "btn filter"
+      = link_to 'Advanced', '#', class: "btn filter"
+      = link_to 'Expert', '#', class: "btn filter"
+    .btn-group
+      = link_to "<i class='icon-sort-by-alphabet'></i>".html_safe, '#', class: "btn sort", data: { sort: 'ASC' }
+      = link_to "<i class='icon-sort-by-alphabet-alt'></i>".html_safe, '#', class: "btn sort", data: { sort: 'DESC' }
+      = link_to "<i class='icon-sort-by-attributes-alt'></i>".html_safe, '#', class: "btn sort", data: { sort: 'TOP' }
+      = link_to "<i class='icon-sort-by-attributes'></i>".html_safe, '#', class: "btn sort", data: { sort: 'BOTTOM' }
+      = link_to "Sort", "#", class: "btn sort", data: { sort: "Sort" }
   .resources
     = render partial: 'resources/resources_stone', collection: @stone.resources_stones, as: :resources_stone
-    #save_bar
-      %h1 + Drag Here To Save

@@ -2,7 +2,7 @@ class DiscussionsController < ApplicationController
   def index
     @stone = Stone.find(params[:stone_id])
     @discussion = Discussion.new
-    render :json => render_to_string('index', layout: false).to_json
+    render :json => render_to_string('index', layout: false , locals: {stone: @stone, user: current_user, discussion: @discusssion}).to_json
   end
 
   def show
@@ -14,6 +14,7 @@ class DiscussionsController < ApplicationController
 
   def create
     @stone = Stone.find(params[:stone_id])
+    @user = current_user
     @discussion = Discussion.create(params[:discussion])
     render :json => render_to_string(@discussion, layout: false).to_json
   end

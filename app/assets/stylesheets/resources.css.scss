@@ -1,19 +1,100 @@
-#save_bar {
-  position: fixed;
-  margin: 0 auto;
-  bottom: -150px;
-  width: 50%;
-  height:100px;
-  padding: 20px;
-  background-color: silver;
-  border-radius: 10px;
-  z-index: 1;
+.modal {
+
+  text-shadow: none;
+  
+  background-color: rgba(255, 255, 255, 0.90);
+
+  label{
+    color: #34495e;
+
+  }
+  input[type=text],input[type=url],input[type=number], textarea {
+    color: silver;
+    outline: none;
+    background: rgba(39, 40, 43, 0.88);
+    width: 325px;
+  }
+
+  .submit_button {
+    text-align: center;
+  }
 }
 
-.resource {
+#resource {
+  
+  .header {
+    height: 80px;
+    width: 100%;
+    clear:both;
+
+    .title {
+      display: inline-block;
+      float:left;
+      height: 80px;
+    }
+
+    .add_resource {
+      display: inline-block;
+      float: right;
+      height: 80px;
+      line-height: 80px;
+
+      a {
+        float: right;
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .filters {
+    clear:both;
+    height: 30px;
+
+    .btn-group {
+      float: left;
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .resource {
   z-index: 2;
-}
+  width: 250px;
+  height: 250px;
+  margin-top: 30px;
+  border-radius: 9px;
 
-.drop_hover {
-  background-color: darken(silver,10%);
+  ul.toolbar_options {
+    display: none;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(26, 29, 34, 0.65);
+    float: left;
+    margin: 0;
+    padding: 0;
+
+      li {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        float: left;
+        padding: 3px 0 3px 0;
+        background-color: rgba(26, 29, 34, 0.65); 
+        width: 25%;
+
+        &:hover {
+          background-color: lighten(rgba(26, 29, 34, 0.65),10%); 
+        }
+
+        &:last-child {
+          border: none;
+        }
+
+        a {
+          color: silver;
+        }
+    }
+  }
+}
 }

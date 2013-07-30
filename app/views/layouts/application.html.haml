@@ -5,20 +5,23 @@
       %title= content_for?(:title) ? yield(:title) : "Whetstone"
       %meta{:content => content_for?(:description) ? yield(:description) : "Whetstone", :name => "description"}
         = stylesheet_link_tag "application", :media => "all"
+        %link{ href: "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css", rel: "stylesheet"}
         = javascript_include_tag "application"
         = csrf_meta_tags
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" type="text/css" />
         = yield(:head)
   .avgrund-cover
-  %body{:class => "#{controller_name} #{action_name} avgrund-contents"}
-    = render 'layouts/navigation'
+  %body{:class => "avgrund-contents"}
+    - if user_signed_in?
+      = render 'layouts/navigation'
     .right-tabs-fixed
       = yield :right_tabs
     #main{ :role => "main" }
       .container
         = render 'layouts/top_navigation'
         = render 'layouts/messages'
-        = yield
+        .content
+          = yield
         %footer
       / ! end of .container
     / ! end of #main

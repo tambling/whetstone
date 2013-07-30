@@ -53,6 +53,7 @@ $sidebar-highlight-color: #22262E;
 .left_nav {
   position: fixed;
   display: inline;
+  min-width: 200px;
   width: 12%;
   height: 100%;
   top:0px;
@@ -60,25 +61,32 @@ $sidebar-highlight-color: #22262E;
   background-color: $sidebar-main-color;
   margin: 0;
 
-  .logo {
-    float: left;
-    font-size: 1.7em;
-    vertical-align: middle;
-    margin-top: 10px;
-  }
+  .header{
+    background-color: $sidebar-highlight-color;
+    height: 60px;
+    line-height: 60px;
 
-  .gravatar {
+    text-align: center;
+
+    .logo {
+      float: left;
+      display: inline-block;
       height: 60px;
-      padding-left: 10px;
-      padding-right: 20px;
-      padding-top: 20px;
-      background-color: $sidebar-highlight-color;
-   
-    img {
-      border-radius: 20px;
-      float: right;
+      font-size: 1em;
+      vertical-align: middle;
+      margin-left: 10px;
+    }
+
+    .gravatar {
+        float:left;
+        display: inline-block;
+        vertical-align: middle;
+        height: 60px;
+        display: inline-block;
+        img { border-radius: 5px;}
     }
   }
+
   
   .mini-search {
     border-radius: 5px;
@@ -88,10 +96,21 @@ $sidebar-highlight-color: #22262E;
       padding: 5px;
       color: white;
       background: none;
-      margin: 0 auto;
+      margin-left: 5px;
       width: 90%;
       outline: none;
       border-radius: 15px; 
+    }
+  }
+
+  .goals {
+
+    li {
+      margin: 5px 0 5px 0;
+    }
+
+    h2 {
+      color: silver;
     }
   }
 }
@@ -108,7 +127,7 @@ $sidebar-highlight-color: #22262E;
 
     li {
       display: inline-block;
-      margin-right: 25px;
+      margin-left: 25px;
     }
 
   }

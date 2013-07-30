@@ -9,10 +9,8 @@ class StonesController < ApplicationController
   end
 
   def new
-    unless current_user
-      redirect_to root_path
-    end
-    @stone = Stone.new(title: session[:title])
+    authenticate_user!
+    @stone = Stone.new(title: session[:query])
     session.delete(:title)
   end
 
@@ -24,23 +22,28 @@ class StonesController < ApplicationController
   def overview
     @stone = Stone.find(params[:id])
     @goal = current_user.goals.where(stone_id: @stone.id).first if user_signed_in?
+    p @stone
+    p @goal
     render :json => render_to_string(partial: 'stones/overview', locals: { stone: @stone, goal: @goal }, layout: false).to_json
   end
 
   def search
-    @stones = Stone.basic_search(params[:search][:search_query])
-    if @stones.count == 1
-      redirect_to stone_path(@stones.first)
-    elsif @stones.count == 0
-      session[:title] = params[:search][:search_query]
-      if current_user
-        flash[:apology] = "Sorry, we weren't able to find anything about that. Maybe you'd like to start the community for #{session[:title]}?"
-        redirect_to new_stone_path
-      else
-        session[:referrer] = new_stone_path
-        flash[:apology] = "We weren't able to find anything about #{session[:title]}! If you log in, you can create a stone for this and push the cause of knowledge forward!"
-        redirect_to new_user_session_path
-      end
+    @stones = Stone.basic_search(params[:query])
+    search_results = {}
+    search_results[:query] = params[:query]
+    session[:query] = params[:query]
+    
+    if @stones.count.zero?
+      search_results[:results_html] = render_to_string(partial: 'home/no_results', locals: {failed_query: params[:query] })
+    else
+      search_results[:results_html] = render_to_string(partial: 'home/search_results', collection: @stones, as: :stone)
     end
+
+    if params[:mini_search]
+      search_results[:mini] = true
+      search_results[:index_html] = render_to_string('home/index', layout: false)
+    end
+
+    render :json => search_results.to_json
   end
 end

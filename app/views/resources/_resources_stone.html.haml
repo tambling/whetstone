@@ -1,11 +1,10 @@
-.resource{ class: "#{resources_stone.resource.difficulty} All", data: { id: "#{resources_stone.id}", save_url: "#{saved_resources_path}" } }
-  %li
-    %img{:src => resources_stone.resource.photo, :width => 80 }
-    %h4= resources_stone.resource.title
-    %a.icon-facebook-sign{href:"https://www.facebook.com/sharer/sharer.php?u=#{resources_stone.resource.url}"}
-    = link_to "Upvote", resources_stone_votes_path(:resources_stone_id => resources_stone.id, :value => 1), method: 'post', remote: true, :class => 'vote'
-    = link_to "Downote", resources_stone_votes_path(:resources_stone_id => resources_stone.id, :value => -1), method: 'post', remote: true, :class => 'vote'
-    %p.vote-count= "#{resources_stone.vote_tally} Votes"
-    %p= resources_stone.resource.description
-    %p= resources_stone.resource.recommended_time
-    %p= resources_stone.resource.difficulty
+.resource{ style: "background-image: url(#{resources_stone.resource.photo}); background-size: cover;", class: "#{resources_stone.resource.difficulty} All ui-state-default", data: { id: "#{resources_stone.id}" }}
+  %ul.toolbar_options
+    %li
+      = link_to "<i class='icon-plus icon-2x'></i>".html_safe,resources_stone_saved_resources_path(resources_stone), remote: true, method: :post, class: "save_resource"
+    %li  
+      = link_to "<i class='icon-thumbs-up icon-2x'></i>".html_safe, resources_stone_votes_path(:resources_stone_id => resources_stone.id, :value => 1), method: 'post', remote: true, :class => 'vote'
+    %li
+      = link_to "<i class='icon-facebook-sign icon-2x'></i>".html_safe, "https://www.facebook.com/sharer/sharer.php?u=#{resources_stone.resource.url}"
+    %li
+      = link_to "<i class='icon-ellipsis-horizontal icon-2x'></i>".html_safe, "#"

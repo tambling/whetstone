@@ -3,7 +3,7 @@ class SavedResourcesController < ApplicationController
     unless user_signed_in?
       render :json => "You need to sign in to save resources".to_json
     else
-      resources_stone = ResourcesStone.find(params[:id])
+      resources_stone = ResourcesStone.find(params[:resources_stone_id])
       goal = current_user.goals.find_or_create_by_stone_id(resources_stone.stone.id)
 
       saved_resource = SavedResource.new(stones_user_id: goal.id, resources_stone_id: resources_stone.id)

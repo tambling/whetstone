@@ -14,65 +14,64 @@ var StoneController = {
 
     // Move to Resources Views
     $('body').on('ajax:success','.add_resource_link', StoneViews.renderAddResourceForm);
+
+    $('body').on('mouseenter', '.resource', function(){
+      console.log("mouseenter");
+      $(this).find('.toolbar_options').fadeIn();
+    });
+    $('body').on('mouseleave', '.resource', function(){
+      console.log("mouseleave");
+      $(this).find('.toolbar_options').fadeOut('fast');
+    });
   }
 }
 
 var SavedResourceController = {
-  saveResource: function(event, ui) {
-    console.log("Save To Timeline");
-    var url = ui.helper.data('save-url');
-    var id = ui.helper.data('id');
-
-    $.ajax({
-      url: url,
-      type: 'POST',
-      data: { id: id }
-    }).done(function(data){
-      console.log(data);
-    });
+  initialize: function(){
+    $('body').on('ajax:success','.save_resource', SavedResourceController.flashMessage)
   },
 
-  flashMessage: function(message){
+  flashMessage: function(event, message){
     console.log(message);
   }
 }
 
 var DnD = {
 
-  initialize: function() {
-    this.$saveBar = $('#save_bar');
-    this.bindDraggable();
-    this.bindDroppable();
-  },
+  // initialize: function() {
+  //   this.$saveBar = $('#save_bar');
+  //   this.bindDraggable();
+  //   this.bindDroppable();
+  // },
 
-  bindDraggable: function($elements) {
-    $elements = typeof $elements !== 'undefined' ? $elements: $('.resource');
+  // bindDraggable: function($elements) {
+  //   $elements = typeof $elements !== 'undefined' ? $elements: $('.resource');
 
-    $elements.draggable({ revert: "invalid",
-                          appendTo: 'body',
-                          helper: "clone",
-                          start: DnD.dragStart
-                        });
-  },
+  //   $elements.draggable({ revert: "invalid",
+  //                         appendTo: 'body',
+  //                         helper: "clone",
+  //                         start: DnD.dragStart
+  //                       });
+  // },
 
-  bindDroppable: function() {
-        DnD.$saveBar.droppable({ accept: '.resource',
-                               hoverClas: 'drop_hover',
-                               drop: SavedResourceController.saveResource
-                              });
-  },
+  // bindDroppable: function() {
+  //       DnD.$saveBar.droppable({ accept: '.resource',
+  //                              hoverClas: 'drop_hover',
+  //                              drop: SavedResourceController.saveResource
+  //                             });
+  // },
 
-  dragStart: function( event, ui ) {
-    console.log("dragStart");
-    DnD.$saveBar.animate({ bottom: '+=150' }, 250);
-    $(ui.helper).on('mouseup', DnD.dragStop)
-  },
+  // dragStart: function( event, ui ) {
+  //   console.log("dragStart");
+  //   DnD.$saveBar.animate({ bottom: '+=150' }, 250);
+  //   $(ui.helper).on('mouseup', DnD.dragStop)
+  // },
 
-  dragStop: function() {
-    console.log("DragStop")
-      DnD.$saveBar.animate({ bottom: '-=150' }, 250);
-      $(this).off('mouseup');
-  }
+  // dragStop: function() {
+  //   console.log("DragStop")
+  //     DnD.$saveBar.animate({ bottom: '-=150' }, 250);
+  //     $(this).off('mouseup');
+  // }
 
 }
 
@@ -86,7 +85,7 @@ var Masonry = {
     });
 
     Masonry.mason = Masonry.$container.data('masonry');
-    DnD.initialize();
+    // DnD.initialize();
   }
 }
 
@@ -127,7 +126,7 @@ var StoneViews = {
     Masonry.$container.prepend( fragment );
     Masonry.mason.prepended( elems );
 
-    DnD.bindDraggable($(elems));
+    // DnD.bindDraggable($(elems));
   },
 
   renderResources: function(event,resources){
@@ -135,6 +134,7 @@ var StoneViews = {
     StoneViews.$container.append(resources);
 
     Masonry.initialize();
+    SavedResourceController.initialize();
   },
 
   renderDiscussion: function(event,discussion){

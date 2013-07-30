@@ -22,6 +22,6 @@ $(document).ready(function(){
   ResourceViews.initialize();
   DiscussionController.initialize();
   DiscussionViews.initialize();
-  
   SavedResourceController.initialize();
+
 });

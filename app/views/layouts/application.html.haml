@@ -12,7 +12,8 @@
         = yield(:head)
   .avgrund-cover
   %body{:class => "avgrund-contents"}
-    = render 'layouts/navigation'
+    - if user_signed_in?
+      = render 'layouts/navigation'
     .right-tabs-fixed
       = yield :right_tabs
     #main{ :role => "main" }

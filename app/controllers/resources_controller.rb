@@ -20,4 +20,11 @@ include ResourceHelper
     resources_stone = ResourcesStone.create(resource_id: resource.id, stone_id: params[:stone_id])
     render :json => render_to_string(partial: 'resources/resources_stone', locals: { resources_stone: resources_stone}).to_json
   end
+
+  def filter
+    @resources_stones = Stone.find(params[:stone_id]).resources_stones.select {|resources_stone| resources_stone.resource.difficulty == params[:filter]}
+
+    render :json => render_to_string(partial: 'resources_stone', collection: @resources_stones, as: :resources_stone).to_json
+
+  end
 end

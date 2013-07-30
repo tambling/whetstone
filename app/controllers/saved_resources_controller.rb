@@ -7,7 +7,7 @@ class SavedResourcesController < ApplicationController
       goal = current_user.goals.find_or_create_by_stone_id(resources_stone.stone.id)
 
 
-      saved_resource = SavedResource.new(stones_user_id: goal.id, resources_stone_id: resources_stone.id)
+      saved_resource = SavedResource.new(goal_id: goal.id, resources_stone_id: resources_stone.id)
 
       if saved_resource.valid?
         saved_resource.save

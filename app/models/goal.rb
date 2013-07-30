@@ -1,4 +1,4 @@
-class StonesUser < ActiveRecord::Base
+class Goal < ActiveRecord::Base
 	attr_accessible :stone_id, :user_id, :queue
   belongs_to :user
   belongs_to :stone

@@ -13,12 +13,12 @@ feature "Adding a goal" do
 
   scenario "user sees a button to add a goal" do
     visit stone_path(stone)
-    expect(page).to have_button("Add Goal")
+    expect(page).to have_button("add_goal")
   end
 
   scenario "user can add a goal to a stone.", js: true do
     visit stone_path(stone)
-    StonesUser.destroy_all
+    Goal.destroy_all
     click_button 'add_goal'
     sleep 2
     user.goals.count.should eq(1)

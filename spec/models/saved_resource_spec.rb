@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe SavedResource do
-  
+
   context "Validations" do
-    it { should have_many(:stones_users) }  
+    it { should belong_to(:stones_user) }
   end
 
 end

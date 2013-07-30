@@ -15,7 +15,7 @@ FactoryGirl.define do
     queue ""
   end
 
-  factory :saved_resources do
+  factory :saved_resource do
     stones_user
     resources_stone
   end

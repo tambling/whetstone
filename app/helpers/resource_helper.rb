@@ -1,11 +1,11 @@
-module ResourceHelper
-# module ImageHelper
-  def top_image_url(url)
+# module ResourceHelper
+module ImageHelper
+  def top_image(url)
 		root_url           = "#{URI(url).scheme}://#{URI(url).host}"
 		
-		p og_image         = check_og_image(root_url)
-    p apple_image      = check_apple_image(url)
-    p mechanize_search = mechanize_search(url)
+		og_image         = check_og_image(root_url)
+    apple_image      = check_apple_image(url)
+    mechanize_search = mechanize_search(url)
 
     if og_image
     	return og_image
@@ -36,13 +36,13 @@ module ResourceHelper
   end
 
 	def mechanize_search(url)
-		p sanintized_url = url[/\.[a-zA-Z]+\./].gsub(/\./, '')
+		host = URI(url).host
+		sanintized_url = host[/\.[a-zA-Z]+\./].gsub(/\./, '')
 		agent = Mechanize.new
 		agent.get("http://www.google.com/imghp?hl=en&tab=wi")
 		form = agent.page.form
-		form.q = URI(url).host
+		form.q = sanintized_url
 		form.submit
-		# clipart = agent.page.link_with(text: "Clip art")
 		images = agent.page.links_with(href: /imgres/)
 		agent.click(images[0])
 		agent.page.link_with(:text => "See full size image").uri.to_s

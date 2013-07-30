@@ -15,7 +15,7 @@ include ImageHelper
 
   def create
     info = params[:resource]
-    info_with_photos = info.merge(:photo => top_image(info["title"]))
+    info_with_photos = info.merge(:photo => top_image(info["url"]))
     resource = Resource.create(info_with_photos)
     resources_stone = ResourcesStone.create(resource_id: resource.id, stone_id: params[:stone_id])
     render :json => render_to_string(partial: 'resources/resources_stone', locals: { resources_stone: resources_stone}).to_json

@@ -1,12 +1,12 @@
 #discussion
-  %h2= @discussion.title
-  %h3= @discussion.content
+  %h2= "<i class='icon-comment'></i> #{@discussion.title}".html_safe
+  %p= @discussion.content
   .comments
     - if user_signed_in?
       .form
-        = simple_form_for [@discussion, @comment], remote: true, html: { class: "create_comment" } do |f|
-          = f.label :content
-          = f.input_field :content, cols: 60, rows: 5
+        = form_for [@discussion, @comment], remote: true, html: { class: "create_comment form-vertical" } do |f|
+          .fields
+            = f.text_field :content
           .submit_button
             = f.submit "Add Comment", class: "btn btn-primary"
     = render @discussion.comments

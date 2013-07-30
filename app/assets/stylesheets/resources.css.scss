@@ -25,12 +25,16 @@
   .header {
     height: 80px;
     width: 100%;
+    float: left;
     clear:both;
 
     .title {
       display: inline-block;
-      float:left;
       height: 80px;
+
+      h2 {
+        float: left;
+      }
     }
 
     .add_resource {

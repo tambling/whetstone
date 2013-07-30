@@ -55,14 +55,18 @@ small {
 
 .form {
   position: relative;
+  width: 400px;
+  margin-top: 20px;
 
-  input, textarea {
-    outline: none;
+  .fields input, textarea {
     background: none;
+    outline: none;
+    margin: 10px 0 10px 0;
+    width: 400px;
   }
 
-  .submit_button {
-    text-align: center;
+  .submit_button input {
+    margin: 10px 0 10px 0;
   }
-  
+
 }

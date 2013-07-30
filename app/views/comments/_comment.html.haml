@@ -1,7 +1,10 @@
 .comment
-  %p= comment.content
-  = link_to "Upvote", comment_votes_path(:comment_id => comment.id, :value => 1), method: 'post', remote: true, :class => 'vote'
-  = link_to "Downote", comment_votes_path(:comment_id => comment.id, :value => -1), method: 'post', remote: true, :class => 'vote'
-  %p.vote-count= "#{comment.vote_tally} Votes"
-  .comments
-    = render comment.comments
+  .column1
+    = link_to "<i class='icon-thumbs-up'></i>".html_safe, comment_votes_path(:comment_id => comment.id, :value => 1), method: 'post', remote: true, :class => 'vote'
+    %h3.vote-count= "#{comment.vote_tally}"
+    = link_to "<i class='icon-thumbs-down'></i>".html_safe, comment_votes_path(:comment_id => comment.id, :value => -1), method: 'post', remote: true, :class => 'vote'
+  .column2
+    .title
+      %h4= comment.content
+    .comments
+      = render comment.comments

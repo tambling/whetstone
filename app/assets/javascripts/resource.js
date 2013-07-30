@@ -20,6 +20,8 @@ var ResourceController = {
 
     $(document).on('ajax:success','form.create_resource', ResourceViews.renderResource);
 
+    // $('body').on('ajax:success','.filters a', ResourceViews.filterResources);
+
     $('body').on('click','a.filter', ResourceViews.applyResourceFilter);
 
     $('body').on('click','a.sort', ResourceViews.applyResourceSort);
@@ -31,6 +33,10 @@ var ResourceController = {
     $('body').on('mouseleave', '.resource', function(){
       $(this).find('.toolbar_options').fadeOut('fast');
     });
+
+    // $('body').on('click','.active', function(event){
+    //   event.preventDefault();
+    // });
   }
 }
 
@@ -75,6 +81,10 @@ var ResourceViews = {
     ResourceViews.$container.append(resources);
 
     Masonry.initialize();
+  },
+
+  filterResources: function(event, resources){
+    console.log(resources);
   },
 
   applyResourceFilter: function(event, data){

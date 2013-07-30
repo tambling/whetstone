@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :saved_resource do
-    user_id 1
-    resource_id 1
+    stones_user_id 1
+    resources_stone_id 1
   end
 end

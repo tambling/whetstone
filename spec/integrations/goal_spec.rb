@@ -24,3 +24,13 @@ feature "Adding a goal" do
     user.goals.count.should eq(1)
   end
 end
+
+feature "Saving resources for a goal" do
+  let(:stone) {FactoryGirl.create(:stone)}
+  let(:user) {FactoryGirl.create(:user)}
+  let(:goal) {StonesUser.create(stone_id: stone.id, user_id: user.id, queue: "1")}
+  scenario "queued items returns items in queue" do
+    SavedResource.stub(:find).with(1).and_return("Hi")
+    goal.queued_items.should eq (["Hi"])
+  end
+end

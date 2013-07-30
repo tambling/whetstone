@@ -45,13 +45,15 @@ feature "Adding a stone after searching for it" do
     fill_in "query", with: 'Knife Throwing'
     page.execute_script("$('#query').submit();")
     page.should have_content("No Results Found :-(")
+    click_link "Knife Throwing"
     find_field('Title').value.should eq 'Knife Throwing'
   end
 
   scenario "when user is not signed in", js: true do
     visit root_path
     fill_in "query", with: "Knife Throwing"
-    page.execute_script("$('#submit').click();")
+    page.execute_script("$('#query').submit();")
+    click_link 'Knife Throwing'
     fill_in "Email", with: user.email
     fill_in "Password", with: "password"
     click_button "Sign in"
@@ -61,7 +63,8 @@ feature "Adding a stone after searching for it" do
   scenario "when user doesn't exist", js: true do
     visit root_path
     fill_in "query", with: "Knife Throwing"
-    page.execute_script("$('#submit').click();")
+    page.execute_script("$('#query').submit();")
+    click_link 'Knife Throwing'
     click_link "Sign up"
     fill_in "Name", with: "Jimothy"
     fill_in "Email", with: "jim@bim.net"

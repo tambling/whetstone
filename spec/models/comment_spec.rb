@@ -8,7 +8,8 @@ describe Comment do
     it { should validate_presence_of(:content) }
     it { should belong_to(:commentable) }
     it { should belong_to(:user) }
-    it { should have_many(:comments) }    
+    it { should have_many(:comments) }
+    it { should have_many(:votes) }
   end
 
   context "Methods" do

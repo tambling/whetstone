@@ -4,14 +4,30 @@ DIFFICULTY = ["Beginner", "Intermediate", "Advanced", "Expert"]
 FactoryGirl.define do
   factory :user do |f|
     f.sequence(:name) { |n| "User#{n}" }
-    f.sequence(:email) { |n| "User#{n}@example.com" }
+    f.sequence(:email) { |n| "User#{n}@whetstone.com" }
     f.password "password"
     f.password_confirmation { |u| u.password }
+  end
+
+  factory :stones_user do
+    user
+    stone
+    queue ""
+  end
+
+  factory :saved_resources do
+    stones_user
+    resources_stone
   end
 
   factory :stone do
   	title { SUBJECTS.sample }
   	description {"Learn #{title} in 6 weeks"}
+  end
+
+  factory :resources_stone do
+    stone
+    resource
   end
 
   factory :resource do
@@ -21,6 +37,7 @@ FactoryGirl.define do
     recommended_time 3600 #seconds
     difficulty { DIFFICULTY.sample }
   end
+
 
   factory :discussion do
     title { Faker::Company.catch_phrase }

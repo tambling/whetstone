@@ -17,7 +17,7 @@
 
     scenario "User Visits Resources Page" do
       click_link("Resources")
-      expect(page).to have_content(resource.title.upcase)
+      expect(page).to have_content(resource.title)
     end
 
     scenario "User Visits Resources Page And Can Add a Resource" do
@@ -29,8 +29,9 @@
       fill_in('Recommended time', :with => 600)
 
       page.find(:css,'.submit_button input').click
-
-      expect(page).to have_content("Poodr".upcase)
+      visit stone_path(stone)
+      click_link("Resources")
+      expect(page).to have_content("Poodr")
     end
 
   end

@@ -8,14 +8,10 @@ class StonesUser < ActiveRecord::Base
 
   def queued_items
     parsed_queue = self.queue.split(', ').map{|num| num.to_i}.reject{|i| i==0}
-    p self.queue
     resources = []
     parsed_queue.each do |i|
       resources << SavedResource.find(i)
     end
-    p "="*100
-    p resources
     resources
-
   end
 end

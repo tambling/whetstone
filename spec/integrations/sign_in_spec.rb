@@ -8,13 +8,11 @@ require 'spec_helper'
       fill_in "Password", with: "password"
       click_button "Sign in"
       current_path.should eq(root_path)
-      page.should have_content "Signed in successfully."
     end
 
     scenario 'User gets email or password wrong' do
       click_button "Sign in"
       current_path.should eq(new_user_session_path)
-      page.should have_content "Invalid email or password."
     end
 
 

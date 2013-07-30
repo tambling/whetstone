@@ -15,7 +15,7 @@ Whetstone::Application.routes.draw do
   end
 
   resources :resources
-  
+
   resources :users, only: [:show]
 
   resources :stones do
@@ -31,7 +31,7 @@ Whetstone::Application.routes.draw do
   end
 
   resources :saved_resources
-  
+
   resources :resources_stones do
     resources :saved_resources
   end
@@ -44,6 +44,8 @@ Whetstone::Application.routes.draw do
   get "/messages" => "messages#index", as: 'messages'
   get "/messages/:id" => "messages#show", as: "message"
   post "/messages" => "messages#create", as: "new_message"
+
+  post '/users_search' => "users#search"
 
 end
 

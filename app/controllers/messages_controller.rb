@@ -1,6 +1,10 @@
 class MessagesController < ApplicationController
   def index
-    @partners = current_user.message_partners
+    if  current_user
+      @partners = current_user.message_partners
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def show

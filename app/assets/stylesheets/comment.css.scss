@@ -1,0 +1,19 @@
+.comment {
+  position: relative;
+  margin: 20px 0 20px 0;
+  min-width: 500px;
+  width: 100%;
+
+  .column1{
+    display: inline-block;
+    vertical-align: top; 
+    width: 3%;
+  }
+
+  .column2 {
+    display: inline-block;
+    vertical-align: top;
+    width: 95%;
+  }
+}
+

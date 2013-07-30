@@ -1,18 +1,18 @@
-# module ResourceHelper
 module ImageHelper
+  require 'open-uri'
+
   def top_image(url)
-		root_url           = "#{URI(url).scheme}://#{URI(url).host}"
-		
-		og_image         = check_og_image(root_url)
+		og_image         = check_og_image(url)
     apple_image      = check_apple_image(url)
     mechanize_search = mechanize_search(url)
-
     if og_image
     	return og_image
     elsif apple_image
     	return apple_image
+    elsif mechanize_search
+      mechanize_search  
     else
-    	"#{File.expand_path(Rails.root.join('public', 'image-dne.jpg'))}"
+      "../image-dne.jpg"
     end
   end
 
@@ -36,15 +36,32 @@ module ImageHelper
   end
 
 	def mechanize_search(url)
-		host = URI(url).host
-		sanintized_url = host[/\.[a-zA-Z]+\./].gsub(/\./, '')
-		agent = Mechanize.new
-		agent.get("http://www.google.com/imghp?hl=en&tab=wi")
-		form = agent.page.form
-		form.q = sanintized_url
-		form.submit
-		images = agent.page.links_with(href: /imgres/)
-		agent.click(images[0])
-		agent.page.link_with(:text => "See full size image").uri.to_s
+		begin
+      sanintized_url = sanitize_url URI(url).host
+  		agent = Mechanize.new
+  		agent.get("http://www.google.com/imghp?hl=en&tab=wi")
+  		form = agent.page.form
+  		form.q = sanintized_url
+  		form.submit
+  		images = agent.page.links_with(href: /imgres/)
+  		agent.click(images[0])
+  		agent.page.link_with(:text => "See full size image").uri.to_s
+    rescue
+      nil
+    end
+  end
+
+  def sanitize_url(url)
+    if url =~ /w{3}/
+      sterilize url.split(/\./)[1]
+    elsif url.split(/\./)[0] =~ /[^w{3}]/
+      sterilize url.split(/\./)[0]
+    else
+      sterilize url
+    end
+  end
+
+  def sterilize(partial_url)
+    partial_url =~ /\W/ ? partial_url.gsub(/\W/, ' ').split(' ').join(' ') : partial_url
   end
 end

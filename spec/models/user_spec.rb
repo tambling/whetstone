@@ -8,12 +8,11 @@ describe User do
 	let!(:saved_resource) { FactoryGirl.create(:saved_resource) }
 	let!(:goal) { FactoryGirl.create(:stones_user) }
 
-
-	
 	context "Validations" do
 		it { should validate_presence_of(:name) }
 		it { should validate_presence_of(:email) } 
 		it { should validate_presence_of(:password) } 
+		it { should have_many(:stones) }
 	end
 
 	context "Methods" do

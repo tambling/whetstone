@@ -1,12 +1,12 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
 SUBJECTS= ["French", "Cooking", "Ruby", "Fencing", "Guitar", "Mandarin Chinese", "Gardening"]
 DIFFICULTY = ["Beginner", "Intermediate", "Advanced", "Expert"]
 
 FactoryGirl.define do
-  factory :user do
-  	name { "John Doe" }
-  	email { "user@example.com" }
-  	password "password"
+  factory :user do |f|
+    f.sequence(:name) { |n| "User#{n}" }
+    f.sequence(:email) { |n| "User#{n}@example.com" }
+    f.password "password"
+    f.password_confirmation { |u| u.password }
   end
 
   factory :stone do
@@ -29,6 +29,10 @@ FactoryGirl.define do
 
   factory :comment do
     content { Faker::Lorem.sentence }
+  end
+
+  factory :vote do
+    value 1
   end
 
 end

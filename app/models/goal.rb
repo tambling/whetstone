@@ -7,6 +7,7 @@ class Goal < ActiveRecord::Base
   has_many :resources_stones, through: :saved_resources
   def queued_items
     parsed_queue=self.queue.split(', ').map{|num| num.to_i}.reject{|i| i==0}
+    p parsed_queue
     resources = []
     parsed_queue.each do |i|
       resources << SavedResource.find(i).resources_stone

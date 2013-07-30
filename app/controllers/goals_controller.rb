@@ -1,4 +1,4 @@
-class StonesUsersController < ApplicationController
+class GoalsController < ApplicationController
 
   def create
     current_user.stones << Stone.find(params[:stone_id])
@@ -10,7 +10,7 @@ class StonesUsersController < ApplicationController
   end
 
   def update_queue
-    @goal = StonesUser.where(user_id: current_user.id, stone_id: params[:stone_id]).first
+    @goal = Goal.where(user_id: current_user.id, stone_id: params[:stone_id]).first
     @goal.update_attribute(:queue,  params[:queue].join(", "))
     render :nothing => true
   end

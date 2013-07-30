@@ -31,6 +31,12 @@ ActiveRecord::Schema.define(:version => 20130729222439) do
     t.integer  "stone_id"
   end
 
+  create_table "goals", :force => true do |t|
+    t.integer "stone_id"
+    t.integer "user_id"
+    t.string  "queue",    :default => ""
+  end
+
   create_table "messages", :force => true do |t|
     t.string   "body"
     t.integer  "from_id"
@@ -66,7 +72,7 @@ ActiveRecord::Schema.define(:version => 20130729222439) do
   add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "saved_resources", :force => true do |t|
-    t.integer  "stones_user_id"
+    t.integer  "goal_id"
     t.integer  "resources_stone_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
@@ -78,18 +84,12 @@ ActiveRecord::Schema.define(:version => 20130729222439) do
     t.text   "description"
   end
 
-  create_table "stones_users", :force => true do |t|
-    t.integer "stone_id"
-    t.integer "user_id"
-    t.string  "queue",    :default => ""
-  end
-
   create_table "timelines", :force => true do |t|
     t.datetime "start_date"
     t.datetime "end_date"
-    t.integer  "stones_user_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.integer  "goal_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

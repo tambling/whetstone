@@ -53,16 +53,13 @@ small {
   -webkit-text-size-adjust: none;
 }
 
-input, textarea {
-  outline: none;
-  background: none;
-  width: 300px;
-}
-
 .form {
   position: relative;
-  margin: 0 auto;
-  width: 400px;
+
+  input, textarea {
+    outline: none;
+    background: none;
+  }
 
   .submit_button {
     text-align: center;

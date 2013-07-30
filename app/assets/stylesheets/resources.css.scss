@@ -67,15 +67,16 @@
   }
 
   .resource {
+    position: relative;
     width: 250px;
     height: 250px;
     margin: 10px;
     border-radius: 9px;
     display: inline-block;
 
-    h6 {
+    p {
       position: absolute;
-      bottom: -40px;
+      bottom: 0px;
     }
 
     ul.toolbar_options {

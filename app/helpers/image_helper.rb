@@ -1,3 +1,4 @@
+# module ResourceHelper
 module ImageHelper
   def top_image(url)
 		root_url           = "#{URI(url).scheme}://#{URI(url).host}"

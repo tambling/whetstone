@@ -66,20 +66,24 @@ $sidebar-highlight-color: #22262E;
     height: 60px;
     line-height: 60px;
 
+    text-align: center;
+
     .logo {
       float: left;
       display: inline-block;
       height: 60px;
-      font-size: 1.7em;
-      margin-left: 25px;
+      font-size: 1em;
+      vertical-align: middle;
+      margin-left: 10px;
     }
 
     .gravatar {
+        float:left;
         display: inline-block;
+        vertical-align: middle;
         height: 60px;
-        float: right;
         display: inline-block;
-        img { border-radius: 30px;}
+        img { border-radius: 5px;}
     }
   }
 
@@ -98,6 +102,17 @@ $sidebar-highlight-color: #22262E;
       border-radius: 15px; 
     }
   }
+
+  .goals {
+
+    li {
+      margin: 5px 0 5px 0;
+    }
+
+    h2 {
+      color: silver;
+    }
+  }
 }
 
 .top_nav {
@@ -112,7 +127,7 @@ $sidebar-highlight-color: #22262E;
 
     li {
       display: inline-block;
-      margin-right: 25px;
+      margin-left: 25px;
     }
 
   }

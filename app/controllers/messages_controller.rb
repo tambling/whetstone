@@ -10,8 +10,8 @@ class MessagesController < ApplicationController
   end
 
   def create
-    p params
     message = Message.create(params[:message])
+    flash[:success] = "Message Sent!"
     redirect_to message_path(message.to_id)
   end
 end

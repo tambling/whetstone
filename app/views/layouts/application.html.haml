@@ -11,8 +11,9 @@
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" type="text/css" />
         = yield(:head)
   .avgrund-cover
-  %body{:class => "#{controller_name} #{action_name} avgrund-contents"}
-    = render 'layouts/navigation'
+  %body{:class => "avgrund-contents"}
+    - if user_signed_in?
+      = render 'layouts/navigation'
     .right-tabs-fixed
       = yield :right_tabs
     #main{ :role => "main" }

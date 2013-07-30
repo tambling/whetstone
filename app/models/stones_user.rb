@@ -5,12 +5,16 @@ class StonesUser < ActiveRecord::Base
 
   has_many :saved_resources
   has_many :resources_stones, through: :saved_resources
+
   def queued_items
-    parsed_queue=self.queue.split(', ').map{|num| num.to_i}.reject{|i| i==0}
+    parsed_queue = self.queue.split(', ').map{|num| num.to_i}.reject{|i| i==0}
+    p self.queue
     resources = []
     parsed_queue.each do |i|
-      resources << SavedResource.find(i).resources_stone
+      resources << SavedResource.find(i)
     end
+    p "="*100
+    p resources
     resources
 
   end

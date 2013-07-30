@@ -4,5 +4,5 @@
   - if goal.nil?
     %button#add_goal.btn.btn-primary Add To Your Goals
   - else
-    %ul.resources.sortable
-      = render partial: 'resources/resources_stone', collection: goal.queued_items, as: :resources_stone
+    .resources.sortable
+      = render partial: 'saved_resources/resources_stone', collection: goal.queued_items, as: :saved_resource

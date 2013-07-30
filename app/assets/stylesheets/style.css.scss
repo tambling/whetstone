@@ -16,6 +16,10 @@ body {
   margin: 0 auto;
 }
 
+.content {
+  margin-top: 20px;
+}
+
 li {
   list-style: none;
 }
@@ -59,4 +63,9 @@ input, textarea {
   position: relative;
   margin: 0 auto;
   width: 400px;
+
+  .submit_button {
+    text-align: center;
+  }
+  
 }

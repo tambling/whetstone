@@ -1,3 +1,13 @@
-- @partners.each do |partner|
-  %li= link_to partner.name, message_path(partner)
+#user_search
+  %h2 Who would you like to message?
+  = form_for :user, html: {id: 'user'} do |f|
+    = f.text_field  :username
+    = f.submit "Search"
+  #results
+
+
+#current
+  %h2 Current Messages
+  - @partners.each do |partner|
+    %li= link_to partner.name, message_path(partner)
 

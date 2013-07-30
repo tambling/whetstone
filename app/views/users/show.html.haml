@@ -1,6 +1,7 @@
 %h1= @user.name
 - if @user == current_user
   %p This is you!
+= link_to "Message #{@user.name}!", message_path(@user)
 %h3= "#{@user.name} wants to learn:"
 %ul
   - @user.stones.each do |stone|

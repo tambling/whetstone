@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
     all.sort{ |message1, message2| message1.created_at <=> message2.created_at }
   end
 
+  def create_goal_for(stone)
+    self.goals.find_or_create_by_stone_id(stone.id)
+  end
+
   def messages
     sent_messages+received_messages
   end

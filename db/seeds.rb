@@ -32,6 +32,7 @@ user = User.create(name: "Bryce Archer", email: "bryce.charles.archer@gmail.com"
 user = User.create(name: "Hussain Tambawala", email: "hussain283@gmail.com", password: "password")
 
 stone = FactoryGirl.create(:stone)
+
 user.stones << stone
 
 5.times {

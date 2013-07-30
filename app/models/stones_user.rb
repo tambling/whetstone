@@ -11,8 +11,10 @@ class StonesUser < ActiveRecord::Base
     p self.queue
     resources = []
     parsed_queue.each do |i|
-      resources << SavedResource.find(i).resources_stone
+      resources << SavedResource.find(i)
     end
+    p "="*100
+    p resources
     resources
 
   end

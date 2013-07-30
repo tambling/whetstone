@@ -4,7 +4,7 @@ var SavedResourceController = {
   },
 
   flashMessage: function(event, message){
-    console.log(message);
+    alertify.success("Saved To Goals ...");
   }
 }
 

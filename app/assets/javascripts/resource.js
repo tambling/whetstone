@@ -79,6 +79,7 @@ var ResourceViews = {
   renderResources: function(event,resources){
     ResourceViews.$container.empty()
     ResourceViews.$container.append(resources);
+    alertify.success("Listing All Resources ...");
 
     Masonry.initialize();
   },

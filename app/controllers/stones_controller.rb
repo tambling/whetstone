@@ -16,6 +16,7 @@ class StonesController < ApplicationController
 
   def create
     @stone = Stone.create(params[:stone])
+    flash[:success] = "Created a new Stone!"
     redirect_to stone_path(@stone)
   end
 

@@ -15,6 +15,7 @@ var DiscussionViews = {
 
    renderDiscussion: function(event,discussion){
     DiscussionViews.$container.find('.discussions').prepend(discussion);
+    alertify.success("Created New Discussion");
   },
 
   renderDiscussions: function(event, discussions){
@@ -29,7 +30,7 @@ var DiscussionViews = {
   },
 
   renderComment: function(event, comment) {
-    console.log("Rendering Comment");
     $(this).after(comment);
+    alertify.log("Comment Added");
   }
 }

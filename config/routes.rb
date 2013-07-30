@@ -15,6 +15,7 @@ Whetstone::Application.routes.draw do
   end
 
   resources :resources
+  
   resources :users, only: [:show]
 
   resources :stones do
@@ -30,6 +31,10 @@ Whetstone::Application.routes.draw do
   end
 
   resources :saved_resources
+  
+  resources :resources_stones do
+    resources :saved_resources
+  end
 
   get "/stones/:id/overview" => "stones#overview", as: "stone_overview"
 

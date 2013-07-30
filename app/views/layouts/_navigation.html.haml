@@ -11,7 +11,7 @@
       = text_field_tag :query, nil, placeholder: "&#xf002; Type Something...".html_safe
   %ul.goals
     - if user_signed_in?
-      %li= link_to 'Messages', messages_path
+      %li= link_to '<i class="icon-comment"></i> Messages'.html_safe, messages_path
       - if current_user.stones
         %h3 Here Are Your Stones
         - current_user.stones.each do |stone|

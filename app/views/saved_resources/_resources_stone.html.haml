@@ -1,0 +1,14 @@
+%li.resource{ class: "#{resources_stone.resource.difficulty} All ui-state-default", id:"#{resources_stone.id}", data: { id: "#{resources_stone.id}", save_url: "#{saved_resources_path}" } }
+  .updown
+    = link_to "&#xf077;".html_safe, resources_stone_votes_path(:resources_stone_id => resources_stone.id, :value => 1), method: 'post', remote: true, :class => 'vote'
+    %p.vote-count= "#{resources_stone.vote_tally}"
+    = link_to "&#xf078;".html_safe, resources_stone_votes_path(:resources_stone_id => resources_stone.id, :value => -1), method: 'post', remote: true, :class => 'vote'
+  .text
+    %h4= resources_stone.resource.title
+    %p.description= resources_stone.resource.description
+    .right-text
+      %p.time= resources_stone.resource.recommended_time
+      %p{ class: "#{resources_stone.resource.difficulty.downcase}" }= resources_stone.resource.difficulty
+      %a.icon-facebook-sign.fb-share{href:"https://www.facebook.com/sharer/sharer.php?u=#{resources_stone.resource.url}"}
+  .resource-photo-overlay
+  %img.resource-photo{:src => resources_stone.resource.photo }

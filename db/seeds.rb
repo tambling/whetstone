@@ -24,6 +24,9 @@ Stone.destroy_all
 Resource.destroy_all
 Discussion.destroy_all
 Comment.destroy_all
+SavedResource.destroy_all
+ResourcesStone.destroy_all
+StonesUser.destroy_all
 
 user = User.create(name: "Bryce Archer", email: "bryce.charles.archer@gmail.com", password: "ihearthussain")
 user = User.create(name: "Hussain Tambawala", email: "hussain283@gmail.com", password: "password")

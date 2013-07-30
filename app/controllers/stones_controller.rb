@@ -22,6 +22,8 @@ class StonesController < ApplicationController
   def overview
     @stone = Stone.find(params[:id])
     @goal = current_user.goals.where(stone_id: @stone.id).first if user_signed_in?
+    p @stone
+    p @goal
     render :json => render_to_string(partial: 'stones/overview', locals: { stone: @stone, goal: @goal }, layout: false).to_json
   end
 

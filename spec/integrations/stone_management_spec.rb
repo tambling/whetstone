@@ -23,7 +23,7 @@ feature "Stone Management" do
   scenario "User searches for a stone and finds it.", js: true do
     visit root_path
     fill_in "query", with: stone.title
-    page.execute_script("$('#submit').click();")
+    page.execute_script("$('#query').submit()")
     page.should have_content stone.title
   end
 
@@ -43,15 +43,16 @@ feature "Adding a stone after searching for it" do
     fill_in "Password", with: "password"
     click_button "Sign in"
     fill_in "query", with: 'Knife Throwing'
-    page.execute_script("$('#submit').click();")
-    page.should have_content("Sorry, we weren't able to find anything about that.")
-    find_field('Title').value.should eq 'Knife Throwing'
+    page.execute_script("$('#query').submit()")
+    page.should have_content("No Results Found :-(")
+    page.should have_link("Knife Throwing")
   end
 
   scenario "when user is not signed in", js: true do
     visit root_path
     fill_in "query", with: "Knife Throwing"
-    page.execute_script("$('#submit').click();")
+    page.execute_script("$('#query').submit()")
+    click_link "Knife Throwing"
     current_path.should eq(new_user_session_path)
     fill_in "Email", with: user.email
     fill_in "Password", with: "password"
@@ -62,7 +63,8 @@ feature "Adding a stone after searching for it" do
   scenario "when user doesn't exist", js: true do
     visit root_path
     fill_in "query", with: "Knife Throwing"
-    page.execute_script("$('#submit').click();")
+    page.execute_script("$('#query').submit()")
+    click_link "Knife Throwing"
     current_path.should eq(new_user_session_path)
     click_link "Sign up"
     fill_in "Name", with: "Jimothy"

@@ -20,8 +20,6 @@ var ResourceController = {
 
     $(document).on('ajax:success','form.create_resource', ResourceViews.renderResource);
 
-    // $('body').on('ajax:success','.filters a', ResourceViews.filterResources);
-
     $('body').on('click','a.filter', ResourceViews.applyResourceFilter);
 
     $('body').on('click','a.sort', ResourceViews.applyResourceSort);
@@ -34,9 +32,6 @@ var ResourceController = {
       $(this).find('.toolbar_options').fadeOut('fast');
     });
 
-    // $('body').on('click','.active', function(event){
-    //   event.preventDefault();
-    // });
   }
 }
 
@@ -61,27 +56,29 @@ var ResourceViews = {
   },
 
   renderResource: function(event, data){
-    console.log('rendering resource');
+    alertify.success("Added New Resource!")
 
     ResourceViews.closeDialog();
     
-    var fragment = document.createDocumentFragment();
-    var elems = [];
-    $.each($(data), function(index,elem) {
-      fragment.appendChild(elem);
-      elems.push(elem);
-    });
+    ResourceViews.$container.prepend(data)
 
-    Masonry.$container.prepend( fragment );
-    Masonry.mason.prepended( elems );
+    // var fragment = document.createDocumentFragment();
+    // var elems = [];
+    // $.each($(data), function(index,elem) {
+    //   fragment.appendChild(elem);
+    //   elems.push(elem);
+    // });
+
+    // Masonry.$container.prepend( fragment );
+    // Masonry.mason.prepended( elems );
   },
 
   renderResources: function(event,resources){
     ResourceViews.$container.empty()
     ResourceViews.$container.append(resources);
-    alertify.success("Listing All Resources ...");
+    alertify.success("Listing Resources ...");
 
-    Masonry.initialize();
+    // Masonry.initialize();
   },
 
   filterResources: function(event, resources){
@@ -91,8 +88,8 @@ var ResourceViews = {
   applyResourceFilter: function(event, data){
     event.preventDefault();
     var filterClass = $(this).text();
-    ResourceViews.$container.find('.resource').hide()
-    ResourceViews.$container.find("div." + filterClass).show()
+    ResourceViews.$container.find('.resource').hide();
+    ResourceViews.$container.find("div." + filterClass).fadeIn('fast')
   },
 
   applyResourceSort: function(event, data){

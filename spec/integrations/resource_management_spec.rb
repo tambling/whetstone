@@ -17,7 +17,7 @@
 
     scenario "User Visits Resources Page" do
       click_link("Resources")
-      expect(page).to have_content(resource.title)
+      expect(page).to have_content(resource.title.upcase)
     end
 
     scenario "User Visits Resources Page And Can Add a Resource" do
@@ -30,7 +30,7 @@
 
       page.find(:css,'.submit_button input').click
 
-      expect(page).to have_content("Poodr")
+      expect(page).to have_content("Poodr".upcase)
     end
 
   end

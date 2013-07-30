@@ -31,8 +31,4 @@ FactoryGirl.define do
     content { Faker::Lorem.sentence }
   end
 
-  factory :vote do
-    value [1, -1].sample
-  end
-
 end

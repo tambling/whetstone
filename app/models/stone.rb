@@ -2,7 +2,7 @@ class Stone < ActiveRecord::Base
   attr_accessible :title, :description
 
 	validates :title, uniqueness: true
-	validates :title, :description, presence: true
+	validates :title, presence: true
 
   has_many :stones_users
 	has_many :users, through: :stones_users

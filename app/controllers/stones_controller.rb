@@ -10,7 +10,7 @@ class StonesController < ApplicationController
 
   def new
     authenticate_user!
-    @stone = Stone.new(title: session[:query])
+    @stone = Stone.new(title: flash[:query])
     session.delete(:title)
   end
 
@@ -30,7 +30,7 @@ class StonesController < ApplicationController
     @stones = Stone.basic_search(params[:query])
     search_results = {}
     search_results[:query] = params[:query]
-    session[:query] = params[:query]
+    flash[:query] = params[:query]
     
     if @stones.count.zero?
       search_results[:results_html] = render_to_string(partial: 'home/no_results', locals: {failed_query: params[:query] })

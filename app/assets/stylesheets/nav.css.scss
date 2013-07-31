@@ -7,7 +7,7 @@ $sidebar-highlight-color: #22262E;
   height: 40px;
   right: 0px;
   border-radius: 7px 0px 0px 7px;
-  text-align: right;
+  text-align: left;
   line-height: 40px;
   font-size: 1.25em;
   font-color: #555;
@@ -25,53 +25,54 @@ $sidebar-highlight-color: #22262E;
     background-color: #34495E
   }
 
-
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 
-  &.menu {
-    top: 300px;
-  }
-
   &.get_overview {
     top: 350px;
-  }
-
-  &.get_discussions {
-    top: 400px;
+    width: 170px;
   }
 
   &.get_resources {
+    top: 400px;
+    width: 170px;
+  }
+
+  &.get_discussions {
     top: 450px;
+    width: 170px;
   }
 
 }
 
+.active {
+  background-color: #2980B9 !important;
+}
 
 .left_nav {
-  position: fixed;
-  display: inline;
+  display: none;
+  overflow: auto;
   min-width: 150px;
-  width: 10%;
+  width: 250px;
   height: 100%;
   top:0px;
   left: 0px;
-  background-color: $sidebar-main-color;
   margin: 0;
+  // background-color: $sidebar-main-color;
   text-align: center;
 
   p {
+    position: relative;
     margin: 20px 0 20px 0;
     font-weight: lighter;
     font-size: 2em;
-    position: relative;
   }
 
   .gravatar {
-    margin-top: 10px;
     position: relative;
+    margin-top: 10px;
     clear: both;
     width: 100%;
 
@@ -104,9 +105,13 @@ $sidebar-highlight-color: #22262E;
     text-align: left;
     margin: 0;
     padding: 10;
+    font-size: 1.5em;
   
     h2 {
       color: silver;
+      a {
+        width: 100%;
+      }
     }
   }
 }
@@ -114,7 +119,8 @@ $sidebar-highlight-color: #22262E;
 .top_nav {
   position: relative;
   top: 0px;
-  width: 100%;
+  width: 70%;
+  margin: 0 auto;
   height: 30px;
 
   ul {

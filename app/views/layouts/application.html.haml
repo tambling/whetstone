@@ -12,16 +12,18 @@
         = yield(:head)
   .avgrund-cover
   %body{:class => "avgrund-contents"}
-    - if user_signed_in?
-      = render 'layouts/navigation'
-    .right-tabs-fixed
-      = yield :right_tabs
-    #main{ :role => "main" }
-      .container
-        = render 'layouts/top_navigation'
-        = render 'layouts/messages'
-        .content
-          = yield
-        %footer
+    .wrapper
+      - if user_signed_in?
+        = render 'layouts/navigation'
+      .meny
+        #main{ :role => "main" }
+          .right-tabs-fixed
+            = yield :right_tabs
+          .container
+            = render 'layouts/top_navigation'
+            = render 'layouts/messages'
+            .content
+              = yield
+            %footer
       / ! end of .container
     / ! end of #main

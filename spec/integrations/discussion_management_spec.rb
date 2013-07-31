@@ -14,7 +14,7 @@ feature "Discussions Page Management", js: true do
 
   before(:each) do
     visit stone_path(stone)
-    click_link("Discussions")
+    click_link("Discussion")
   end
 
   scenario "User Visits Discussions Page And Sees Title And Content" do

@@ -7,10 +7,12 @@ Whetstone::Application.routes.draw do
   end
 
   resources :stones do
-    resources :stones_users, as: :goals, only: [:new, :create]
+    resources :stones_users
+    
     collection do
       post 'search'
     end
+    
     post 'update_queue' => 'stones_users#update_queue'
   end
 
@@ -18,16 +20,13 @@ Whetstone::Application.routes.draw do
 
   resources :users, only: [:show]
 
-  resources :stones do
-    resources :discussions
-  end
-
   resources :discussions do
     resources :comments
   end
 
   resources :stones do
     resources :resources
+    resources :discussions
   end
 
   resources :saved_resources

@@ -1,11 +1,20 @@
 #discussion
-  %h2= "<i class='icon-comments'></i> #{stone.title}".html_safe
+  .stoneheader
+    .wrapper
+      .title
+        %i{class: "icon-comments"}
+          = truncate(stone.title, length: 50)
+      .links
+        - if goal.nil?
+          = link_to "Add To Your Goals", stone_stones_users_path(stone), class: "btn btn-primary add_goal", remote: true, method: :post
+    .description
+      = truncate(stone.description, length: 100)
   - if user_signed_in?
     .form
       = form_for [@stone, @discussion], remote: true, html: { class: "create_discussion form-vertical" } do |f|
         .fields
           = f.label :title
-          = f.text_field :title
+          = f.text_field :title, required: true
           = f.hidden_field :stone_id, value: params[:stone_id]
           = f.hidden_field :user_id, value: user.id
           = f.label :content
@@ -19,4 +28,4 @@
       = link_to 'Top Voted', '#', class: "btn sort"
       = link_to 'Popular', '#', class: "btn sort"
   .discussions
-    = render stone.discussions
+    = render stone.discussions.order('created_at DESC')

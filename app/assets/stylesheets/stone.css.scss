@@ -1,0 +1,41 @@
+#stone{
+  .form{
+    margin: 0 auto;
+  }
+
+  margin-bottom: 50px;
+}
+
+.just_cuz {
+  font-size: 5em;
+  position: relative;
+  top: 180px;
+  margin: 0 auto;
+}
+
+.stoneheader {
+  width: 100%;
+  clear: both;
+  margin-bottom: 30px;
+
+  .wrapper {
+    height: 60px;
+    line-height: 60px;
+
+    .title {
+      float: left;
+      font-size: 2em;
+    }
+
+    .links {
+      float: right;
+      height: 60px;
+      line-height: 60px;
+    }
+  }
+
+  .description {
+    width: 100%;
+    font-size: 2em;
+  }
+}

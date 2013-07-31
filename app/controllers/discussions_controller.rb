@@ -1,8 +1,9 @@
 class DiscussionsController < ApplicationController
   def index
     @stone = Stone.find(params[:stone_id])
+    @goal = current_user.goals.where(stone_id: @stone.id).first if user_signed_in?
     @discussion = Discussion.new
-    render :json => render_to_string('index', layout: false , locals: {stone: @stone, user: current_user, discussion: @discusssion}).to_json
+    render :json => render_to_string('index', layout: false , locals: {stone: @stone, user: current_user, discussion: @discusssion, goal: @goal}).to_json
   end
 
   def show

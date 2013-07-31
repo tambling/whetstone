@@ -29,7 +29,7 @@ var Avgrund = (function(){
   }
 
   function activate( state ) {
-    document.addEventListener( 'keyup', onDocumentKeyUp, false );
+    // document.addEventListener( 'keyup', onDocumentKeyUp, false );
     document.addEventListener( 'click', onDocumentClick, false );
     document.addEventListener( 'touchstart', onDocumentClick, false );
 

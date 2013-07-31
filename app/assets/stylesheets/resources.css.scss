@@ -1,22 +1,29 @@
 .modal {
+  background:url('bg_gradient.jpg') no-repeat center center,url('bg_tile.jpg');
+  color: #3498DB;
+  width: 400px;
 
-  text-shadow: none;
-  
-  background-color: rgba(255, 255, 255, 0.90);
-
-  label{
-    color: #34495e;
-
-  }
-  input[type=text],input[type=url],input[type=number], textarea {
-    color: silver;
+  .fields input, textarea, select {
+    background: none;
     outline: none;
-    background: rgba(39, 40, 43, 0.88);
-    width: 325px;
+    margin: 10px 0 10px 0;
+    width: 390px;
   }
 
-  .submit_button {
-    text-align: center;
+  .fields textarea {
+    height: 100px;
+  }
+
+  .fields select {
+    height: 30px;
+    color: #3498DB;
+    border: none;
+  }
+  
+
+
+  .submit_button input {
+    margin: 10px 0 10px 0;
   }
 }
 
@@ -74,17 +81,27 @@
     position: relative;
     width: 250px;
     height: 250px;
-    margin: 10px;
-    border-radius: 9px;
+    margin: 20px;
+    border-radius: 0 0 4px 4px;
     display: inline-block;
+    text-align: center;
+    vertical-align: top;
 
     p {
-      position: absolute;
-      bottom: 0px;
+        border-radius: 4px 4px 0 0;
+        position: absolute;
+        width: 100%;
+        visibility: visible;
+        font-size: 1.2em;
+        color: silver;
+        background-color: rgba(26, 29, 34, 0.90);
+        border: 1px solid;
+        top: -40px;
     }
 
     ul.toolbar_options {
       display: none;
+      top:218px;
       position: relative;
       width: 100%;
       text-align: center;
@@ -108,6 +125,8 @@
 
           &:last-child {
             border: none;
+            height: 30px;
+            font-size: 1.5em;
           }
 
           a {
@@ -115,5 +134,9 @@
           }
       }
     }
-}
+
+    p {
+
+    }
+  }
 }

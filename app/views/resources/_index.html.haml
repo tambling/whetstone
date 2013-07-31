@@ -1,0 +1,30 @@
+#resource
+  .stoneheader
+    .wrapper
+      .title
+        %i{ class: 'icon-bookmark' }
+          = truncate(stone.title, length: 50)
+      .links
+        = link_to "Add Resource", new_stone_resource_path(stone), remote: true, class: "add_resource_link btn btn-primary"
+        - if goal.nil?
+          = link_to "Add To Your Goals", stone_stones_users_path(stone), class: "btn btn-primary add_goal", remote: true, method: :post
+    .description
+      %h3= truncate(stone.description, length: 100)
+  .filters
+    .btn-group
+      = link_to 'All', '#', class: "btn filter"
+      = link_to 'Beginner', '#', class: "btn filter"
+      = link_to 'Intermediate', '#', class: "btn filter"
+      = link_to 'Advanced', '#', class: "btn filter"
+      = link_to 'Expert', '#', class: "btn filter"
+    .btn-group
+      = link_to "<i class='icon-sort-by-alphabet'></i>".html_safe, '#', class: "btn sort", data: { sort: 'ASC' }
+      = link_to "<i class='icon-sort-by-alphabet-alt'></i>".html_safe, '#', class: "btn sort", data: { sort: 'DESC' }
+      = link_to "<i class='icon-sort-by-attributes-alt'></i>".html_safe, '#', class: "btn sort", data: { sort: 'TOP' }
+      = link_to "<i class='icon-sort-by-attributes'></i>".html_safe, '#', class: "btn sort", data: { sort: 'BOTTOM' }
+      = link_to "Sort", "#", class: "btn sort", data: { sort: "Sort" }
+  .resources
+    - if stone.resources_stones.empty?
+      .just_cuz{style: "text-align:center;"}
+        This topic has no resources. Try populating it with #{ link_to "Google Search", '#', remote: true, class: 'get_auto_resources' }
+    = render partial: 'resources/resources_stone', collection: stone.resources_stones, as: :resources_stone

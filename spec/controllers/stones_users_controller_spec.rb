@@ -23,6 +23,7 @@ describe StonesUsersController do
 
 	describe "#update_queue" do 
 
+
 	end
 
 end

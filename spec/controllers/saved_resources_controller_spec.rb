@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe SavedResourcesController do 
 
-	let!(:resource_stone) { FactoryGirl.create(:resources_stone, stone_id: 1) }
+	let!(:resources_stone) { FactoryGirl.create(:resources_stone, stone_id: 1) }
 	let!(:user) { FactoryGirl.create(:user) }
-	let!(:goal) { FactoryGirl.create(:stones_user) }
+	let!(:test_goal) { FactoryGirl.create(:stones_user) }
 	let!(:stone) { FactoryGirl.create(:stone) }
 
 	describe "POST #create" do 
@@ -14,7 +14,7 @@ describe SavedResourcesController do
 			before do
 				controller.stub(:user_signed_in?).and_return(true)
 				controller.stub(:current_user).and_return(user)
-				controller.stub(:create_goal_for).and_return(goal)
+				controller.stub(:create_goal_for).and_return(test_goal)
 				controller.stub(:stone).and_return(stone)
 			end
 			
@@ -26,7 +26,8 @@ describe SavedResourcesController do
 
 			it "should return successful if the resource saves to the db" do 
 				post :create, resources_stone_id: 1
-				expect(response.status).to eq 201
+				expect(@goal).to eq(test_goal)
+				expect(response.status).to eq 200
 			end
 
 		end

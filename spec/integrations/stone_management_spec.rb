@@ -30,15 +30,13 @@ feature "Stone Management" do
   end
 end
 
-feature "Adding a stone after searching for it" do
+feature "Creating a stone after searching for it" do
 
   let(:user) { create(:user) }
 
   scenario "when user is signed in", js: true do
-    visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: "password"
-    click_button "Sign in"
+    login user
+    visit root_path
     fill_in "query", with: 'Knife Throwing'
     page.execute_script("$('#query').submit()")
     page.should have_content("No Results Found :-(")
@@ -54,7 +52,8 @@ feature "Adding a stone after searching for it" do
     fill_in "Email", with: user.email
     fill_in "Password", with: "password"
     click_button "Sign in"
-    find_field('Title').value.should eq 'Knife Throwing'
+    expect(page).to have_content('Create a Stone')
+    expect(page).to have_css('form')
   end
 
   scenario "when user doesn't exist", js: true do
@@ -66,10 +65,11 @@ feature "Adding a stone after searching for it" do
     click_link "Sign up"
     fill_in "Name", with: "Jimothy"
     fill_in "Email", with: "jim@bim.net"
-    fill_in "Password", with: "password"
+    fill_in "pc", with: "password"
     fill_in "Password confirmation", with: "password"
     click_button "Sign up"
-    find_field('Title').value.should eq 'Knife Throwing'
+    expect(page).to have_content('Create a Stone')
+    expect(page).to have_css('form')
   end
 
 end

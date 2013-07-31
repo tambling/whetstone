@@ -1,18 +1,20 @@
 .modal {
-
-  text-shadow: none;
-  
-  background-color: rgba(255, 255, 255, 0.90);
+  background-color: rgba(255, 255, 255, 0.86);
 
   label{
     color: #34495e;
-
   }
+
   input[type=text],input[type=url],input[type=number], textarea {
     color: silver;
     outline: none;
-    background: rgba(39, 40, 43, 0.88);
+    background: rgba(39, 40, 43, 0.97);
     width: 325px;
+    margin: 5px 0 5px 0;
+  }
+
+  textarea {
+    height: 100px;
   }
 
   .submit_button {
@@ -77,10 +79,13 @@
     margin: 10px;
     border-radius: 9px;
     display: inline-block;
+    text-align: center;
 
     p {
+      text-align: center;
+      margin: 0 auto;
       position: absolute;
-      bottom: 0px;
+      bottom: -40px;
     }
 
     ul.toolbar_options {
@@ -108,6 +113,8 @@
 
           &:last-child {
             border: none;
+            height: 30px;
+            font-size: 1.5em;
           }
 
           a {

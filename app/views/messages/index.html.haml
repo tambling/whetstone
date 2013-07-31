@@ -1,13 +1,16 @@
 #user_search
-  %h2 Who would you like to message?
-  = form_for :user, html: {id: 'user'} do |f|
-    = f.text_field  :username
-    = f.submit "Search"
+  .form
+    %h2 Who would you like to message?
+    = form_for :user, html: {id: 'user'} do |f|
+      .fields
+        = f.text_field  :username
+      .submit_button
+        = f.submit "Search", class: "btn btn-primary"
   #results
 
 
 #current
-  %h2 Current Messages
+  %h2 Conversations
   - @partners.each do |partner|
     %li= link_to partner.name, message_path(partner)
 

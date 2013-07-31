@@ -1,11 +1,15 @@
 .modal{ class: "avgrund-popup" }
-  = simple_form_for [@stone, @resource], remote: true, html: { class: "create_resource" } do |f|
+  = form_for [@stone, @resource], remote: true, html: { class: "create_resource form-horizontal" } do |f|
     = f.hidden_field :creator_id, value: current_user.id
-    = f.input :title
-    = f.input :description, input_html: { rows: 5 }
-    = f.input :url
-    = f.label :recommended_time, "Recommended time"
-    = f.text_field  :recommended_time
-    = f.input :difficulty, collection: Resource.difficulty_ratings
+    = f.label :title
+    = f.text_field :title
+    = f.label :description
+    = f.text_area :description, input_html: { rows: 5 }
+    = f.label :url
+    = f.url_field :url
+    = f.label :recommended_time
+    = f.text_field :recommended_time
+    = f.label :difficulty
+    = f.text_field :difficulty, collection: Resource.difficulty_ratings
     .submit_button
-      = f.button :submit, "Add Resource", class: "btn btn-primary"
+      = f.submit "Add Resource", class: "btn btn-primary"

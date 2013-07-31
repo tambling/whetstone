@@ -12,6 +12,8 @@
     %li
       = link_to '<i class="icon-envelope"></i> Messages'.html_safe, messages_path
     %li
+      = link_to '<i class="icon-trophy"></i> Create Stone'.html_safe, new_stone_path
+    %li
       = link_to '<i class="icon-signout"></i> Logout'.html_safe, destroy_user_session_path, :method=>'delete'
     - if current_user.stones
       %h2

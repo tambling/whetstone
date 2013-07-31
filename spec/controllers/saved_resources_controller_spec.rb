@@ -5,7 +5,7 @@ describe SavedResourcesController do
 	let!(:resources_stone) { FactoryGirl.create(:resources_stone, stone_id: 1) }
 	let!(:user) { FactoryGirl.create(:user) }
 	let!(:test_goal) { FactoryGirl.create(:stones_user) }
-	let!(:stone) { FactoryGirl.create(:stone) }
+	let!(:stone) { FactoryGirl.create(:stone, title: "i has unique fucking title") }
 
 	describe "POST #create" do 
 		

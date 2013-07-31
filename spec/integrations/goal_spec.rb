@@ -1,26 +1,31 @@
 require 'spec_helper'
 
+feature "User can add a goal", js: true do
 
-feature "Adding a goal" do
-  let(:stone) {FactoryGirl.create(:stone)}
-  let(:user) {FactoryGirl.create(:user)}
-  before(:each) do
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: 'password'
-    click_button 'Sign in'
+  let!(:stone) { create(:stone) }
+  let!(:user) { create(:user) }
+
+  before do
+    login user
   end
 
-  scenario "user sees a button to add a goal" do
+  scenario "User sees a button to add a goal" do
     visit stone_path(stone)
-    expect(page).to have_button("Add Goal")
+    expect(page).to have_link("Add To Your Goals")
   end
 
-  scenario "user can add a goal to a stone.", js: true do
+  scenario "User cannot see add goal button if he already has that goal" do
+    user.stones << stone
     visit stone_path(stone)
-    StonesUser.destroy_all
-    click_button 'add_goal'
+    expect(page).to_not have_link("Add To Your Goals")
+  end
+
+  scenario "user can add a goal to a stone." do
+    p user.goals
+    visit stone_path(stone)
+    click_link 'Add To Your Goals'
+    # we need to have ajax wait to create the record. Fix This!!
     sleep 2
-    user.goals.count.should eq(1)
+    expect(user.stones.count).to eq(1)
   end
 end

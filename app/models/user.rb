@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
     all.sort{ |message1, message2| message1.created_at <=> message2.created_at }
   end
 
+  def create_goal_for(stone)
+    self.goals.find_or_create_by_stone_id(stone.id)
+  end
+
   def messages
     sent_messages+received_messages
   end
@@ -37,13 +41,5 @@ class User < ActiveRecord::Base
       partners << message.to unless partners.include?(message.to) || message.to == self
     end
     partners
-  end
-
-  def next_queued_resource
-    queued_items = []
-    self.goals.each do |goal|
-      queued_items << goal.saved_resources.all
-    end
-    queued_items.flatten.sort{|a, b| a.due_date <=> b.due_date}.first
   end
 end

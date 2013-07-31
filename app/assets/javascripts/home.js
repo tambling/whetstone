@@ -22,8 +22,9 @@ var Search = {
     if (search_results.mini === true) {
       $('.content').empty();
       $('.content').append(search_results.index_html);
-      $('#search h1').shuffleLetters({ "text": search_results.query });
+      $('#search h1').text(search_results.query)
       $('.mini-search form input[name=query]').val('');
+      Search.initialize();
     }
     Search.$query.val('');
     $('#search .results').empty();  

@@ -19,6 +19,10 @@ end
 RSpec.configure do |config|
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
+
+  config.include FactoryGirl::Syntax::Methods
+  
+  config.include FeatureHelpers, type: :feature
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -64,4 +68,8 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  # Other configurations
+  config.include ImageHelper
+  config.include Devise::TestHelpers, :type => :controller
 end

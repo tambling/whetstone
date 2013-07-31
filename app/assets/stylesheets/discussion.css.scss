@@ -1,0 +1,42 @@
+#discussion {
+  .form {
+    textarea {
+      height: 100px;
+    }
+  }
+
+  .discussion {
+    position: relative;
+    margin: 20px 0 20px 0;
+    min-width: 500px;
+
+    .column1{
+      display: inline-block;
+      vertical-align: top; 
+      width: 3%;
+    }
+
+    .column2 {
+      display: inline-block;
+      vertical-align: top;
+      width: 95%;
+
+      .title {
+        font-size: 1.3em
+      }
+    }
+  }
+
+  .filters {
+    margin: 20px 0 20px 0;
+
+    .btn-group {
+
+      .head {
+        background-color: #34495e;;
+        color: silver;
+      }
+    }
+  }
+
+}

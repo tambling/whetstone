@@ -2,7 +2,8 @@
 $hover : white;
 $grey : rgb(41,42,43);
 
-.resource {
+#stone{
+	.resource {
 	height: 100%;
 	position: relative;
 	background-color: teal;
@@ -133,3 +134,5 @@ $grey : rgb(41,42,43);
 .expert { color: red; }
 
 
+
+}

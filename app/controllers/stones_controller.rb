@@ -16,12 +16,15 @@ class StonesController < ApplicationController
 
   def create
     @stone = Stone.create(params[:stone])
+    flash[:success] = "Created a new Stone!"
     redirect_to stone_path(@stone)
   end
 
   def overview
     @stone = Stone.find(params[:id])
     @goal = current_user.goals.where(stone_id: @stone.id).first if user_signed_in?
+    p @stone
+    p @goal
     render :json => render_to_string(partial: 'stones/overview', locals: { stone: @stone, goal: @goal }, layout: false).to_json
   end
 

@@ -10,14 +10,6 @@
  *
  *= require_self
  *= require font-awesome
- *= require flat-ui
- *= require normalize
- *= require avgrund
- *= require home
- *= require messages
- *= require nav
- *= require resources
- *= require stone
- *= require style
- *= require resources_queue
+ * = require_tree .
+ *= require_tree ../../../vendor/assets/stylesheets/.
 */

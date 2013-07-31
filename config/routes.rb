@@ -43,8 +43,9 @@ Whetstone::Application.routes.draw do
   get "/messages" => "messages#index", as: 'messages'
   get "/messages/:id" => "messages#show", as: "message"
   post "/messages" => "messages#create", as: "new_message"
-
   post '/users_search' => "users#search"
+
+  mount Split::Dashboard, :at => 'split'
 
 end
 

@@ -19,7 +19,7 @@ var Search = {
 
   renderSearchResults: function(event,search_results){
 
-    if (search_results.mini === true) {
+    if (search_results.mini) {
       $('.content').empty();
       $('.content').append(search_results.index_html);
       $('#search h1').text(search_results.query)
@@ -27,7 +27,7 @@ var Search = {
       Search.initialize();
     }
     Search.$query.val('');
-    $('#search .results').empty();  
-    $('#search .results').append(search_results.results_html).hide().fadeIn();  
+    $('#search .results').empty();
+    $('#search .results').append(search_results.results_html).hide().fadeIn();
   }
 }

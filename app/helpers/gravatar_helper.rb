@@ -1,6 +1,6 @@
 module GravatarHelper
+  # TODO: call line 4 straight from the views and remove this method
   def gravatar(user, size)
-    email_digest = Digest::MD5.hexdigest("#{user.email}")
-    "https://secure.gravatar.com/avatar/#{email_digest}?s=#{size}"
+    user.gravatar size
   end
 end

@@ -1,6 +1,8 @@
 .comment
   .column1
-    = link_to "<i class='icon-thumbs-up'></i>".html_safe, comment_votes_path(:comment_id => comment.id, :value => 1), method: 'post', remote: true, :class => 'vote'
+    // user this: http://api.rubyonrails.org/classes/ActionView/Helpers/UrlHelper.html#method-i-link_to
+    = link_to comment_votes_path(:comment_id => comment.id, :value => 1), method: 'post', remote: true, :class => 'vote' do
+      <i class='icon-thumbs-up'></i>
     %h3.vote-count= "#{comment.vote_tally}"
     = link_to "<i class='icon-thumbs-down'></i>".html_safe, comment_votes_path(:comment_id => comment.id, :value => -1), method: 'post', remote: true, :class => 'vote'
   .column2

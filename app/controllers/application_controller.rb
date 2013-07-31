@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :alert => exception.message
   end
 
-  helper GravatarHelper
+  helper GravatarHelper # TODO: do you need this in the views? if not remove this line
 
 end

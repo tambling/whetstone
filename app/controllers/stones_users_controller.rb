@@ -11,7 +11,8 @@ class StonesUsersController < ApplicationController
   end
 
   def update_queue
-    @goal = StonesUser.where(user_id: current_user.id, stone_id: params[:stone_id]).first
+    @goal = StonesUser.where(user: current_user, stone: params[:stone]).first
+    # TODO: you are failing silently
     @goal.update_attribute(:queue,  params[:queue].join(", "))
     render :nothing => true
   end

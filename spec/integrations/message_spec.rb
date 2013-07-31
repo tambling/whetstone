@@ -1,11 +1,9 @@
 require 'spec_helper'
 
 feature "Sending and receiving message" do
-  let(:user1) {FactoryGirl.build(:user)}
-  let(:user2) {User.new(name: "Jane Doe", email: "jane@doe.net", password: 'password')}
+  let!(:user1) {FactoryGirl.create(:user)}
+  let!(:user2) {FactoryGirl.create :user, name: "Jane Doe", email: "jane@doe.net"}
   before(:each) do
-    user1.save
-    user2.save
     visit new_user_session_path
     fill_in "Email", with: user1.email
     fill_in "Password", with: 'password'
@@ -15,13 +13,13 @@ feature "Sending and receiving message" do
   scenario "user looks at current messages" do
     Message.create(from_id: user1.id, to_id: user2.id, body:"Sup")
     visit messages_path
-    page.should have_link "Jane Doe"
+    page.should have_link user2.name
   end
   scenario "user searches for a user", js: true do
     visit messages_path
     fill_in "user_username", with: "Jane"
     click_button "Search"
-    page.should have_link "Jane Doe"
+    page.should have_link user2.name
   end
   scenario "user can see messages with another user" do
     Message.create(from_id: user1.id, to_id: user2.id, body:"Sup")

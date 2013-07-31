@@ -1,6 +1,6 @@
 class StonesUser < ActiveRecord::Base
-	attr_accessible :stone_id, :user_id, :queue
-  
+	attr_accessible :stone, :user, :queue
+
   belongs_to :user
   belongs_to :stone
 
@@ -10,6 +10,7 @@ class StonesUser < ActiveRecord::Base
   def queued_items
     parsed_queue = self.queue.split(', ').map{|num| num.to_i}.reject{|i| i==0}
     resources = []
+    # TODO: remember inject?
     parsed_queue.each do |i|
       resources << SavedResource.find(i)
     end

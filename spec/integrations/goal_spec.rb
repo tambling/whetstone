@@ -18,8 +18,9 @@ feature "Adding a goal" do
 
   scenario "user can add a goal to a stone.", js: true do
     visit stone_path(stone)
-    StonesUser.destroy_all
+    StonesUser.destroy_all # TODO: I don't like that
     click_button 'add_goal'
+    # TODO: wake up, don't sleep!
     sleep 2
     user.goals.count.should eq(1)
   end

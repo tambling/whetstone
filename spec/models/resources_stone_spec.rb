@@ -7,11 +7,12 @@ describe ResourcesStone do
   it { should have_many :votes }
   it { should belong_to :stone }
   it { should belong_to :resource }
-  
+
   context "Methods" do
     it "vote tally should return correct value of votes" do
+      # TODO: test that it's the sum of all vote values
       expect {
-        resources_stone.votes << FactoryGirl.create(:vote)  
+        resources_stone.votes << FactoryGirl.create(:vote)
       }.to change { resources_stone.vote_tally }.by(1)
     end
   end

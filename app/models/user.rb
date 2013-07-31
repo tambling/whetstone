@@ -26,11 +26,21 @@ class User < ActiveRecord::Base
     all.sort{ |message1, message2| message1.created_at <=> message2.created_at }
   end
 
+  def gravatar(size)
+    email_digest = Digest::MD5.hexdigest("#{self.email}")
+    "https://secure.gravatar.com/avatar/#{email_digest}?s=#{size}"
+  end
+
+  def goal_for stone
+    self.goals.where(stone: stone).first
+  end
+
   def messages
     sent_messages+received_messages
   end
 
   def message_partners
+    # TODO; use inject
     partners = []
     self.messages.each do |message|
       partners << message.from unless partners.include?(message.from) || message.from == self

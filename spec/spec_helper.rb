@@ -21,6 +21,7 @@ RSpec.configure do |config|
   config.include(EmailSpec::Matchers)
 
   config.include FeatureHelpers, type: :feature
+  config.include StonesHelper
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:

@@ -1,15 +1,15 @@
 class StonesController < ApplicationController
+  before_filter :authenticate_user!, :only => [:new]
   def index
     @stones = Stone.all
   end
 
   def show
     @stone = Stone.find(params[:id])
-    @goal = current_user.goals.where(stone_id: @stone.id).first if user_signed_in?
+    @goal = current_user.goal_for(@stone) if user_signed_in?
   end
 
   def new
-    authenticate_user!
     @stone = Stone.new(title: session[:query])
     session.delete(:title)
   end
@@ -22,18 +22,17 @@ class StonesController < ApplicationController
 
   def overview
     @stone = Stone.find(params[:id])
-    @goal = current_user.goals.where(stone_id: @stone.id).first if user_signed_in?
-    p @stone
-    p @goal
+    @goal = current_user.goal_for(@stone) if user_signed_in?
     render :json => render_to_string(partial: 'stones/overview', locals: { stone: @stone, goal: @goal }, layout: false).to_json
   end
 
+  # TODO: needs some refactoring
   def search
     @stones = Stone.basic_search(params[:query])
     search_results = {}
     search_results[:query] = params[:query]
     session[:query] = params[:query]
-    
+
     if @stones.count.zero?
       search_results[:results_html] = render_to_string(partial: 'home/no_results', locals: {failed_query: params[:query] })
     else

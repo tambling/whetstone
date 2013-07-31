@@ -10,13 +10,13 @@ class MessagesController < ApplicationController
   def show
     @partner = User.find(params[:id])
     @messages = current_user.messages_with(@partner)
-    @message = Message.new(to_id: @partner.id)
+    @message = Message.new(to: @partner)
   end
 
   def create
     message = Message.create(params[:message])
     flash[:success] = "Message Sent!"
-    redirect_to message_path(message.to_id)
+    redirect_to message_path(message.to)
   end
 end
 

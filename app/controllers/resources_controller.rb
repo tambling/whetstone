@@ -1,5 +1,5 @@
 class ResourcesController < ApplicationController
-include ImageHelper
+  include ImageHelper
 
   def index
     @stone = Stone.find(params[:stone_id])

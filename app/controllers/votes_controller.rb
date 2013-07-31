@@ -1,8 +1,7 @@
 class VotesController < ApplicationController
 
   def create
-    @voteable = find_voteable
-    vote = @voteable.votes.build(user_id: current_user.id, value: params[:value])
+    vote = @voteable.votes.build(user_id: current_user.id, value: params[:value]) if @voteable
     unless vote.save
       flash[:error] = "Oops. Something Went Wrong!"
       render status: 403
@@ -11,10 +10,10 @@ class VotesController < ApplicationController
 
   private
 
-  def find_voteable
+  def voteable
     params.each do |name, value|
       if name =~ /(.+)_id$/
-        return $1.classify.constantize.find(value)
+        return @voteable = $1.classify.constantize.find(value)
       end
     end
     nil

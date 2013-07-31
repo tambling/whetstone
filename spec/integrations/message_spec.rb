@@ -23,6 +23,14 @@ feature "Sending and receiving message" do
     click_button "Search"
     page.should have_link "Jane Doe"
   end
+
+  scenario "user searches for a user who doesn't exist", js: true do
+    visit messages_path
+    fill_in "user_username", with: "Bim"
+    click_button "Search"
+    page.should have_content "We don't know anybody by that name!"
+  end
+
   scenario "user can see messages with another user" do
     Message.create(from_id: user1.id, to_id: user2.id, body:"Sup")
     visit message_path(user2)

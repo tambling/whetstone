@@ -8,6 +8,7 @@ class StonesUsersController < ApplicationController
 
   def new
     @stone = Stone.find(params[:stone_id])
+    render nothing: true
   end
 
   def update_queue

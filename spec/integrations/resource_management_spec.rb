@@ -34,4 +34,17 @@
       expect(page).to have_content("Poodr")
     end
 
+    scenario "User filters by difficulty" do
+      stone.resources.destroy_all
+      stone.resources << FactoryGirl.create(:resource, difficulty: "Expert", title: "An expert resource")
+      stone.resources << FactoryGirl.create(:resource, difficulty: "Beginner", title: "An easy resource")
+      visit stone_path(stone)
+      click_link "Resources"
+      click_link "Beginner"
+      page.should_not have_content "An expert resource"
+      page.should have_content "An easy resource"
+      click_link "Expert"
+      page.should_not have_content "An easy resource"
+      page.should have_content "An expert resource"
+    end
   end

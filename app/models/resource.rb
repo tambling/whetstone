@@ -25,7 +25,7 @@ class Resource < ActiveRecord::Base
   end
 
   def recommended_time
-    ChronicDuration.output(read_attribute(:recommended_time), months: true, weeks: true, format: :long)
+    ChronicDuration.output(read_attribute(:recommended_time), months: true, weeks: true, format: :long) if read_attribute(:recommended_time)
   end
 
   def recommended_time=(duration)

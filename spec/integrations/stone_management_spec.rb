@@ -2,11 +2,18 @@ require 'spec_helper'
 
 feature "Stone Management" do
 
-  let(:user) { create(:user) }
-  let(:stone) { create(:stone) }
+  let!(:user) { create(:user) }
+  let!(:stone) { create(:stone) }
 
   before do
     login user
+  end
+
+  scenario "User can see a page with all stones" do
+    stone2 = Stone.create(title:"A new stone", description: "Gettin' stoned.")
+    visit stones_path
+    page.should have_content stone.title
+    page.should have_content stone2.title
   end
 
   scenario "User can create a stone" do

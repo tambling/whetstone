@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SavedResourcesController do 
 
-	let!(:resource_stone) { FactoryGirl.create(:resource_stone, stone_id: 1) }
+	let!(:resource_stone) { FactoryGirl.create(:resources_stone, stone_id: 1) }
 	let!(:user) { FactoryGirl.create(:user) }
 	let!(:goal) { FactoryGirl.create(:stones_user) }
 	let!(:stone) { FactoryGirl.create(:stone) }

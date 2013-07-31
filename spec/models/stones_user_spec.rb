@@ -6,7 +6,8 @@ describe StonesUser do
   let(:saved_resource) { FactoryGirl.create(:saved_resource, stones_user: :goal) }
 
   context "Validations" do
-    
+    it { should belong_to(:stone) }
+    it { should belong_to(:user) }
   end
 
   it 'should return saved resources in its queue' do

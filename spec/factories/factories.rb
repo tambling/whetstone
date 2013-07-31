@@ -2,7 +2,7 @@ SUBJECTS= ["French", "Cooking", "Ruby", "Fencing", "Guitar", "Mandarin Chinese",
 DIFFICULTY = ["Beginner", "Intermediate", "Advanced", "Expert"]
 
 FactoryGirl.define do
-  factory :user do |f|
+  factory :user, aliases: [:to, :from] do |f|
     f.sequence(:name) { |n| "User#{n}" }
     f.sequence(:email) { |n| "User#{n}@whetstone.com" }
     f.password "password"
@@ -50,6 +50,13 @@ FactoryGirl.define do
 
   factory :vote do
     value 1
+    user
+  end
+
+  factory :message do
+    from
+    to
+    body "Test Message"
   end
 
 end

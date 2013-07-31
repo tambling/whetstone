@@ -2,15 +2,11 @@ require 'spec_helper'
 
 feature "Stone Management" do
 
-  let(:user) { FactoryGirl.create(:user) }
   let(:stone) { FactoryGirl.create(:stone) }
 
-  before(:each){
-    visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: "password"
-    click_button "Sign in"
-  }
+  before do
+    user = login
+  end
 
   scenario "User can create a stone" do
     visit new_stone_path
@@ -33,47 +29,47 @@ feature "Stone Management" do
   end
 end
 
-feature "Adding a stone after searching for it" do
+# feature "Adding a stone after searching for it" do
 
-  let(:user) {FactoryGirl.create(:user)}
+#   let(:user) {FactoryGirl.create(:user)}
 
-  scenario "when user is signed in", js: true do
-    visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: "password"
-    click_button "Sign in"
-    fill_in "query", with: 'Knife Throwing'
-    page.execute_script("$('#query').submit()")
-    page.should have_content("No Results Found :-(")
-    page.should have_link("Knife Throwing")
-  end
+#   scenario "when user is signed in", js: true do
+#     visit new_user_session_path
+#     fill_in "Email", with: user.email
+#     fill_in "Password", with: "password"
+#     click_button "Sign in"
+#     fill_in "query", with: 'Knife Throwing'
+#     page.execute_script("$('#query').submit()")
+#     page.should have_content("No Results Found :-(")
+#     page.should have_link("Knife Throwing")
+#   end
 
-  scenario "when user is not signed in", js: true do
-    visit root_path
-    fill_in "query", with: "Knife Throwing"
-    page.execute_script("$('#query').submit()")
-    click_link "Knife Throwing"
-    current_path.should eq(new_user_session_path)
-    fill_in "Email", with: user.email
-    fill_in "Password", with: "password"
-    click_button "Sign in"
-    find_field('Title').value.should eq 'Knife Throwing'
-  end
+#   scenario "when user is not signed in", js: true do
+#     visit root_path
+#     fill_in "query", with: "Knife Throwing"
+#     page.execute_script("$('#query').submit()")
+#     click_link "Knife Throwing"
+#     current_path.should eq(new_user_session_path)
+#     fill_in "Email", with: user.email
+#     fill_in "Password", with: "password"
+#     click_button "Sign in"
+#     find_field('Title').value.should eq 'Knife Throwing'
+#   end
 
-  scenario "when user doesn't exist", js: true do
-    visit root_path
-    fill_in "query", with: "Knife Throwing"
-    page.execute_script("$('#query').submit()")
-    click_link "Knife Throwing"
-    current_path.should eq(new_user_session_path)
-    click_link "Sign up"
-    fill_in "Name", with: "Jimothy"
-    fill_in "Email", with: "jim@bim.net"
-    fill_in "Password", with: "password"
-    fill_in "Password confirmation", with: "password"
-    click_button "Sign up"
-    find_field('Title').value.should eq 'Knife Throwing'
-  end
+#   scenario "when user doesn't exist", js: true do
+#     visit root_path
+#     fill_in "query", with: "Knife Throwing"
+#     page.execute_script("$('#query').submit()")
+#     click_link "Knife Throwing"
+#     current_path.should eq(new_user_session_path)
+#     click_link "Sign up"
+#     fill_in "Name", with: "Jimothy"
+#     fill_in "Email", with: "jim@bim.net"
+#     fill_in "Password", with: "password"
+#     fill_in "Password confirmation", with: "password"
+#     click_button "Sign up"
+#     find_field('Title').value.should eq 'Knife Throwing'
+#   end
 
-end
+# end
 

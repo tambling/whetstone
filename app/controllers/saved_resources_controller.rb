@@ -8,13 +8,12 @@ class SavedResourcesController < ApplicationController
     end
 
     resources_stone = ResourcesStone.find(params[:resources_stone_id])
-    goal = current_user.create_goal_for(resources_stone.stone)
-
-    saved_resource = SavedResource.new(stones_user_id: goal.id, resources_stone_id: resources_stone.id)
+    @goal = current_user.create_goal_for(resources_stone.stone)
+    saved_resource = SavedResource.new(stones_user_id: @goal.id, resources_stone_id: resources_stone.id)
 
     if saved_resource.save
-      goal.queue += ", #{saved_resource.id}"
-      goal.save
+      @goal.queue += ", #{saved_resource.id}"
+      @goal.save
       render json: saved_resource, status: :created
       return
     end

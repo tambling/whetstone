@@ -26,8 +26,8 @@ describe SavedResourcesController do
 
 			it "should return successful if the resource saves to the db" do 
 				post :create, resources_stone_id: 1
-				expect(@goal).to eq(test_goal)
-				expect(response.status).to eq 200
+				assigns(:goal).should_not be_nil
+				expect(response.status).to eq 201
 			end
 
 		end

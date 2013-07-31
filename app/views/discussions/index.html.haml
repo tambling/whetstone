@@ -5,7 +5,7 @@
       = form_for [@stone, @discussion], remote: true, html: { class: "create_discussion form-vertical" } do |f|
         .fields
           = f.label :title
-          = f.text_field :title
+          = f.text_field :title, required: true
           = f.hidden_field :stone_id, value: params[:stone_id]
           = f.hidden_field :user_id, value: user.id
           = f.label :content
@@ -19,4 +19,4 @@
       = link_to 'Top Voted', '#', class: "btn sort"
       = link_to 'Popular', '#', class: "btn sort"
   .discussions
-    = render stone.discussions
+    = render stone.discussions.order('created_at DESC')

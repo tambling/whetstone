@@ -32,6 +32,8 @@ var ResourceController = {
       $(this).find('.toolbar_options').fadeOut('fast');
     });
 
+    $(document).on('click','.close_modal', ResourceViews.closeDialog);
+
   }
 }
 
@@ -46,6 +48,7 @@ var ResourceViews = {
   },   
 
   closeDialog: function() {
+    console.log('asdas');
     $('div.modal').remove();
     Avgrund.hide();
   },
@@ -60,7 +63,7 @@ var ResourceViews = {
 
     ResourceViews.closeDialog();
 
-    Masonry.$container.prepend(data);
+    ResourceViews.$container.find('.resources').prepend(data)
 
     // var fragment = document.createDocumentFragment();
     // var elems = [];

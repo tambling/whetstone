@@ -6,14 +6,20 @@ html {
 }
 
 body {
-  background-color:#e4e4e4;
-  background:url('bg_gradient.jpg') no-repeat center center,url('bg_tile.jpg');
   min-height: 100%;
 }
 
 #main {
-  width: 70%;
-  margin: 0 auto;
+  min-height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+}
+
+.meny {
+  background:url('bg_gradient.jpg') no-repeat center center,url('bg_tile.jpg');
+  min-height: 100%;
 }
 
 .content {
@@ -29,10 +35,10 @@ a, a:visited  {
   text-decoration: none;
 
   -webkit-transition: 0.15s color ease;
-     -moz-transition: 0.15s color ease;
-      -ms-transition: 0.15s color ease;
-       -o-transition: 0.15s color ease;
-          transition: 0.15s color ease;
+  -moz-transition: 0.15s color ease;
+  -ms-transition: 0.15s color ease;
+  -o-transition: 0.15s color ease;
+  transition: 0.15s color ease;
 
   &:hover {
 
@@ -55,8 +61,8 @@ small {
 
 #signin, #signup {
   .form {
-  margin: 40px auto;
-}
+    margin: 40px auto;
+  }
 
 }
 
@@ -81,3 +87,14 @@ small {
   }
 
 }
+
+.parsley-error{
+  border-color: rgb(209, 152, 152) !important;
+}
+
+.hidden {
+  display: none;
+}
+
+
+

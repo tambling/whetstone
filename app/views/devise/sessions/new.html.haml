@@ -1,12 +1,13 @@
 #signin
   .form
     %h2 Sign in
-    = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-vertical' , data: { validate: "parsley", novalidate: "" } }) do |f|
       .fields
         = f.label :email
-        = f.text_field :email, :autofocus => true
+        = f.text_field :email, :autofocus => true, data: { type: "email", trigger: "change", required: "true", notblank: "true" }
         = f.label :password
         = f.password_field :password
       .submit_button
         = f.submit "Sign in", class: 'btn btn-primary'
     = render "devise/shared/links"
+    #email_error

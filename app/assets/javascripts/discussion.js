@@ -4,6 +4,7 @@ var DiscussionController = {
     $('body').on('ajax:success','form.create_comment', DiscussionViews.renderComment);
     $('body').on('ajax:success','.show_discussion', DiscussionViews.renderShowDiscussion);
     $('body').on('ajax:success','.get_discussions', DiscussionViews.renderDiscussions);
+    $('body').on('ajax:success','.sort', DiscussionViews.applySort)
   }
 }
 
@@ -23,10 +24,10 @@ var DiscussionViews = {
   renderDiscussions: function(event, discussions){
     DiscussionViews.$container.empty()
     DiscussionViews.$container.append(discussions);
+    alertify.log("Joined Discussion Forum");
   },
 
   renderShowDiscussion: function(event, discussion) {
-    console.log("Showing discussion");
     DiscussionViews.$container.empty()
     DiscussionViews.$container.append(discussion);
   },
@@ -35,5 +36,9 @@ var DiscussionViews = {
     $(this).closest('.comments').find('.form').after(comment);
     $(this)[0].reset(0)
     alertify.log("Comment Added");
+  },
+
+  applySort: function(){
+
   }
 }

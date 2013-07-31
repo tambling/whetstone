@@ -1,15 +1,17 @@
 .modal{ class: "avgrund-popup" }
   = form_for [@stone, @resource], remote: true, html: { class: "create_resource form-horizontal" } do |f|
-    = f.hidden_field :creator_id, value: current_user.id
-    = f.label :title
-    = f.text_field :title
-    = f.label :description
-    = f.text_area :description, input_html: { rows: 5 }
-    = f.label :url
-    = f.url_field :url
-    = f.label :recommended_time
-    = f.text_field :recommended_time
-    = f.label :difficulty
-    = f.text_field :difficulty, collection: Resource.difficulty_ratings
+    .fields
+      = f.hidden_field :creator_id, value: current_user.id
+      = f.label :title
+      = f.text_field :title
+      = f.label :description
+      = f.text_area :description, input_html: { rows: 5 }
+      = f.label :url
+      = f.url_field :url
+      = f.label :recommended_time
+      = f.text_field :recommended_time
+      = f.label :difficulty
+      = f.select :difficulty, Resource.difficulty_ratings
     .submit_button
       = f.submit "Add Resource", class: "btn btn-primary"
+      = link_to "<i class='icon-remove'></i> Close".html_safe, "#", class: "close_modal btn btn-inverse"

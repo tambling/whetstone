@@ -18,5 +18,4 @@
     - if current_user.stones
       %h2
         = '<i class="icon-trophy"></i> Goals'.html_safe 
-      - current_user.stones.each do |stone|
-        = link_to truncate(stone.title, length: 30), stone_path(stone)
+      = render current_user.stones

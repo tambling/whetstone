@@ -1,9 +1,9 @@
 #user_search
   .form
     %h2 Who would you like to message?
-    = form_for :user, html: {id: 'user'} do |f|
+    = form_for :user, html: { id: 'user' } do |f|
       .fields
-        = f.text_field  :username
+        = f.text_field :username
       .submit_button
         = f.submit "Search", class: "btn btn-primary"
   #results

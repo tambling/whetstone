@@ -12,6 +12,8 @@ class Resource < ActiveRecord::Base
 
   before_create :assign_diffculty
 
+
+
   DEFAULT_DIFFICULTY = "Intermediate"
 
   def self.difficulty_ratings
@@ -20,5 +22,13 @@ class Resource < ActiveRecord::Base
 
   def assign_diffculty
     self.difficulty = DEFAULT_DIFFICULTY if self.difficulty.blank?
+  end
+
+  def recommended_time
+    ChronicDuration.output(read_attribute(:recommended_time), months: true, weeks: true, format: :long)
+  end
+
+  def recommended_time=(duration)
+    write_attribute(:recommended_time, ChronicDuration.parse(duration))
   end
 end

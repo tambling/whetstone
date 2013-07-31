@@ -4,7 +4,8 @@
     = f.input :title
     = f.input :description, input_html: { rows: 5 }
     = f.input :url
-    = f.input :recommended_time
+    = f.label :recommended_time, "Recommended Time"
+    = f.text_field  :recommended_time
     = f.input :difficulty, collection: Resource.difficulty_ratings
     .submit_button
       = f.button :submit, "Add Resource", class: "btn btn-primary"

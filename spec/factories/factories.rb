@@ -34,7 +34,7 @@ FactoryGirl.define do
     title "An excellent resource."
     description "This will help your learning."
     url "http://www.youtube.com"
-    recommended_time 3600 #seconds
+    recommended_time "An hour"
     difficulty { DIFFICULTY.sample }
   end
 

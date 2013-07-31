@@ -23,6 +23,7 @@ gem 'unicorn'
 gem 'textacular', '~> 3.0'
 gem 'font-awesome-rails'
 gem 'mechanize'
+gem 'chronic_duration'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]

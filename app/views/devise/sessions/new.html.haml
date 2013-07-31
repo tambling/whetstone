@@ -6,7 +6,7 @@
         = f.label :email
         = f.text_field :email, :autofocus => true
         = f.label :password
-        = f.text_field :password
+        = f.password_field :password
       .submit_button
         = f.submit "Sign in", class: 'btn btn-primary'
     = render "devise/shared/links"

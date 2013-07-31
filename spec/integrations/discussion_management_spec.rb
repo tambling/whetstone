@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "Discussions Page Management", js: true do
+feature "Discussions:", js: true do
 
   let(:user) { create(:user) }
   let(:stone) { create(:stone) }

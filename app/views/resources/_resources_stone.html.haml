@@ -1,4 +1,4 @@
-.resource{ style: "background-image: url(#{resources_stone.resource.photo}); background-size: cover;", class: "#{resources_stone.resource.difficulty} All", data: { id: "#{resources_stone.id}" }}
+.resource{ style: "background-image: url(#{resources_stone.resource.photo});", class: "#{resources_stone.resource.difficulty} All", data: { id: "#{resources_stone.id}" }}
   %ul.toolbar_options
     %li
       = link_to "<i class='icon-plus icon-2x'></i>".html_safe,resources_stone_saved_resources_path(resources_stone), remote: true, method: :post, class: "save_resource"

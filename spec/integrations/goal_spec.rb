@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "User can add a goal", js: true do
+feature "Goals:", js: true do
 
   let!(:stone) { create(:stone) }
   let!(:user) { create(:user) }

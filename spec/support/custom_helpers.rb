@@ -1,3 +1,3 @@
 RSpec.configure do |config|
-  config.include StonesHelper
+  config.include ImageHelper
 end

@@ -12,10 +12,10 @@ describe Resource do
 	end
 
   context "Methods" do
-    it "should assign Intermediate as the default value of difficulty" do
+    it "should assign the default value of difficulty" do
       resource.difficulty = nil
       resource.save
-      expect(resource.difficulty).to eq("Intermediate")
+      expect(resource.difficulty).to eq(Resource::DEFAULT_DIFFICULTY)
     end
 
     it "should return an array of difficulty ratings" do

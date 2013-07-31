@@ -8,6 +8,8 @@ describe StonesUser do
   context "Validations" do
     it { should belong_to(:stone) }
     it { should belong_to(:user) }
+    it { should have_many(:saved_resources) }
+    it { should have_many(:resources_stones) }
   end
 
   it 'should return saved resources in its queue' do

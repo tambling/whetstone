@@ -12,11 +12,13 @@ class Resource < ActiveRecord::Base
 
   before_create :assign_diffculty
 
+  DEFAULT_DIFFICULTY = "Intermediate"
+
   def self.difficulty_ratings
     ["Beginner", "Intermediate", "Advanced", "Expert"]
   end
 
   def assign_diffculty
-    self.difficulty = "Intermediate" if self.difficulty.blank?
+    self.difficulty = DEFAULT_DIFFICULTY if self.difficulty.blank?
   end
 end

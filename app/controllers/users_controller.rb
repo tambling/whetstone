@@ -10,6 +10,5 @@ class UsersController < ApplicationController
     else
       return render partial: 'users_search', collection: @users, as: :user, layout: false
     end
-    return 200
   end
 end

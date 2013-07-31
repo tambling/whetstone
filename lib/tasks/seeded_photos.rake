@@ -1,4 +1,5 @@
-require "#{Rails.root}/app/helpers/image_helper"
+# require "#{Rails.root}/app/helpers/image_helper"
+require "#{Rails.root}/lib/image_helper"
 include ImageHelper
 namespace :seeded do
   task :photos => :environment do

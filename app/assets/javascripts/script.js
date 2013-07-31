@@ -13,25 +13,21 @@ var StoneViews = {
   renderOverview: function(event, overview){
     StoneViews.$container.empty();
     StoneViews.$container.append(overview);
+    $('.fixed_tab.active').removeClass('active');
+    $(this).addClass('active');
+
   },
 
   renderGoal: function(event,data){
     $('.left_nav').find('.goals').append(data);
     $(event.target).fadeOut('fast', function(){
-      $(this).remove();
     });
     alertify.success("Added To Your List of Goals");
   }
 }
 
-$(document).ready(function(){
-  StoneController.initialize();
-  StoneViews.initialize();
-  ResourceController.initialize();
-  ResourceViews.initialize();
-  DiscussionController.initialize();
-  DiscussionViews.initialize();
-  SavedResourceController.initialize();
+var Navigation = {
+  initialize: function() {
 
   var meny = Meny.create({
     // The element that will be animated in from off screen
@@ -55,4 +51,15 @@ $(document).ready(function(){
     // Use touch swipe events to open/close
     touch: true
   });
+  }
+}
+$(document).ready(function(){
+  StoneController.initialize();
+  StoneViews.initialize();
+  ResourceController.initialize();
+  ResourceViews.initialize();
+  DiscussionController.initialize();
+  DiscussionViews.initialize();
+  SavedResourceController.initialize();
+  Navigation.initialize();
 });

@@ -1,10 +1,15 @@
 #resource
-  .header
-    .title
-      %h2= @stone.title
-    .add_resource
-      -if user_signed_in?
-        = link_to "Add Resource", new_stone_resource_path, remote: true, class: "add_resource_link btn btn-primary"
+  .stoneheader
+    .wrapper
+      .title
+        %i{ class: 'icon-bookmark' }
+          = truncate(stone.title, length: 50)
+      .links
+        = link_to "Add Resource", new_stone_resource_path(stone), remote: true, class: "add_resource_link btn btn-primary"
+        - if goal.nil?
+          = link_to "Add To Your Goals", stone_stones_users_path(stone), class: "btn btn-primary add_goal", remote: true, method: :post
+    .description
+      %h3= truncate(stone.description, length: 100)
   .filters
     .btn-group
       = link_to 'All', '#', class: "btn filter"
@@ -19,4 +24,6 @@
       = link_to "<i class='icon-sort-by-attributes'></i>".html_safe, '#', class: "btn sort", data: { sort: 'BOTTOM' }
       = link_to "Sort", "#", class: "btn sort", data: { sort: "Sort" }
   .resources
-    = render partial: 'resources/resources_stone', collection: @stone.resources_stones, as: :resources_stone
+    .just_cuz{style: "text-align:center;"}
+      This topic has no resources. Try populating it with #{ link_to "Google Search", '#', remote: true, class: 'get_auto_resources' }
+    = render partial: 'resources/resources_stone', collection: stone.resources_stones, as: :resources_stone

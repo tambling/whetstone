@@ -1,17 +1,22 @@
 #stone{data: {user_id: "#{current_user_id}", stone_id: stone.id}}
-  .header
-    .title= stone.title
-    .options
-      - if goal.nil?
-        = link_to "Add To Your Goals", stone_stones_users_path(stone), class: "btn btn-primary add_goal", remote: true, method: :post
-      - else
-        = link_to "Delete :-(", stone_stones_user_path(stone, goal), data: { id: "#{goal.id}" }, method: :delete, class: "btn btn-danger delete_goal"
+  .stoneheader
+    .wrapper
+      .title
+        %i{ class: "icon-list" }
+          = stone.title
+      .links
+        - if goal.nil?
+          = link_to "Add To Your Goals", stone_stones_users_path(stone), class: "btn btn-primary add_goal", remote: true, method: :post
+        - else
+          = link_to "Delete :-(", stone_stones_user_path(stone, goal), data: { id: "#{goal.id}" }, method: :delete, class: "btn btn-danger delete_goal"
+    .description
+      = truncate(stone.description, length: 100)
   - unless goal.nil? 
     .resources.sortable
       = render partial: 'saved_resources/resources_stone', collection: goal.queued_items, as: :saved_resource
   - else
-    #just_cuz{style: "text-align:center;"}
-      / ಠ_ಠ 
+    .just_cuz{style: "text-align:center;"}
+      How about adding some #{ link_to "Resources", stone_resources_path(stone), remote: true, class: 'get_resources' } to help you accomplish this goal?
         
 
 

@@ -1,5 +1,14 @@
 #discussion
-  %h2= "<i class='icon-comments'></i> #{stone.title}".html_safe
+  .stoneheader
+    .wrapper
+      .title
+        %i{class: "icon-comments"}
+          = truncate(stone.title, length: 50)
+      .links
+        - if goal.nil?
+          = link_to "Add To Your Goals", stone_stones_users_path(stone), class: "btn btn-primary add_goal", remote: true, method: :post
+    .description
+      = truncate(stone.description, length: 100)
   - if user_signed_in?
     .form
       = form_for [@stone, @discussion], remote: true, html: { class: "create_discussion form-vertical" } do |f|

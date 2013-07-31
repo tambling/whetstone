@@ -5,8 +5,8 @@ $sidebar-highlight-color: #22262E;
   position: fixed;
   display: inline;
   height: 40px;
-  left: 0px;
-  border-radius: 0px 7px 7px 0px;
+  right: 0px;
+  border-radius: 7px 0px 0px 7px;
   text-align: left;
   line-height: 40px;
   font-size: 1.25em;
@@ -30,50 +30,49 @@ $sidebar-highlight-color: #22262E;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 
-  &.menu {
-    top: 300px;
-  }
-
   &.get_overview {
     top: 350px;
-  }
-
-  &.get_discussions {
-    top: 400px;
+    width: 170px;
   }
 
   &.get_resources {
-    top: 450px;
+    top: 400px;
+    width: 170px;
   }
 
-  &.just_cuz {
-    top: 500px;
+  &.get_discussions {
+    top: 450px;
+    width: 170px;
   }
 
 }
 
+.active {
+  background-color: #2980B9 !important;
+}
+
 .left_nav {
-  position: fixed;
-  display: inline;
+  display: none;
+  overflow: auto;
   min-width: 150px;
   width: 250px;
   height: 100%;
   top:0px;
   left: 0px;
-  // background-color: $sidebar-main-color;
   margin: 0;
+  // background-color: $sidebar-main-color;
   text-align: center;
 
   p {
+    position: relative;
     margin: 20px 0 20px 0;
     font-weight: lighter;
     font-size: 2em;
-    position: relative;
   }
 
   .gravatar {
-    margin-top: 10px;
     position: relative;
+    margin-top: 10px;
     clear: both;
     width: 100%;
 
@@ -120,7 +119,8 @@ $sidebar-highlight-color: #22262E;
 .top_nav {
   position: relative;
   top: 0px;
-  width: 100%;
+  width: 70%;
+  margin: 0 auto;
   height: 30px;
 
   ul {

@@ -5,7 +5,7 @@
       = form_for @stone, url: stones_path, method: 'POST', html: { class: "form-vertical", data: { validate: "parsley", novalidate: ""} } do |f|
         .fields
           = f.label :title
-          = f.text_field :title, data: { trigger: 'change', required: 'true', maxlength: '100', minlength: '5', notblank: 'true' }
+          = f.text_field :title, placeholder: "eg: I want to learn Javascript", data: { trigger: 'change', required: 'true', maxlength: '100', minlength: '5', notblank: 'true' }
           = f.label :description
           = f.text_area :description, rows: 5, data: { trigger: 'change', maxlength: '250', minlength: '5'}
         .submit_button

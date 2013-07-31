@@ -24,6 +24,9 @@ var DiscussionViews = {
   renderDiscussions: function(event, discussions){
     DiscussionViews.$container.empty()
     DiscussionViews.$container.append(discussions);
+    $('.fixed_tab.active').removeClass('active');
+    $(this).addClass('active');
+
     alertify.log("Joined Discussion Forum");
   },
 

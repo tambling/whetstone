@@ -2,11 +2,11 @@ html {
   background-color: #222;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGklEQVQIW2NkYGD4D8SMQAwGcAY2AbBKDBUAVuYCBQPd34sAAAAASUVORK5CYII=);
   background-repeat: repeat;
-  overflow: hidden;
   height: 100%;
 }
 
 body {
+  overflow: hidden;
   height: 100%;
 }
 
@@ -20,11 +20,17 @@ body {
 
 .meny {
   background:url('bg_gradient.jpg') no-repeat center center,url('bg_tile.jpg');
+  overflow: auto;
   height: 100%;
 }
 
+.container{
+  padding-bottom: 50px;
+}
+
 .content {
-  margin: 20px auto;
+  margin: 20px auto 20px;
+  position: relative;
   width: 70%;
 }
 

@@ -10,7 +10,7 @@ class StonesController < ApplicationController
 
   def new
     authenticate_user!
-    @stone = Stone.new(title: session[:query])
+    @stone = Stone.new(title: flash[:query])
     session.delete(:title)
   end
 
@@ -23,8 +23,6 @@ class StonesController < ApplicationController
   def overview
     @stone = Stone.find(params[:id])
     @goal = current_user.goals.where(stone_id: @stone.id).first if user_signed_in?
-    p @stone
-    p @goal
     render :json => render_to_string(partial: 'stones/overview', locals: { stone: @stone, goal: @goal }, layout: false).to_json
   end
 
@@ -32,7 +30,7 @@ class StonesController < ApplicationController
     @stones = Stone.basic_search(params[:query])
     search_results = {}
     search_results[:query] = params[:query]
-    session[:query] = params[:query]
+    flash[:query] = params[:query]
     
     if @stones.count.zero?
       search_results[:results_html] = render_to_string(partial: 'home/no_results', locals: {failed_query: params[:query] })

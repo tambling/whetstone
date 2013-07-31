@@ -1,11 +1,11 @@
 - content_for :right_tabs do
-  .fixed_tab.menu
-    Menu
   .fixed_tab.get_overview
-    = link_to "Overview", stone_overview_path(@stone) , remote: true
-  .fixed_tab.get_resources
-    = link_to "Resources", stone_resources_path(@stone), remote: true
+    = link_to stone_overview_path(@stone) , remote: true do
+      %i{ class: 'icon-list' } List
   .fixed_tab.get_discussions
-    = link_to "Discussions", stone_discussions_path(@stone), remote: true
-= render partial: 'overview', locals: {stone: @stone, goal: @goal}
-
+    = link_to stone_discussions_path(@stone), remote: true do
+      %i{ class: 'icon-comments'} Discussion
+  .fixed_tab.get_resources.active
+    = link_to stone_resources_path(@stone), remote: true do
+      %i{ class: 'icon-bookmark' } Resources
+= render partial: 'resources/index', locals: { stone: @stone, goal: @goal }

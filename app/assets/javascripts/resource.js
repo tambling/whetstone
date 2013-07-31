@@ -44,13 +44,14 @@ var ResourceViews = {
   },
 
   openDialog: function() {
+    $('.left_nav').hide();
     Avgrund.show('.modal');
   },   
 
   closeDialog: function() {
-    console.log('asdas');
     $('div.modal').remove();
     Avgrund.hide();
+    $('.left_nav').fadeIn();
   },
 
   renderAddResourceForm: function(event, addResourceForm){
@@ -60,10 +61,9 @@ var ResourceViews = {
 
   renderResource: function(event, data){
     
-
     ResourceViews.closeDialog();
-
     ResourceViews.$container.find('.resources').prepend(data)
+    alertify.success("Added New Resource!");
 
     // var fragment = document.createDocumentFragment();
     // var elems = [];
@@ -74,16 +74,14 @@ var ResourceViews = {
 
     // Masonry.$container.prepend( fragment );
     // Masonry.mason.prepended( elems );
-
-    alertify.success("Added New Resource!");
   },
 
   renderResources: function(event,resources){
     ResourceViews.$container.empty()
     ResourceViews.$container.append(resources);
     alertify.success("Listing Resources ...");
-
-    // Masonry.initialize();
+    $('.fixed_tab.active').removeClass('active');
+    $(this).addClass('active');
   },
 
   filterResources: function(event, resources){

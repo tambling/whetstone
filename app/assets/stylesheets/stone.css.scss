@@ -3,30 +3,39 @@
     margin: 0 auto;
   }
 
-  .header {
-    width: 100%;
+  margin-bottom: 50px;
+}
+
+.just_cuz {
+  font-size: 5em;
+  position: relative;
+  top: 180px;
+  margin: 0 auto;
+}
+
+.stoneheader {
+  width: 100%;
+  clear: both;
+  margin-bottom: 30px;
+
+  .wrapper {
     height: 60px;
     line-height: 60px;
-    clear: both;
-    margin-bottom: 30px;
 
     .title {
       float: left;
-      line-height: 60px;
       font-size: 2em;
     }
 
-    .options {
+    .links {
       float: right;
+      height: 60px;
       line-height: 60px;
     }
   }
 
   .description {
-    font-size: 1.5em;
+    width: 100%;
+    font-size: 2em;
   }
-}
-
-#just_cuz {
-  font-size: 45em;
 }

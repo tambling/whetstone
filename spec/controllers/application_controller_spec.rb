@@ -5,7 +5,7 @@ describe UsersController do
     it 'should redirect to the home after CanCan:AccessDenied' do
       controller.stub(:show).and_raise(CanCan::AccessDenied)
       get :show, id: 1
-      current_path.should_notg eq(user_path(user))
+      current_path.should_not eq(user_path(user))
 
     end
   end

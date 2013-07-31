@@ -68,4 +68,8 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  # Other configurations
+  config.include ImageHelper
+  config.include Devise::TestHelpers, :type => :controller
 end

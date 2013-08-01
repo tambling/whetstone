@@ -6,7 +6,7 @@
           = truncate(stone.title, length: 50)
       .links
         = link_to "Add Resource", new_stone_resource_path(stone), remote: true, class: "add_resource_link btn btn-primary"
-        - if goal.nil?
+        - if goal.nil? && user_signed_in?
           = link_to "Add To Your Goals", stone_stones_users_path(stone), class: "btn btn-primary add_goal", remote: true, method: :post
     .description
       %h3= truncate(stone.description, length: 100)

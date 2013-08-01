@@ -7,4 +7,12 @@ class ApplicationController < ActionController::Base
 
   helper GravatarHelper
 
+  def authenticate_user!
+    request.xhr? ? handle_xhr : super    
+  end
+
+  def handle_xhr
+    render :json => "you need to be logged in", :status => :unauthorized unless user_signed_in?
+  end
+
 end

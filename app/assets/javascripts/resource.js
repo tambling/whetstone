@@ -1,16 +1,3 @@
-var Masonry = {
-  initialize: function(){
-    Masonry.$container = $('#resource .resources');
-    Masonry.$container.masonry({
-      gutter: 30,
-      columnWidth: 10,
-      itemSelector: '.resource'
-    });
-
-    Masonry.mason = Masonry.$container.data('masonry');
-  }
-}
-
 var ResourceController = {
   initialize: function(){
 
@@ -51,7 +38,7 @@ var ResourceViews = {
   closeDialog: function() {
     $('div.modal').remove();
     Avgrund.hide();
-    $('.left_nav').fadeIn();
+    setTimeout(Navigation.showNav, 250);
   },
 
   renderAddResourceForm: function(event, addResourceForm){
@@ -64,16 +51,6 @@ var ResourceViews = {
     ResourceViews.closeDialog();
     ResourceViews.$container.find('.resources').prepend(data)
     alertify.success("Added New Resource!");
-
-    // var fragment = document.createDocumentFragment();
-    // var elems = [];
-    // $.each($(data), function(index,elem) {
-    //   fragment.appendChild(elem);
-    //   elems.push(elem);
-    // });
-
-    // Masonry.$container.prepend( fragment );
-    // Masonry.mason.prepended( elems );
   },
 
   renderResources: function(event,resources){
@@ -82,10 +59,6 @@ var ResourceViews = {
     alertify.success("Listing Resources ...");
     $('.fixed_tab.active').removeClass('active');
     $(this).addClass('active');
-  },
-
-  filterResources: function(event, resources){
-    console.log(resources);
   },
 
   applyResourceFilter: function(event, data){

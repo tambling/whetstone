@@ -9,19 +9,24 @@ $sidebar-highlight-color: #22262E;
 
   .results {
     position: relative;
-    margin: 10px 0 10px 0;
+    margin: 10px auto;
+    text-align: center;
     font-size: 1em;
+    width: 70%;
 
    .search_result {
     text-align: right;
     margin: 10px;
     display: inline-block;
+    vertical-align: top;
+    width: 150px;git 
   }
  }
 
  #animated{
-  position: relative;
   height: 100px;
+  font-size: 60px;
+  top: 100px;
   overflow: hidden;
 
   .motto {

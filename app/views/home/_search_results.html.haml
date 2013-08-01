@@ -2,7 +2,7 @@
   .title
     = link_to stone.title, stone_path(stone)
   .description
-    = stone.description
+    = truncate(stone.description, length: 20)
   .members
     = stone.stones_users.count.to_s + " Members"
   .resources

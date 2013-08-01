@@ -1,8 +1,5 @@
 %li.resource{ class: "#{saved_resource.resources_stone.resource.difficulty} All ui-state-default", id:"#{saved_resource.id}", data: { id: "#{saved_resource.id}", save_url: "#{saved_resources_path}" } }
-  .updown
-    = link_to "&#xf077;".html_safe, resources_stone_vote_path(:resources_stone_id => saved_resource.resources_stone.id, :value => 1), method: 'post', remote: true, :class => 'vote'
-    %p.vote-count= "#{saved_resource.resources_stone.vote_tally}"
-    = link_to "&#xf078;".html_safe, resources_stone_vote_path(:resources_stone_id => saved_resource.resources_stone.id, :value => -1), method: 'post', remote: true, :class => 'vote'
+  %img.resource-photo{:src => saved_resource.resources_stone.resource.photo }
   .text
     %h4= saved_resource.resources_stone.resource.title
     %p.description= saved_resource.resources_stone.resource.description
@@ -10,5 +7,4 @@
       %p.time= saved_resource.resources_stone.resource.recommended_time
       %p{ class: "#{saved_resource.resources_stone.resource.difficulty.downcase}" }= saved_resource.resources_stone.resource.difficulty
       %a.icon-facebook-sign.fb-share{href:"https://www.facebook.com/sharer/sharer.php?u=#{saved_resource.resources_stone.resource.url}"}
-  .resource-photo-overlay
-  %img.resource-photo{:src => saved_resource.resources_stone.resource.photo }
+  %i.icon-reorder

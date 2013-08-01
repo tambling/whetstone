@@ -1,5 +1,6 @@
-$hover : white;
-$grey : rgb(41,42,43);
+$hover : #7f8c8d;
+$before-hover: #95a5a6;
+$grey : #ecf0f1;
 
 #stone{
 	.resource {
@@ -13,9 +14,10 @@ $grey : rgb(41,42,43);
 	min-width: 600px;
 	padding: 10px;
 	border-radius: 15px;
-	border: 2px solid $grey;
+	border: 3px solid $before-hover;
 	margin-bottom: 20px;
 	background-color: $grey;
+	overflow: hidden;
 
 
 	.fb-share {
@@ -42,7 +44,8 @@ $grey : rgb(41,42,43);
 	.text { 
 		margin-top: 15px; 
 		color: gray;
-		
+		z-index: 100;
+
 		p {
 			margin-top: 2px;
 			margin-left: 20px;
@@ -52,57 +55,47 @@ $grey : rgb(41,42,43);
 		.description {
 			margin-top: 20px;
 			position: absolute;
-			left: 100px;
+			left: 10px;
+			width: 320px;
 		}
+	}
+
+	.icon-reorder {
+		position: absolute;
+		right: 15px;
+		top: 40px;
+		font-size: 2em;
 	}
 
 
 	&:hover { 
-		border: 2px solid $hover; 
+		border: 3px solid $hover; 
 		.resource-photo-overlay {
 			height: 70px;
-			border-right: 2px solid $hover;
-			border-top: 2px solid $hover;
-			border-bottom: 2px solid $hover;
+			border-right: 3px solid $hover;
+			border-top: 3px solid $hover;
+			border-bottom: 3px solid $hover;
 		}
 	}
 
 	.resource-photo {
-		height: 74px;
-		width: 300px;
 		float: right;
 		border-top-right-radius: 15px;
 		border-bottom-right-radius: 15px;
 		position: absolute;
-		right: -2px;
+		right: 45px;
 		top: 18px;
-		z-index: -2;
-	}
-
-	.resource-photo-overlay {
-		height: 74px;
-		width: 300px;
-		float: right;
-		border-top-right-radius: 15px;
-		border-bottom-right-radius: 15px;
-		background: linear-gradient(to right, rgba(41,42,43,1) 10%,rgba(41,42,43,0) 100%);
-		position: absolute;
-		right: -2px;
-		top: 18px;
-		z-index: -1;
 	}
 
 	.right-text {
 		float: right;
 		margin-top: 10px;
-		margin-right: 200px;
-		
+		margin-right: 200px;		
 	}
 
 	.time {
 		float: left;
 	}
-
 
 }
 	
@@ -124,13 +117,13 @@ $grey : rgb(41,42,43);
 	a:hover { color: #34495e; }
 }
 
-.beginner { color: green; }
+.beginner { color: #27ae60; }
 
-.intermediate { color: yellow; }
+.intermediate { color: #f1c40f; }
 
-.advanced { color: orange; }
+.advanced { color: #d35400; }
 
-.expert { color: red; }
+.expert { color: #c0392b; }
 
 
 

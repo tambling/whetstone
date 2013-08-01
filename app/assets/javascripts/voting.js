@@ -1,18 +1,30 @@
-$(document).ready( function() {
-	var $votes;
-	var catchNumbers = /-*\d+/
+var VoteController = {
+	initialize: function(){
+		$('body').on('click','.vote', VoteController.createVote);
+	},
 
-	$('body').on('ajax:success', '.vote', function(){
-		$votes = $(this.parentElement)
-		value = parseInt(catchNumbers.exec(this.href.substring(this.href.indexOf('value='))))
-		updateVotes(value)
-	});
+	createVote: function(event){
+		event.preventDefault();
 
-	function updateVotes(val) {
-		var voteCount = (parseInt(catchNumbers.exec($votes.eq(0).find('.vote-count').eq(0).text())) + val).toString();
-		$votes.eq(0).find('.vote-count').eq(0).text(voteCount)
+		VoteViews.$clicked = $(this)
+
+		var url = $(this).attr('href');
+		var value = $(this).data('value');
+		var class_name = $(this).data('class-name');
+		var id = $(this).data('id')
+
+		$.ajax({
+			type: 'post',
+			url: url,
+			data: { id: id, value: value, class_name: class_name }
+		}).done(VoteViews.renderVote);
 	}
+}
 
-});
+var VoteViews = {
 
-
+	renderVote: function(message){
+		VoteViews.$clicked.closest('.votable').find('.vote_tally').text(message.value)
+		alertify.log(message.message);
+	}
+}

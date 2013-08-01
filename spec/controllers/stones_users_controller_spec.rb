@@ -20,6 +20,13 @@ describe StonesUsersController do
 		end
 	end
 
+	describe "#destroy" do 
+		it "should delete the stonesuser with the given id" do 
+			delete :destroy, id: goal.id
+			expect(response.status).to eq 302
+		end
+	end
+
 	describe "#update_queue" do 
 		it "should properly update the queue" do
 			post :update_queue, stone_id: stone.id, queue: [1,2]

@@ -1,12 +1,12 @@
-.resource{ style: "background-image: url(#{resources_stone.resource.photo});", class: "#{resources_stone.resource.difficulty} All", data: { id: "#{resources_stone.id}" }}
+.resource.votable{ style: "background-image: url(#{resources_stone.resource.photo});", class: "#{resources_stone.resource.difficulty} All", data: { id: "#{resources_stone.id}" }}
   %ul.toolbar_options
     %li
       = link_to "<i class='icon-plus icon-2x'></i>".html_safe,resources_stone_saved_resources_path(resources_stone), remote: true, method: :post, class: "save_resource"
     %li
       = link_to "<i class='icon-facebook-sign icon-2x'></i>".html_safe, "https://www.facebook.com/sharer/sharer.php?u=#{resources_stone.resource.url}"
     %li  
-      = link_to "<i class='icon-thumbs-up icon-2x'></i>".html_safe, resources_stone_votes_path(:resources_stone_id => resources_stone.id, :value => 1), method: 'post', remote: true, :class => 'vote'
+      = link_to "<i class='icon-thumbs-up icon-2x'></i>".html_safe, resources_stone_votes_path(resources_stone.id), class: 'vote', data: { id: resources_stone.id, value: 1, class_name: "ResourcesStone" }
     %li
-      = link_to "#{resources_stone.vote_tally}".html_safe, "#"
+      = link_to "#{resources_stone.vote_tally}".html_safe, "#", class: 'vote_tally'
   %p= resources_stone.resource.title
 

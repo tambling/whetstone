@@ -1,8 +1,7 @@
-- ab_test("sign_up_button","background: #27ae60; height: 25px; width: 100px; text-align: center; border-radius: 3px; padding-top: 6px;", "") do |button_style|
-  .top_nav
-    %ul
-      - if !user_signed_in?
-        %li
-          = link_to '<i class="icon-signin"></i> Login'.html_safe, new_user_session_path
-        %li{ :style => button_style }
-          = link_to '<i class="icon-pencil"></i> Register'.html_safe, new_user_registration_path
+.top_nav
+  %ul
+    - if !user_signed_in?
+      %li
+        = link_to '<i class="icon-signin"></i> Login'.html_safe, new_user_session_path
+      %li
+        = link_to '<i class="icon-pencil"></i> Register'.html_safe, new_user_registration_path

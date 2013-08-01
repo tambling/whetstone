@@ -2,6 +2,7 @@ class StonesController < ApplicationController
 
   def show
     @stone = Stone.find(params[:id])
+    flash.delete(:query) # hack to remove the query flash on show page
     @goal = current_user.goals.where(stone_id: @stone.id).first if user_signed_in?
   end
 

@@ -51,6 +51,10 @@ var Navigation = {
     // Use touch swipe events to open/close
     touch: true
   });
+  },
+
+  showNav: function(){
+    $('.left_nav').show();
   }
 }
 $(document).ready(function(){

@@ -1,7 +1,6 @@
 .modal{ class: "avgrund-popup" }
-  = form_for [@stone, @resource], remote: true, html: { class: "create_resource form-horizontal" } do |f|
+  = form_for [stone, resource], remote: true, html: { class: "create_resource form-horizontal" } do |f|
     .fields
-      = f.hidden_field :creator_id, value: current_user.id
       = f.label :title
       = f.text_field :title
       = f.label :description

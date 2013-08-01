@@ -1,10 +1,8 @@
 var SavedResourceController = {
   initialize: function(){
-    $('body').on('ajax:success','.save_resource', SavedResourceController.flashMessage)
-  },
-
-  flashMessage: function(event, message){
-    alertify.success("Saved To Goals ...");
+    $('body').on('ajax:success','.save_resource', StatusHandler.successMessage);
+    
+    $(document).on('ajax:error', StatusHandler.errorMessage) 
   }
 }
 

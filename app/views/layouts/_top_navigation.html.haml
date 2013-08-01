@@ -2,6 +2,6 @@
   %ul
     - if !user_signed_in?
       %li
-        = link_to '<i class="icon-signin"></i> Login'.html_safe, new_user_session_path, class: "btn btn-inverse"
+        = link_to '<i class="icon-signin"></i> Login'.html_safe, new_user_session_path
       %li
-        = link_to '<i class="icon-pencil"></i> Register'.html_safe, new_user_registration_path, class: "btn btn-inverse"
+        = link_to '<i class="icon-pencil"></i> Register'.html_safe, new_user_registration_path

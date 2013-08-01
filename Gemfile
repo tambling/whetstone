@@ -23,7 +23,6 @@ gem 'unicorn'
 gem 'textacular', '~> 3.0'
 gem 'font-awesome-rails'
 gem 'mechanize'
-gem 'split', :require => 'split/dashboard'
 gem 'chronic_duration'
 group :development do
   gem 'better_errors'

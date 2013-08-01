@@ -7,24 +7,9 @@ $sidebar-highlight-color: #22262E;
   top: 25px;
   bottom: 25px;
 
-    .motto {
-      position: relative;
-      font-size: 5.7em;
-      text-align: left;
-
-
-      p {
-        text-align: center;
-        margin: 0 auto;
-        padding: 0;
-      }
-
-  }
-
   .results {
     position: relative;
     margin: 10px 0 10px 0;
-    text-align: center;
     font-size: 1em;
 
    .search_result {
@@ -36,15 +21,11 @@ $sidebar-highlight-color: #22262E;
 
  #animated{
   position: relative;
-  width: 80%;
-  margin: 0 auto;
-  top: 20px;
   height: 100px;
   overflow: hidden;
 
   .motto {
     position: relative;
-    text-align: center;
     font-size: 60pt;
 
     .item {

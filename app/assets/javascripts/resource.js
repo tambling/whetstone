@@ -20,7 +20,10 @@ var ResourceController = {
     });
 
     $(document).on('click','.close_modal', ResourceViews.closeDialog);
-
+    
+    $(document).on('click', '.get_auto_resources', function(){
+      window.open('https://www.google.com');
+    });
   }
 }
 

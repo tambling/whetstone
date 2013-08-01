@@ -26,5 +26,6 @@
   .resources
     - if stone.resources_stones.empty?
       .just_cuz{style: "text-align:center;"}
-        This topic has no resources. Try populating it with #{ link_to "Google Search", '#', remote: true, class: 'get_auto_resources' }
+        / TODO: populate page with resource suggestions
+        This topic has no resources. Try finding one with #{ link_to "Google Search", '#', remote: true, class: 'get_auto_resources' }
     = render partial: 'resources/resources_stone', collection: stone.resources_stones, as: :resources_stone

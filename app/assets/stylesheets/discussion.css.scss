@@ -24,6 +24,20 @@
       .title {
         font-size: 1.3em
       }
+      
+      .comment{
+        margin: 0;
+        .content{
+          margin-left: 1.5em;
+        }
+        .user {
+          margin-left: 2.5em; 
+          text-decoration: underline;
+        .all a{
+          margin-left: 1.5em;
+          }
+        }
+      }
     }
   }
 

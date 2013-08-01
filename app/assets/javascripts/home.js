@@ -27,7 +27,7 @@ var Search = {
       Search.initialize();
     }
     Search.$query.val('');
-    $('#search .results').empty();  
-    $('#search .results').append(search_results.results_html).hide().fadeIn();  
+    $('#home .results').empty();  
+    $('#home .results').append(search_results.results_html).hide().fadeIn();  
   }
 }

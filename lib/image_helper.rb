@@ -1,6 +1,7 @@
 module ImageHelper
   require 'open-uri'
 
+  # Returns a relevant image url from a resource
   def top_image(url)
     og_image         = check_og_image(url)
     apple_image      = check_apple_image(url)
@@ -11,11 +12,15 @@ module ImageHelper
       return apple_image
     elsif mechanize_search
       mechanize_search  
+    # In case all else fails ...
     else
       "../image-dne.jpg"
     end
   end
 
+private
+
+  # Checks for open graph thumbnail
   def check_og_image(url)
     begin 
       og_image = Nokogiri::HTML(open(url)).css('meta[property="og:image"]')
@@ -25,6 +30,7 @@ module ImageHelper
     end
   end
 
+  # Checks for apple touch thumbnail
   def check_apple_image(url)
     begin
       doc = Nokogiri::HTML(open(url))
@@ -35,14 +41,23 @@ module ImageHelper
     end
   end
 
+  # Mechanizes Google search
   def mechanize_search(url)
     begin
       sanintized_url = sanitize_url URI(url).host
+      # Click through Google Images
       agent = Mechanize.new
       agent.get("http://www.google.com/imghp?hl=en&tab=wi")
       form = agent.page.form
       form.q = sanintized_url
       form.submit
+      # Click through Advanced Search
+      agent.page.link_with(:text => "Advanced search").click
+      adv_form = agent.page.form
+      adv_form.radiobutton_with(:value => "trans").check
+      adv_form.field_with(:name => "as_filetype").value = "png"
+      adv_form.submit
+      # Find first result
       images = agent.page.links_with(href: /imgres/)
       agent.click(images[0])
       agent.page.link_with(:text => "See full size image").uri.to_s
@@ -51,9 +66,12 @@ module ImageHelper
     end
   end
 
+  # Finds the relevant bits of a URL string
   def sanitize_url(url)
+    # URL matches 'www'
     if url =~ /w{3}/
       sterilize url.split(/\./)[1]
+    # URL does not match 'www'
     else
       first_parts = url.split(/\./)[0..1]
       scheme_eliminated = first_parts.map {|part| part.gsub(/[a-zA-Z]+\W+/, '')}.join(' ')
@@ -61,6 +79,7 @@ module ImageHelper
     end
   end
 
+  # Removes pesky punctuation
   def sterilize(partial_url)
     partial_url =~ /\W/ ? partial_url.gsub(/\W/, ' ').split(' ').join(' ') : partial_url
   end

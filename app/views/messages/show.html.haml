@@ -1,11 +1,67 @@
-%h1= "Your chat with #{@partner.name}"
-= render partial: "messages", locals: {partner: @partner, messages: @messages}
-#send
-  .form
-    = form_for(@message) do |f|
-      .fields
-        =f.hidden_field  :to_id, value: @partner.id
-        =f.hidden_field :from_id, value: current_user.id
-        =f.text_area :body
-      .submit_button
-        =f.submit "Send"
+
+
+
+!!!
+%html
+  %head
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+      %title= content_for?(:title) ? yield(:title) : "Whetstone"
+      %meta{:content => content_for?(:description) ? yield(:description) : "Whetstone", :name => "description"}
+        = stylesheet_link_tag "application", :media => "all"
+        %link{ href: "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css", rel: "stylesheet"}
+        = javascript_include_tag "application"
+        = csrf_meta_tags
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" type="text/css" />
+        = yield(:head)
+  .avgrund-cover
+  %body{:class => "avgrund-contents"}
+    .wrapper
+      - if user_signed_in?
+        .left_nav
+          .gravatar
+            %img{ src: gravatar(current_user,120) }
+          %p= link_to current_user.name, edit_user_registration_path
+          .mini-search
+            = form_tag search_stones_path, remote: true do
+              = hidden_field_tag :mini_search, "true"
+              = text_field_tag :query, nil, placeholder: "&#xf002; Type Something...".html_safe
+          %ul.goals
+            %li
+              = link_to '<i class="icon-home"></i> Home'.html_safe, root_path
+            %li
+              = link_to '<i class="icon-envelope"></i> Messages'.html_safe, messages_path
+            %li
+              = link_to '<i class="icon-trophy"></i> Create Stone'.html_safe, new_stone_path
+            %li
+              = link_to '<i class="icon-signout"></i> Logout'.html_safe, destroy_user_session_path, :method=>'delete'
+            - if current_user.stones
+              %h2
+                = '<i class="icon-trophy"></i> Goals'.html_safe
+              = render current_user.stones
+
+      .meny
+        #main{ :role => "main" }
+          .right-tabs-fixed
+            = yield :right_tabs
+          .container
+            = render 'layouts/top_navigation'
+            = render 'layouts/messages'
+            .content
+              #messages_headers
+                %h1= "Your chat with #{@partner.name}"
+                - if @partner.goals.empty?
+                  %h2= "#{@partner.name} hasn't set any goals yet! Why not ask what's up?"
+                - else
+                  %h2= "#{@partner.name} is working on #{@partner.goals.sample.stone.title}! Why not ask how it's going?"
+              = render partial: "messages", locals: {partner: @partner, messages: @messages}
+            #send
+              .form
+                = form_for(@message, remote: true) do |f|
+                  .fields
+                    =f.hidden_field  :to_id, value: @partner.id
+                    =f.hidden_field :from_id, value: current_user.id
+                    =f.text_area(:body, rows: 3)
+                    =f.submit "Send"
+
+      / ! end of .container
+    / ! end of #main

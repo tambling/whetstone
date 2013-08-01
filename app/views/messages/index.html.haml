@@ -10,7 +10,7 @@
 
 
 #current
-  %h2 Conversations
+  %h2 Your Current Conversations
   - @partners.each do |partner|
-    %li= link_to partner.name, message_path(partner)
+    %li= link_to "Conversation with #{partner.name}", message_path(partner)
 

@@ -1,44 +1,74 @@
+#content{
+  height: 100%;
 
-#messages{
-  position: relative;
-  padding-top: 15px;
-  padding-bottom: 130px;
-  width: 100%;
-  li{
-    display: block;
-    position: relative;
+}
+#send{
+  bottom: 0px;
+  #new_message{
+    background-color: #7f8c8d;
+    margin: 20px auto 0px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    left: 0px;
+    padding-left: 15%;
+    padding-right: 15%;
 
-    border-radius: 10px;
-    padding: 10px;
-    margin: 5px 0px 0px 5px;
-    &.from {
+    .fields{
+      width: 80%;
+    }
+    * {
+      float: left;
+      display: inline-block;
+      margin: 10 auto 10;
+    }
+    textarea{
+      width: 80%;
+      border-radius: 10px;
+      background-color: white;
+    }
+    input{
+      width: 10%;
+      margin-top: 40px;
+      margin-left: 20px;
+      border-radius: 5px;
+      border: none;
       background-color: #ecf0f1;
     }
-    &.to {
+  }
+
+
+}
+
+#messages_headers{
+  h2{
+    font-size: 1em;
+
+  }
+}
+#messages{
+  margin: 0px 40px 112px 0px;
+  li{
+    width: 100%;
+    border-radius: 10px;
+    margin: 5px 0px 5px 0px;
+    padding: 10px;
+    &.from{
       background-color: #2980b9;
       color: white;
     }
+    &.to{
+      background-color: #ecf0f1;
+      color: black;
+    }
     img{
-      border-radius: 100px;
+      border-radius: 30px;
+      margin-right: 10px;
+    }
+    span{
+      vertical-align: middle;
     }
   }
 }
-#send {
-  position: fixed;
-  left: 0px;
-  bottom: 0px;
-  right: 0px;
-  width: 100%;
-  background-color:#95a5a6;
-  margin-left: 240px;
-  float: left;
-  height: 100px;
-  padding: 15px;
 
-  textarea {
-    position: relative;
-    height: 100px;
-    width: 60%;
-    padding: 0;
-  }
-}
+

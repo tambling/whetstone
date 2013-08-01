@@ -1,8 +1,8 @@
-.comment
+.comment.votable
   .column1
-    = link_to "<i class='icon-thumbs-up'></i>".html_safe, comment_votes_path(:comment_id => comment.id, :value => 1), method: 'post', remote: true, :class => 'vote'
-    %h3.vote-count= "#{comment.vote_tally}"
-    = link_to "<i class='icon-thumbs-down'></i>".html_safe, comment_votes_path(:comment_id => comment.id, :value => -1), method: 'post', remote: true, :class => 'vote'
+    = link_to "<i class='icon-thumbs-up'></i>".html_safe, comment_votes_path(comment), class: 'vote', data: {id: comment.id, class_name: 'Comment', value: 1 }
+    %h3.vote-count.vote_tally= "#{comment.vote_tally}"
+    = link_to "<i class='icon-thumbs-down'></i>".html_safe,comment_votes_path(comment), class: 'vote', data: {id: comment.id, class_name: 'Comment', value: -1 }
   .column2
     .title
       %h4= comment.content

@@ -65,5 +65,6 @@ $(document).ready(function(){
   DiscussionController.initialize();
   DiscussionViews.initialize();
   SavedResourceController.initialize();
+  VoteController.initialize();
   Navigation.initialize();
 });

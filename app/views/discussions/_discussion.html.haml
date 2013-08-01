@@ -1,8 +1,8 @@
-.discussion
+.discussion.votable
   .column1
-    = link_to "<i class='icon-thumbs-up'></i>".html_safe, discussion_votes_path(:discussion_id => discussion.id, :value => 1), method: 'post', remote: true, :class => 'vote'
-    %h3.vote-count= "#{discussion.vote_tally}"
-    = link_to "<i class='icon-thumbs-down'></i>".html_safe, discussion_votes_path(:discussion_id => discussion.id, :value => -1), method: 'post', remote: true, :class => 'vote'
+    = link_to "<i class='icon-thumbs-up'></i>".html_safe, discussion_votes_path(discussion), class: 'vote',data: {id: discussion.id, class_name: 'Discussion', value: 1}
+    %h3.vote-count.vote_tally= "#{discussion.vote_tally}"
+    = link_to "<i class='icon-thumbs-down'></i>".html_safe, discussion_votes_path(discussion), class: 'vote', data: {id: discussion.id, class_name: 'Discussion', value: -1}
   .column2
     .title= link_to discussion.title, stone_discussion_path(@stone,discussion), remote: true, class: "show_discussion"
     %p= discussion.content

@@ -5,6 +5,20 @@ $sidebar-highlight-color: #22262E;
 #home {
   position: relative;
   top: 25px;
+
+    .motto {
+      position: relative;
+      font-size: 5.7em;
+      text-align: center;
+      top: 75px;
+
+      p {
+        text-align: center;
+        margin: 0 auto;
+        padding: 0;
+      }
+
+  }
 }
 
 #search {

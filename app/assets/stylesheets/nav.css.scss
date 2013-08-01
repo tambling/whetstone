@@ -1,11 +1,24 @@
 $sidebar-main-color: #1A1D22;
 $sidebar-highlight-color: #22262E;
 
+.menu_tab {
+  position: fixed;
+  display: inline;
+  height: 40px;
+  left: 0px;
+  top: 45%;
+  line-height: 40px;
+  font-size: 3em;
+  padding: 0 5px 0 5px;
+  color: #2C3E50;
+}
+
 .fixed_tab {
   position: fixed;
   display: inline;
   height: 40px;
   right: 0px;
+
   border-radius: 7px 0px 0px 7px;
   text-align: left;
   line-height: 40px;
@@ -60,7 +73,6 @@ $sidebar-highlight-color: #22262E;
   top:0px;
   left: 0px;
   margin: 0;
-  // background-color: $sidebar-main-color;
   text-align: center;
 
   p {
@@ -91,7 +103,9 @@ $sidebar-highlight-color: #22262E;
     padding: 10px;
 
     input {
+      font-family: 'FontAwesome';
       padding: 5px;
+      line-height: 15px;
       color: white;
       background: none;
       margin-left: 5px;
@@ -105,7 +119,7 @@ $sidebar-highlight-color: #22262E;
     text-align: left;
     margin: 0;
     padding: 10;
-    font-size: 1.5em;
+    font-size: 1.2em;
   
     h2 {
       color: silver;

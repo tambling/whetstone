@@ -12,7 +12,7 @@ var StoneViews = {
 
   renderOverview: function(event, overview){
     StoneViews.$container.empty();
-    StoneViews.$container.append(overview);
+    StoneViews.$container.append(overview).hide().fadeIn();
     $('.fixed_tab.active').removeClass('active');
     $(this).addClass('active');
 
@@ -27,9 +27,10 @@ var StoneViews = {
 }
 
 var Navigation = {
+
   initialize: function() {
 
-  var meny = Meny.create({
+  this.meny = Meny.create({
     // The element that will be animated in from off screen
     menuElement: document.querySelector( '.left_nav' ),
 

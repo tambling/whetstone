@@ -3,6 +3,7 @@ html {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGklEQVQIW2NkYGD4D8SMQAwGcAY2AbBKDBUAVuYCBQPd34sAAAAASUVORK5CYII=);
   background-repeat: repeat;
   height: 100%;
+  width: 100%;
 }
 
 body {
@@ -29,7 +30,7 @@ body {
 }
 
 .content {
-  margin: 20px auto 20px;
+  margin: 40px auto 40px;
   position: relative;
   width: 80%;
 }
@@ -102,6 +103,10 @@ small {
 
 .hidden {
   display: none;
+}
+
+.brand {
+  height: 60px;
 }
 
 

@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   helper GravatarHelper
 
+  # TODO: EDIT PROFILE IS NOT WORKING
   def authenticate_user!
     request.xhr? ? handle_xhr : super    
   end

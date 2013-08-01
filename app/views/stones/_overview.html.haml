@@ -13,10 +13,10 @@
       = truncate(stone.description, length: 100)
   - unless goal.nil?
     .resources.sortable
+      - if goal.queued_items.blank?
+        .no_queued_items_message
+          How about adding some #{ link_to "Resources", stone_resources_path(stone), remote: true, class: 'get_resources' } to help you accomplish this goal?
       = render partial: 'saved_resources/resources_stone', collection: goal.queued_items, as: :saved_resource
-  - else
-    .just_cuz{style: "text-align:center;"}
-      How about adding some #{ link_to "Resources", stone_resources_path(stone), remote: true, class: 'get_resources' } to help you accomplish this goal?
 %script
   var url=window.location.pathname+"/update_queue"
   $(document).find('.sortable').sortable({

@@ -8,5 +8,5 @@
       = link_to "<i class='icon-thumbs-up icon-2x'></i>".html_safe, resources_stone_votes_path(resources_stone.id), class: 'vote', data: { id: resources_stone.id, value: 1, class_name: "ResourcesStone" }
     %li
       = link_to "#{resources_stone.vote_tally}".html_safe, "#", class: 'vote_tally'
-  %p= resources_stone.resource.title
+  %p.title= truncate(resources_stone.resource.title, length: 30)
 

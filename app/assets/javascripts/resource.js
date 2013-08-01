@@ -13,10 +13,12 @@ var ResourceController = {
 
     $('body').on('mouseenter', '.resource', function(){
       $(this).find('.toolbar_options').fadeIn('fast');
+      $(this).find('.title').fadeIn('fast');
     });
 
     $('body').on('mouseleave', '.resource', function(){
       $(this).find('.toolbar_options').fadeOut('fast');
+      $(this).find('.title').fadeOut('fast');
     });
 
     $(document).on('click','.close_modal', ResourceViews.closeDialog);
@@ -50,15 +52,15 @@ var ResourceViews = {
   },
 
   renderResource: function(event, data){
-    
     ResourceViews.closeDialog();
     ResourceViews.$container.find('.resources').prepend(data)
     alertify.success("Added New Resource!");
+    ResourceViews.$container.find('.no_resources_message').fadeOut();
   },
 
   renderResources: function(event,resources){
     ResourceViews.$container.empty()
-    ResourceViews.$container.append(resources);
+    ResourceViews.$container.append(resources).hide().fadeIn();
     alertify.success("Listing Resources ...");
     $('.fixed_tab.active').removeClass('active');
     $(this).addClass('active');
@@ -78,14 +80,25 @@ var ResourceViews = {
     if (sortType === 'ASC') {
       ResourceViews.$container.find('.resource').sort(ascSort).appendTo('.resources')
     }
-    else {
+    else if (sortType === 'DESC') {
       ResourceViews.$container.find('.resource').sort(descSort).appendTo('.resources')
+    }
+    else if (sortType === 'TOP') {
+      ResourceViews.$container.find('.resource').sort(topVotesSort).appendTo('.resources')
+    }
+    else if (sortType === 'BOTTOM') {
+      ResourceViews.$container.find('.resource').sort(bottomVotesSort).appendTo('.resources')
     }
 
   }
 }
 
-function ascSort(a, b){ return ($(b).text()) < ($(a).text()) ? 1 : -1; }
+function ascSort(a, b){ return ($(b).find('.title').text()) < ($(a).find('.title').text()) ? 1 : -1; }
 
-function descSort(b, a){ return ($(b).text()) < ($(a).text()) ? 1 : -1; }
+function descSort(b, a){ return ($(b).find('.title').text()) < ($(a).find('.title').text()) ? 1 : -1; }
+
+function bottomVotesSort(a, b){ return ($(b).find('.vote_tally').text()) < ($(a).find('.vote_tally').text()) ? 1 : -1; }
+
+function topVotesSort(b, a){ return ($(b).find('.vote_tally').text()) < ($(a).find('.vote_tally').text()) ? 1 : -1; }
+
 

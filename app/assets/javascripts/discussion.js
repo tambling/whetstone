@@ -23,7 +23,7 @@ var DiscussionViews = {
 
   renderDiscussions: function(event, discussions){
     DiscussionViews.$container.empty()
-    DiscussionViews.$container.append(discussions);
+    DiscussionViews.$container.append(discussions).hide().fadeIn();
     $('.fixed_tab.active').removeClass('active');
     $(this).addClass('active');
 
@@ -32,7 +32,7 @@ var DiscussionViews = {
 
   renderShowDiscussion: function(event, discussion) {
     DiscussionViews.$container.empty()
-    DiscussionViews.$container.append(discussion);
+    DiscussionViews.$container.append(discussion).hide().fadeIn();
   },
 
   renderComment: function(event, comment) {

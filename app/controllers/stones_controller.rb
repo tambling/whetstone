@@ -2,14 +2,13 @@ class StonesController < ApplicationController
 
   def show
     @stone = Stone.find(params[:id])
-    flash.delete(:query) # hack to remove the query flash on show page
     @goal = current_user.goals.where(stone_id: @stone.id).first if user_signed_in?
   end
 
   def new
     authenticate_user!
-    @stone = Stone.new(title: flash[:query])
-    session.delete(:title)
+    @stone = Stone.new(title: session[:query])
+    session.delete(:query)
   end
 
   def create
@@ -28,7 +27,7 @@ class StonesController < ApplicationController
     @stones = Stone.basic_search(params[:query])
     search_results = {}
     search_results[:query] = params[:query]
-    flash[:query] = params[:query]
+    session[:query] = params[:query]
     
     if @stones.count.zero?
       search_results[:results_html] = render_to_string(partial: 'home/no_results', locals: {failed_query: params[:query] })

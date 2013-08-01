@@ -75,6 +75,13 @@
     position: relative;
     margin: 80px 0 20px 0;
     vertical-align: top;
+
+    .no_resources_message {
+      font-size: 4em;
+      margin: 0 auto;
+      text-align: center;
+      width: 70%;
+    }
   }
 
   .resource {
@@ -86,20 +93,19 @@
     display: inline-block;
     text-align: center;
     vertical-align: top;
-    background-size: 250px;
+    background-size: 250px auto;
     background-repeat: no-repeat;
     background-position: center;
 
-    p {
-        border-radius: 4px 4px 0 0;
+    p.title {
+        display: none;
         position: absolute;
         width: 100%;
         visibility: visible;
         font-size: 1.2em;
         color: silver;
-        background-color: rgba(26, 29, 34, 0.90);
-        border: 1px solid;
-        top: -40px;
+        background-color: rgba(32, 42, 53, 0.91);
+        top: -35px;
     }
 
     ul.toolbar_options {

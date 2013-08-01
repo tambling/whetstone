@@ -3,6 +3,14 @@ $before-hover: #95a5a6;
 $grey : #ecf0f1;
 
 #stone{
+
+	.no_queued_items_message {
+    font-size: 4em;
+    margin: 0 auto;
+    text-align: center;
+    width: 70%;
+	}
+
 	.resource {
 	height: 100%;
 	position: relative;

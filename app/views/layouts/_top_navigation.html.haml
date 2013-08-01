@@ -1,4 +1,7 @@
 .top_nav
+  - unless controller_name == 'home'
+    = link_to root_path do
+      = image_tag( "logo_width_adjusted.png", class: 'brand' )
   %ul
     - if !user_signed_in?
       %li

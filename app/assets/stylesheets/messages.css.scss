@@ -1,7 +1,11 @@
 #content{
   height: 100%;
-
 }
+
+#user_search {
+  margin-top: 80px;
+}
+
 #send{
   bottom: 0px;
   #new_message{
@@ -41,9 +45,10 @@
 }
 
 #messages_headers{
+  margin-top: 80px;
+
   h2{
     font-size: 1em;
-
   }
 }
 #messages{

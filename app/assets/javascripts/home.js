@@ -1,5 +1,6 @@
 $(document).ready(function(){
   Search.initialize();
+  LeftNav.initialize();
 });
 
 var Search = {
@@ -29,5 +30,18 @@ var Search = {
     Search.$query.val('');
     $('#home .results').empty();  
     $('#home .results').append(search_results.results_html).hide().fadeIn();  
+    Navigation.meny.close();
+  }
+}
+
+var LeftNav = {
+  initialize: function(){
+    $('body').on('ajax:success','.goals a.ajaxified', LeftNav.renderPage);
+  },
+
+  renderPage: function(event, data){
+    $('.content').empty();
+    $('.content').append(data).hide().fadeIn();
+    Navigation.meny.close();
   }
 }

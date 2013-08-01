@@ -4,9 +4,9 @@ class VotesController < ApplicationController
     @voteable = params[:class_name].constantize.find(params[:id])
     vote = @voteable.votes.build(user_id: current_user.id, value: params[:value])
     unless vote.save
-      render :json => { message: "Can't vote twice on the same thing!"}.to_json
+      render :json => { message: "Can't vote twice on the same thing!"}.to_json, status: 403
     else
-      render :json => { message: "Voting Successful", value: @voteable.vote_tally }.to_json, status: :created
+      render :json => { message: "Voting Successful", value: @voteable.vote_tally }.to_json, status: 200
     end
   end
 

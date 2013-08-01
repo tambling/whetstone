@@ -12,11 +12,12 @@ feature "Comments:", js: true do
     stone.discussions << create(:discussion, user_id: 1)
     stone.discussions.first.comments << create(:comment, user_id: 1)
     visit stone_path(stone)
-    page.find("#discussion_link").click
+    click_link "Discussion"
   end
 
   scenario "User Visits Discussions Page And Sees Comment Title And Content", js: true do
-    expect(page).to have_content(stone.discussions.first.comments.first.content)
+    click_link stone.discussions.last.title
+    expect(page).to have_content(stone.discussions.last.comments.last.content)
   end
 
   scenario "User Can Add A Comment", js: true do

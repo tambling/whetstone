@@ -7,6 +7,9 @@
         = form_for [@discussion, @comment], remote: true, html: { class: "create_comment form-vertical" } do |f|
           .fields
             = f.text_field :content, required: true
+            = f.hidden_field :commentable_id, value: @discussion.id
+            = f.hidden_field :commentable_type, value: @discussion.class
+            = f.hidden_field :user_id, value: current_user.id
           .submit_button
             = f.submit "Add Comment", class: "btn btn-primary"
     = render @discussion.comments

@@ -17,7 +17,9 @@ module ImageHelper
       "../image-dne.jpg"
     end
   end
-  
+
+private
+
   # Checks for open graph thumbnail
   def check_og_image(url)
     begin 

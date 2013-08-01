@@ -11,12 +11,17 @@
           = link_to "Delete :-(", stone_stones_user_path(stone, goal), data: { id: "#{goal.id}" }, method: :delete, class: "btn btn-danger delete_goal"
     .description
       = truncate(stone.description, length: 100)
-  - unless goal.nil? 
+  - unless goal.nil?
     .resources.sortable
       = render partial: 'saved_resources/resources_stone', collection: goal.queued_items, as: :saved_resource
   - else
     .just_cuz{style: "text-align:center;"}
       How about adding some #{ link_to "Resources", stone_resources_path(stone), remote: true, class: 'get_resources' } to help you accomplish this goal?
-        
-
-
+%script
+  var url=window.location.pathname+"/update_queue"
+  $(document).find('.sortable').sortable({
+  update: function(){
+  $.post(url, {queue: $(this).sortable('toArray')})
+  }
+  });
+  $( ".sortable" ).disableSelection();

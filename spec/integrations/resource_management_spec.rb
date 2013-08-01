@@ -9,6 +9,7 @@
     before do
       login user
       stone.resources << resource
+      user.goals.destroy_all
       visit stone_path(stone)
     end
 
@@ -18,6 +19,7 @@
     end
 
     scenario "User Visits Resources Page And Can Add a Resource" do
+      Capybara.ignore_hidden_elements = true
       click_link("Resources")
       click_link("Add Resource")
       fill_in('Title', :with => 'Poodr')
@@ -31,7 +33,7 @@
       expect(page).to have_content("Poodr")
     end
 
-    scenario "User filters by difficulty" do
+    scenario "User filters by difficulty", js: true do
       stone.resources.destroy_all
       stone.resources << FactoryGirl.create(:resource, difficulty: "Expert", title: "An expert resource")
       stone.resources << FactoryGirl.create(:resource, difficulty: "Beginner", title: "An easy resource")

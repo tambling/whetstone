@@ -4,7 +4,7 @@ class VotesController < ApplicationController
     @voteable = find_voteable
     vote = @voteable.votes.build(user_id: current_user.id, value: params[:value])
     unless vote.save
-      flash[:error] = "Oops. Something Went Wrong!"
+      flash[:error] = "You can't vote twice on the same thing!"
       render status: 403
     end
   end

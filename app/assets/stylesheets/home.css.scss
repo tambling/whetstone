@@ -5,11 +5,12 @@ $sidebar-highlight-color: #22262E;
 #home {
   position: relative;
   top: 25px;
+  bottom: 25px;
 
     .motto {
       position: relative;
       font-size: 5.7em;
-      text-align: center;
+      text-align: left;
 
 
       p {
@@ -19,13 +20,49 @@ $sidebar-highlight-color: #22262E;
       }
 
   }
+
+  .results {
+    position: relative;
+    margin: 10px 0 10px 0;
+    text-align: center;
+    font-size: 1em;
+
+   .search_result {
+    text-align: right;
+    margin: 10px;
+    display: inline-block;
+  }
+ }
+
+ #animated{
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  top: 20px;
+  height: 100px;
+  overflow: hidden;
+
+  .motto {
+    position: relative;
+    text-align: center;
+    font-size: 60pt;
+
+    .item {
+      display: none;
+    }
+    #logo{
+      display: none;
+    }
+  }
+}
+
+
 }
 
 #search {
 	position: relative;
 	width: 50%;
 	margin: 0 auto;
-	top: 150px;
 	font-size: 1.5em;
   font-family:'Open Sans Condensed',sans-serif;
 
@@ -46,12 +83,6 @@ $sidebar-highlight-color: #22262E;
       left: -40px;
       opacity: 0.50;
     }
-  }
-
-  .results {
-    margin: 10px 0 10px 0;
-    text-align: right;
-    font-size: 1em;
   }
 
   input {

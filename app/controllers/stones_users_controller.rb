@@ -1,6 +1,6 @@
 class StonesUsersController < ApplicationController
 
-  before_filter :load_resource, only: [:create, :new, :delete]
+  before_filter :load_resource, only: [:create, :new, :destroy]
 
   def create
     current_user.stones << @stone

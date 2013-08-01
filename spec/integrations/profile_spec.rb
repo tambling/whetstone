@@ -3,12 +3,11 @@ require 'spec_helper'
 feature "Viewing a user's profile" do
   let(:user1) {FactoryGirl.create(:user)}
   let(:user2) {User.create(name: "Jane Doe", email: "jane@doe.net", password: 'password')}
-  before(:each) do
-    visit new_user_session_path
-    fill_in "Email", with: user1.email
-    fill_in "Password", with: "password"
-    click_button "Sign in"
+
+  before do
+    login user1
   end
+  
   scenario "user visits another user's profile." do
     visit user_path(user2)
     page.should have_content(user2.name)

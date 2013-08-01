@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "Comments Page Management", js: true do
+feature "Comments:", js: true do
 
   let(:user) { create(:user) }
   let(:stone) { create(:stone) }
@@ -14,7 +14,7 @@ feature "Comments Page Management", js: true do
     login user
 
     visit stone_path(stone)
-    click_link("Discussions")
+    click_link("Discussion")
     click_link(discussion.title)
   end
 

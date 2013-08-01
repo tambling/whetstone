@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
   def create
     message = Message.create(params[:message])
     flash[:success] = "Message Sent!"
-    redirect_to message_path(message.to_id)
+    render partial: 'message', locals: { current_user: current_user, partner: message.to, message: message}
   end
 end
 

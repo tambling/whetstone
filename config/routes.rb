@@ -6,6 +6,8 @@ Whetstone::Application.routes.draw do
     resources :votes
   end
 
+  resources :stones_users
+
   resources :stones do
     resources :stones_users
     

@@ -6,8 +6,3 @@
   .column2
     .title= link_to discussion.title, stone_discussion_path(@stone,discussion), remote: true, class: "show_discussion"
     %p= discussion.content
-    .comments
-      - Comment.where("commentable_id=?", discussion.id)[0..2].each do |comment|
-        .comment
-          %p.content= comment.content
-          %p.user= User.where("id=?", comment.user_id).first.name

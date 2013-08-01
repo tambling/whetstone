@@ -1,7 +1,7 @@
 - if message.from==current_user
   %li.from
     %img{src: gravatar(current_user, 40)}
-    = message.body
+    %span= message.body
 - if message.from==partner
   %li.to
     %img{src: gravatar(partner, 40)}

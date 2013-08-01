@@ -54,6 +54,7 @@
                 - else
                   %h2= "#{@partner.name} is working on #{@partner.goals.sample.stone.title}! Why not ask how it's going?"
               = render partial: "messages", locals: {partner: @partner, messages: @messages}
+              %a#bottom
             #send
               .form
                 = form_for(@message, remote: true) do |f|

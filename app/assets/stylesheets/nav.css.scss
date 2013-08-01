@@ -117,15 +117,12 @@ $sidebar-highlight-color: #22262E;
 }
 
 .top_nav {
-  position: relative;
-  top: 0px;
-  width: 70%;
-  margin: 0 auto;
+  width: 80%;
   height: 30px;
+  margin: 0 auto;
 
   ul {
     float: right;
-    line-height: 30px;
 
     li {
       display: inline-block;

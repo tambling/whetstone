@@ -10,6 +10,6 @@
 
 ## TODO
 
+[X] Comments NOT SAVING !!!!!!
 [] error messages on sign-up form not showing
 [] loses stone if user needs to create account
-[] Comments NOT SAVING !!!!!!

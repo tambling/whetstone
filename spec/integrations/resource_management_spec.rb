@@ -34,7 +34,6 @@
     end
 
     scenario "User filters by difficulty", js: true do
-      stone.resources.destroy_all
       stone.resources << FactoryGirl.create(:resource, difficulty: "Expert", title: "An expert resource")
       stone.resources << FactoryGirl.create(:resource, difficulty: "Beginner", title: "An easy resource")
       visit stone_path(stone)

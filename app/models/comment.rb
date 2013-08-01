@@ -1,11 +1,11 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :content, :user_id
+  attr_accessible :content, :user_id, :commentable_id, :commentable_type
 
   validates :content, presence: true
 
   has_many :votes, as: :voteable
   has_many :comments, as: :commentable
-  
+
   belongs_to :commentable, polymorphic: true
   belongs_to :user
 

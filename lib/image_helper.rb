@@ -43,11 +43,19 @@ module ImageHelper
   def mechanize_search(url)
     begin
       sanintized_url = sanitize_url URI(url).host
+      # Click through Google Images
       agent = Mechanize.new
       agent.get("http://www.google.com/imghp?hl=en&tab=wi")
       form = agent.page.form
       form.q = sanintized_url
       form.submit
+      # Click through Advanced Search
+      agent.page.link_with(:text => "Advanced search").click
+      adv_form = agent.page.form
+      adv_form.radiobutton_with(:value => "trans").check
+      adv_form.field_with(:name => "as_filetype").value = "png"
+      adv_form.submit
+      # Find first result
       images = agent.page.links_with(href: /imgres/)
       agent.click(images[0])
       agent.page.link_with(:text => "See full size image").uri.to_s

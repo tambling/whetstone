@@ -3,7 +3,7 @@ class ResourcesStone < ActiveRecord::Base
 
   has_many :votes, as: :voteable
 
-  validates :resource_id, scope: :stone_id
+  validates_uniqueness_of :resource_id, scope: :stone_id
 
   belongs_to :stone
   belongs_to :resource

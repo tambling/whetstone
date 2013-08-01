@@ -1,6 +1,4 @@
 
-
-
 !!!
 %html
   %head
@@ -61,16 +59,8 @@
                   .fields
                     =f.hidden_field  :to_id, value: @partner.id
                     =f.hidden_field :from_id, value: current_user.id
-                    =f.text_area(:body, rows: 3)
+                    =f.text_area :body, rows: 3, required: true
                     =f.submit "Send"
-              #send
-                .form
-                  = form_for(@message, remote: true) do |f|
-                    .fields
-                      =f.hidden_field  :to_id, value: @partner.id
-                      =f.hidden_field :from_id, value: current_user.id
-                      =f.text_area(:body, rows: 3)
-                      =f.submit "Send"
 
       / ! end of .container
     / ! end of #main

@@ -23,7 +23,7 @@
       click_link("Resources")
       click_link("Add Resource")
       fill_in('Title', :with => 'Poodr')
-      fill_in('Description', :with => 'What the FUCK AM I DOING!')
+      fill_in('Description', :with => 'What the dilly-dally AM I DOING!')
       fill_in('Url', :with => 'http://www.soccernet.com')
       fill_in('Recommended time', :with => 600)
 

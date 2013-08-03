@@ -1,6 +1,6 @@
 h1. Whetstone
 
-This application was generated with the "rails_apps_composer":https://github.com/RailsApps/rails_apps_composer gem provided by the "RailsApps Project":http://railsapps.github.io/.
+whetstone is a community dri self learning app that allows users to createlog create goals with many resourcesresources to help users achieve that goal and share their progress among friends.ven 
 
 h2. Diagnostics
 
